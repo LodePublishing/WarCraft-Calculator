@@ -91,12 +91,12 @@ Max Time 30 (in minutes)
 -- solution (which fulfills the goals stated in goals_*.txt)
 -- A good thumb rule: Set it to thrice the value you would need to build it.
 
-Max Generations 250
+Max Generations 50
 -- Max Generations define the time how long a build order should be optimized.
 -- After *Max Generations* Generations without change in time and gathered
 -- resources, the current run will end and saved.
 
-Mutations 0 
+Mutations 25 
 -- How many items in a build order of each test case should have the chance to
 -- mutate? Very small values will result in a slow evolution where only small
 -- changes per step are possible. It might remain in a local optima :/
@@ -105,7 +105,7 @@ Mutations 0
 -- Fifty worked quite well though there is probably a better number depending
 -- on the task
 
-Mutation Rate 150
+Mutation Rate 75
 -- Mutation rate is the probability of a change in the build order.
 -- In contrary to above, a large value means that there is a low probability
 -- of a mutation and visa versa a small value will result in a high

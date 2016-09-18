@@ -33,4 +33,7 @@ void setAt(unsigned char cnt)
         else if(cnt<=16) setColor(31); //RED
         else setColor(37); //WHITE
 };*/
-
+#ifdef WIN32
+HANDLE scr;
+void print(const char * x) {DWORD num; WriteConsole(scr,x,strlen(x),&num,0); }
+#endif

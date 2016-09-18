@@ -11,13 +11,13 @@ extern void setAt(unsigned char cnt);
 
 #ifdef WIN32
 #include <windows.h>
-HANDLE scr;
+extern HANDLE scr;
 const unsigned char colorsWin32[7]= 
 //Translate Linux ANSI Colors to SetConsoleTextAttribute Colors
 {
 	                FOREGROUND_RED,FOREGROUND_GREEN,FOREGROUND_RED|FOREGROUND_GREEN,FOREGROUND_BLUE,FOREGROUND_RED|FOREGROUND_BLUE,FOREGROUND_GREEN|FOREGROUND_BLUE,FOREGROUND_RED|FOREGROUND_BLUE|FOREGROUND_GREEN
 };
-void print(const char * x) {DWORD num; WriteConsole(scr,x,strlen(x),&num,0); }
+extern void print(const char * x);
 #define clrscr() system("clear");
 #define gotoxy(x,y) {COORD pos={(x),(y)}; SetConsoleCursorPosition(scr,pos); }
 

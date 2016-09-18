@@ -39,9 +39,9 @@
 
 //#define gizmowidth 35
 
-#define ALPHA_TIER 0 //in percent
-#define ZELL_TEILUNG 0 
-#define CROSSING_OVER 10
+#define ALPHA_TIER 5 //in percent
+#define ZELL_TEILUNG 5 
+#define CROSSING_OVER 15
 
 //96!?
 // Here are some global variables (accessible by any class due to 'extern' declaration in 'main.h'
@@ -365,6 +365,7 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 	basicFitness=player[0]->pFitness;
 	while(run<RUNNINGS)
 	{
+		print("_");
 	  	generation++;
                 unchangedRuns++;
 // Core of the Program
@@ -473,10 +474,11 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 			gen_count[run]=generation;
 			generation=0;
 			//Problem bei timer == MaxTIme
+			u=0;
 			for(t=0;t<RUNNINGS;t++)
 				if((Save[t]->pFitness<player[0]->pFitness)||((Save[t]->pFitness==player[0]->pFitness)&&(Save[t]->sFitness<player[0]->sFitness)))
 				{
-					for(u=RUNNINGS-1;u>t;u--)
+					for(u=RUNNINGS-1;u>t+1;u--)
 						Save[u]=Save[u-1];
 					u=t;
 					t=RUNNINGS;
@@ -550,6 +552,7 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 			old_bestPrimaryFitness=0;
 			old_bestSecondaryFitness=0;
 			run++;
+			printf("*");
 			for(s=0;s<MAX_LENGTH;s++) bolog[s].count=0;
 		}
 	    

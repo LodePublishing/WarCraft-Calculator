@@ -1,0 +1,61 @@
+Remember: The numbers mean how many the program should build of this unit
+>at least<. And: You don't have to enter all the tech buildings, they will
+added automaticly. (i.e. the program will build a templar archive if you
+set Dark Templars to for example two and left everything else at zero)
+
+Units
+                Wisp 0  0
+              Archer 0  0
+            Huntress 0  0
+            Ballista 0  0    
+               Dryad 0  0
+       Druid of Claw 0  0
+      Mountain Giant 0  0
+          Hippogryph 0  0
+     Druid of Thalon 0  0
+       Faerie Dragon 0  0
+            Chimaera 4  0
+              Treant 0  0
+ Spirit of Vengeance 0  0
+           Vengeance 0  0
+
+Buildings
+        Tree of Life 0  0
+        Tree of Ages 0  0
+    Tree of Eternity 0  0
+      Ancient of War 0  0
+     Ancient of Lore 0  0
+     Ancient of Wind 0  0
+   Ancient Protector 0  0
+  Ancient of Wonders 0  0
+           Moon Well 0  0
+     Altar of Elders 0  0 
+        Hunters Hall 0  0 
+      Chimaera Roost 0  0
+  
+Researches
+	    Backpack 0  0
+       Improved Bows 0  0
+        Marksmanship 0  0
+            Sentinel 0  0
+         Moon Glaive 0  0
+       Impaling Bolt 0  0
+         Ultravision 0  0
+         Well Spring 0  0
+    Natures Blessing 0  0
+       Abolish Magic 0  0
+     Enchanted Bears 0  0
+       Hardened Skin 0  0
+      Resistant Skin 0  0
+ Hippogryph Training 0  0
+     Enchanted Crows 0  0
+    Corrosive Breath 0  0
+
+Upgrades
+
+Strength of the Moon 0  0
+          Moon Armor 0  0
+Strength of the Wild 0  0
+     Reinforced Hide 0  0
+Druid of Claw Train. 0  0
+Druid of Thalon Tra. 0  0

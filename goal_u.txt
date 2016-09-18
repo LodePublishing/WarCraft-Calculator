@@ -1,0 +1,59 @@
+Remember: The numbers mean how many the program should build of this unit
+>at least<. And: You don't have to enter all the tech buildings, they will
+added automaticly. (i.e. the program will build a templar archive if you
+set Dark Templars to for example two and left everything else at zero)
+
+Units
+             Acolyte  0  0    
+               Ghoul  15  0
+         Crypt Fiend  0  0
+            Gargoyle  0  0
+         Abomination  0  0
+          Meat Wagon  0  0
+         Necromancer  0  0
+             Banshee  0  0
+         Frost Wyrms  0  0
+               Shade  0  0 
+    Skeleton Warrior  0  0 
+       Skeletal Mage  0  0    
+            Infernal  0  0
+ Carrion Beetle LvlA  0  0
+ Carrion Beetle LvlB  0  0
+ Carrion Beetle LvlC  0  0
+     Obsidian Statue  0  0
+
+Buildings                        
+   Haunted Gold Mine  0  0 
+          Necropolis  0  0
+   Halls of the Dead  0  0
+       Black Citadel  0  0
+               Crypt  0  0
+            Ziggurat  0  0
+   Altar of Darkness  0  0
+           Graveyard  0  0
+      Slaughterhouse  0  0
+Temple of the Damned  0  0
+     Sacrificial Pit  0  0
+            Boneyard  0  0
+      Tomb of Relics  0  0
+      Nerubian Tower  0  0
+        Spirit Tower  3  0
+
+Researches
+            Backpack  0  0
+         Cannibalize  1  0
+        Ghoul Frenzy  1  0
+                 Web  0  0
+              Burrow  0  0
+          Stone Form  0  0
+       Disease Cloud  0  0
+      Exhume Corpses  0  0
+           Destroyer  0  0
+  Skeletal Longevity  0  0
+    Skeletal Mastery  0  0
+     Freezing Breath  0  0
+     Unholy Strength  2  0
+        Unholy Armor  2  0
+     Creature Attack  0  0
+Necromancer Training  0  0
+    Banshee Training  0  0

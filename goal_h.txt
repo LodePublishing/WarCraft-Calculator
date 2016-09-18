@@ -1,0 +1,59 @@
+Remember: The numbers mean how many the program should build of this unit
+>at least<. And: You don't have to enter all the tech buildings, they will
+added automaticly. (i.e. the program will build a templar archive if you
+set Dark Templars to for example two and left everything else at zero)
+
+Units		     Count Time
+
+              Peasant    0 0
+              Militia    0 0 
+              Footman    0 0
+             Rifleman   13 0 
+               Knight    0 0
+               Priest    0 0
+            Sorceress    0 0
+        Spell Breaker    0 0
+           Gyroceptor    0 0
+          Mortar Team    0 0
+           Steam Tank    0 0
+        Gryphon Rider    0 0
+     Dragonhawk Rider    0 0
+Water Elemental Lvl A    0 0
+Water Elemental Lvl B    0 0
+Water Elemental Lvl C    0 0
+              Phoenix    0 0 
+            Town Hall    0 0
+                 Keep    0 0
+               Castle    0 0
+             Barracks    0 0
+                 Farm    0 0
+       Altar of Kings    0 0
+          Lumber Mill    0 0
+          Scout Tower    0 0
+           Blacksmith    0 0
+             Workshop    0 0 
+       Arcane Sanctum    0 0
+       Gryphon Aviary    0 0
+         Arcane Vault    0 0
+          Guard Tower    0 0
+         Cannon Tower    0 0
+        Aracane Tower    0 0
+             Backpack    0 0
+               Defend    0 0
+           Long Rifle    1 0
+  Animal War Training    0 0
+     Gyroceptor Bombs    0 0
+           War Engine    0 0
+                Flare    0 0
+ Fragmentation Shards    0 0
+        Storm Hammers    0 0
+    Lumber Harvesting    0 0
+              Masonry    0 0
+        Melee Weapons    0 0
+        Melee Plating    0 0
+       Ranged Weapons    2 0
+        Leather Armor    2 0
+       Prist Training    0 0
+   Sorceress Training    0 0
+        Control Magic    0 0
+       Magic Sentinel    0 0

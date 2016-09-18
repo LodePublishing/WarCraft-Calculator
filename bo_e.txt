@@ -1,0 +1,57 @@
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----Best solution---]
+
+     Time used: 09:01 minutes
+     [00:00] [05/12]                 Wisp [OK]
+     [00:01] [06/12]  Gold Wisp to Forest [OK]
+     [00:14] [06/12]                 Wisp [Building availible]
+     [00:15] [07/12]  Gold Wisp to Forest [OK]
+     [00:28] [07/12]                 Wisp [Building availible]
+     [00:42] [08/12]                 Wisp [Building availible]
+     [00:56] [09/12]                 Wisp [Building availible]
+     [00:57] [10/12]  Gold Wisp to Forest [OK]
+     [00:58] [10/12]  Gold Wisp to Forest [OK]
+     [01:10] [10/12]                 Wisp [Building availible]
+     [01:11] [11/12]      Altar of Elders [OK]
+     [01:24] [11/12]         Tree of Ages [Building availible]
+     [03:24] [11/12]     Tree of Eternity [Building availible]
+     [03:25] [11/12]  Gold Wisp to Forest [OK]
+     [03:26] [11/12]    Wood Wisp to Mine [OK]
+     [03:27] [11/12]  Gold Wisp to Forest [OK]
+     [03:28] [11/12]            Moon Well [OK]
+     [03:29] [11/12]      Ancient of Wind [OK]
+     [05:24] [11/20]       Chimaera Roots [Building availible]
+     [05:25] [11/20]       Chimaera Roots [OK]
+     [05:26] [11/20]                 Wisp [OK]
+     [05:27] [12/20]    Wood Wisp to Mine [OK]
+     [05:38] [12/20]            Moon Well [enough Wood]
+     [05:40] [12/20]                 Wisp [Building availible]
+     [05:54] [13/20]                 Wisp [Building availible]
+     [06:08] [14/20]                 Wisp [Building availible]
+     [06:22] [15/20]                 Wisp [Building availible]
+     [06:49] [16/28]             Chimaera [Building availible]
+     [06:50] [21/28]             Chimaera [OK]
+     [06:51] [26/28]            Moon Well [OK]
+     [07:54] [26/36]             Chimaera [Building availible]
+     [07:55] [31/36]             Chimaera [OK]
+     [07:56] [36/36]    Wood Wisp to Mine [OK]
+
+     ---Force at the end---
+                      Wisp : 16 [Last one: 06:36]
+                  Chimaera :  4 [Last one: 09:00]
+          Tree of Eternity :  1 [Last one: 05:24]
+           Ancient of Wind :  1 [Last one: 04:44]
+                 Moon Well :  3 [Last one: 07:46]
+           Altar of Elders :  1 [Last one: 02:16]
+            Chimaera Roots :  2 [Last one: 06:49]
+
+     Harvested Gold : 4114
+
+     Harvested Wood : 1293
+     Gold at the end: 844
+     Wood at the end: 143
+[---------end--------]
+

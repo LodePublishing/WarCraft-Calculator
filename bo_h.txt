@@ -1,0 +1,48 @@
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----Best solution---]
+
+     Time used: 06:53 minutes
+     Scouting unit after 02:40 minutes
+     [00:00] [05/12]              Peasant [OK]
+     [00:01] [06/12]    Mine Peon to Wood [OK]
+     [00:02] [06/12]    Mine Peon to Wood [OK]
+     [00:03] [06/12]    Mine Peon to Wood [OK]
+     [00:15] [06/12]              Peasant [Building availible]
+     [00:30] [07/12]              Peasant [Building availible]
+     [00:31] [08/12]       Altar of Kings [OK]
+     [00:45] [08/12]              Peasant [Building availible]
+     [01:00] [09/12]              Peasant [Building availible]
+     [01:01] [10/12]    Mine Peon to Wood [OK]
+     [01:15] [10/12]                 Keep [Building availible]
+     [01:21] [10/12]           Blacksmith [enough Gold]
+     [01:22] [10/12]    Mine Peon to Wood [OK]
+     [01:42] [10/12]           Blacksmith [enough Gold]
+     [02:36] [10/12]        Leather Armor [Building availible]
+     [02:57] [10/12]       Ranged Weapons [Building availible]
+     [03:15] [10/12]               Castle [Building availible]
+     [03:36] [10/12]        Leather Armor [researched]
+     [04:03] [10/12]       Ranged Weapons [enough Gold]
+     [05:19] [10/12]       Ranged Weapons [researched]
+     [05:20] [10/12]        Leather Armor [OK]
+     [05:27] [10/12]              Peasant [enough Gold]
+     [05:42] [11/12]              Peasant [Building availible]
+     [05:43] [12/12]    Mine Peon to Wood [OK]
+
+     ---Force at the end---
+                   Peasant : 12 [Last one: 05:57]
+                    Castle :  1 [Last one: 05:15]
+            Altar of Kings :  1 [Last one: 01:36]
+                Blacksmith :  2 [Last one: 02:36]
+            Ranged Weapons :  3 [Last one: 06:51]
+             Leather Armor :  3 [Last one: 06:52]
+
+     Harvested Gold : 3156
+
+     Harvested Wood : 1583
+     Gold at the end: 721
+     Wood at the end: 424
+[---------end--------]
+

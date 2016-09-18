@@ -1,0 +1,1377 @@
+<!--
+Version 1.20 - 13.3.2003
+The Frozen Throne Update
+Spells Ignorieren Panzerung - added
+Weitere Code Opt.
+Version 1.10 - 17.3.2002
+Code Opt. und Stats für Finale Version
+Version 1.00 - 12.4.2002
+Berechnet Entschaden in WarCraft III BETA
+//-->
+
+
+<html>
+
+<head>
+
+<title>WarCraft.de - Die größte deutsche Warcraft 3 Seite. Infos, Tipps, Tricks, Downloads, Foren, Strategien und vieles mehr zu WarCraft III von Blizzard. - by inGame</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<meta name="description" content="Warcraft.de - Die grösste deutsche Warcraft 3 Seite. Infos, Tipps, Tricks, Downloads, Foren, Strategien und vieles mehr zu Warcraft 3 von Blizzard.">
+
+<meta name="keywords" content="warcraft, warcraft3, 3, III, iii, war, craft, wc3, tipps, tricks, download, strategie, strategy, strategien, hilfe, rassen, online, faq, beta, beta-test, betatest, warcraft, ork, orcs, untote, battel-net, battlenet, battle, net, blizzard, spell, screenshots, war3, drei, de, warcraft.de, maps, karten, models, news, cheats, hack, hacks, multiplayer, multi, player, entertainment, multiplayer, frage, cheat">
+
+<meta http-equiv="keywords" content="warcraft, warcraft3, 3, III, iii, war, craft, wc3, tipps, tricks, download, strategie, strategy, strategien, hilfe, rassen, online, faq, beta, beta-test, betatest, warcraft, ork, orcs, untote, battel-net, battlenet, battle, net, blizzard, spell, screenshots, war3, drei, de, warcraft.de, maps, karten, models, news, cheats, hack, hacks, multiplayer, multi, player, entertainment, multiplayer, frage, cheat">
+
+<link rel="stylesheet" href="/style.css" type="text/css">
+
+<link rel="shortcut icon" href="http://warcraft3.ingame.de/warcraft.ico">
+<!-- Adcode - bitte nicht loeschen! -->
+<script type="text/javascript" src=http://ads.adcode.de/frame?4?19?121></script><!-- Adcode - bitte nicht loeschen! -->
+
+
+<script language='JavaScript'>
+
+<!--
+
+function swap_content( span ) {
+
+    displayType = ( document.getElementById( span ).style.display == 'none' ) ? 'block' : 'none';
+
+    document.getElementById( span ).style.display = displayType;
+
+}
+
+//-->
+
+</script>
+
+
+
+</head>
+
+<body bgcolor="Black" topmargin="0" text="silver">
+
+
+
+<!-- Bitte nicht loeschen: ------->
+
+
+<!-- /Bitte nicht loeschen ------->
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+  <tr>
+
+    <td heigth=96 width=302><img src="/gfx/top1.gif" width="296" height="118"></td>
+
+    <td heigth=96 width=100% background="/gfx/top2.gif">&nbsp;</td>
+
+    <td heigth=96width=168 width="230"><img src="/gfx/top3.gif" width="230" height="118"></td>
+
+  </tr>
+
+</table>
+
+
+
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+  <tr valign="top">
+
+    <td background="/gfx/navback.jpg" width="161">
+
+<table width="161" border="0" cellspacing="0" cellpadding="0">
+
+  <tr>
+
+    <td height="32" colspan="3" background="/gfx/menuback.jpg">
+
+                        <div align="center"><span class="menu">WarCraft.de</span></div>
+
+                </td>
+
+        </tr>
+
+        <tr>
+
+          <td width="23">&nbsp;</td>
+
+                <td width="120"><span class="nav">- <a href="/" class="nav">Aktuelle News</a></span><br>
+
+      <span class="nav">- <a href="http://www.ingame.de/" class="nav" target="_blank"><font color="#ff5500">in</font>Game News</a></span><br>
+
+      <span class="nav">- <a href="/szene/" class="nav">Szene News</a></span><br>
+
+      <span class="nav">- <a class="nav" href="/liga/">WC-League News</a></span><br>
+
+                        <span class="nav">- <a href="http://www.wc3l.de" class="nav">WC3L News</a></span><br>
+
+                        <span class="nav">- <a href="/archiv.php" class="nav">Newsarchiv</a></span><br>
+
+                        <span class="nav">- <a href="/news/news.php" class="nav">News einsenden</a></span><br>
+
+                        <img src="/gfx/1x1.gif" width="5" height="5"></td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+
+        <tr>
+
+                <td colspan="3" height="32" background="/gfx/menuback.jpg">
+
+                        <div align="center"><span class="menu">Foren</span></div>
+
+                </td>
+
+        </tr>
+
+        <tr>
+
+                <td width="23">&nbsp;</td>
+
+                <td width="120">
+
+      - <a href="http://forum.ingame.de/warcraft/" class="nav" target="_blank">Forenübersicht</a><br>
+
+                        - <a class="nav" href="http://forum.ingame.de/warcraft/forumdisplay.php?s=&forumid=2" target=_blank>Community Forum</a><br>
+
+      - <a class="nav" href="http://forum.ingame.de/warcraft/forumdisplay.php?s=&forumid=199" target=_blank>WCL-Foren</a><br>
+
+                        - <a class="nav" href="/clanforen/clanforen_anmeldung.php">Foren-Hosting</a> <br>
+
+                        - <a class="nav" href="/community/netiquette.php">Nettiquette</a><br>
+
+                        <img src="/gfx/1x1.gif" width="5" height="5"><br>
+
+                </td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+
+        <tr>
+
+                <td colspan="3" height="32" background="/gfx/menuback.jpg">
+
+                        <div align="center"><span class="menu">Sektionen</span></div>
+
+                </td>
+
+        </tr>
+
+        <tr>
+
+                <td width="23">&nbsp;</td>
+
+
+    <td width="120"> <div align="center"><a href="/das_spiel/exp/"><img src="http://warcraft3.ingame.de/gfx/nav_tft_beta.gif" width="95" height="57" border="0"></a></div>
+        - <a class="nav" href="/das_spiel/exp/">The Frozen Throne</a><br>
+        - <a class="nav" href="/replays/">Replay-Datenbank</a><br>
+        <!--                        - <a class="nav" href="">Maps</a><br>  -->
+        - <a class="nav" href="/warcraft3/articles/show.php?category=4">Warcraft
+        III</a><br>
+        - <a class="nav" href="/tips/">Strategie</a><br>
+        - <a class="nav" href="/w3tips">Lesertipps</a><br>
+        <!--                        - <a class="nav" href="/maps/">Maps</a><br>  -->
+        - <a class="nav" href="/mods/">Mods</a><br>
+        - <a class="nav" href="/funart/funart_index.php">Fun & Art & Lyrics</a><br>
+        - <a class="nav" href="/wow/wow_index.php">World of WarCraft</a><br>
+        - <a class="nav" href="/wc12/warcraft2.php">WarCraft II</a><br>
+        - <a class="nav" href="/wc12/warcraft1.php">WarCraft I</a><br>
+        - <a class="nav" href="/contests/">Contests</a><br>
+        - <a class="nav" href="http://ingame.ingame.de/mapbase/index.php?action=category&cid=13">Map-Datenbank</a><br>
+        - <a class="nav" href="http://ingame.ingame.de/filebase/index.php?action=category&cid=10">File-Datenbank</a><br>
+        <img src="/gfx/1x1.gif" width="5" height="5"></td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+
+        <tr>
+
+                <td colspan="3" height="32" background="/gfx/menuback.jpg">
+
+                        <div align="center"><span class="menu">WC-Szene</span></div>
+
+                </td>
+
+        </tr>
+
+        <tr>
+
+                <td width="23">&nbsp;</td>
+
+                <td width="120"> <p>- <a class="nav" href="/szene/">Szene News</a><br>
+
+        - <a class="nav" href="/szene/interviews/interviews.php">Interviews</a><br>
+
+        - <a class="nav" href="/szene/playercards/">Playercards</a><br>
+
+        - <a class="nav" href="/support/clandb/">Clan DB</a><br>
+
+        - <a class="nav" href="/szene/kolumnen/">Kolumnen</a><br>
+
+        - <a class="nav" href="/szene/Coverage/">Coverage-Archiv</a><br>
+
+                        <img src="/gfx/1x1.gif" width="5" height="5"></td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+
+        <tr>
+
+                <td colspan="3" height="32" background="/gfx/menuback.jpg">
+
+                        <div align="center"><span class="menu">WC-League</span></div>
+
+                </td>
+
+        </tr>
+
+        <tr>
+
+                <td width="23">&nbsp;</td>
+
+                <td width="120"> <p>- <a class="nav" href="/liga/">WC-League News</a><br>
+
+            - <a class="nav" href="/liga/turnier/">WCL-Tournaments</a><br>
+
+      - <a class="nav" href="/liga/liga1.php">WCL-1on1 Liga - 1</a><br>
+
+      - <a class="nav" href="/liga/liga2.php">WCL-1on1 Liga - 2</a><br>
+
+      - <a class="nav" href="/liga/liga3.php">WCL-1on1 Liga - 3</a><br>
+
+      - <a class="nav" href="/liga/2on2tab.php">WCL-2on2 Liga</a><br>
+
+      - <a class="nav" href="/liga/laddertabelle1.php">WCL-Ladder</a><br>
+
+                        <img src="/gfx/1x1.gif" width="5" height="5"></td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+
+
+
+        <tr>
+
+                <td colspan="3" height="32" background="/gfx/menuback.jpg">
+
+                        <div align="center"><span class="menu">Support</span></div>
+
+                </td>
+
+        </tr>
+
+
+
+        <tr>
+
+                <td width="23">&nbsp;</td>
+
+                <td width="120"> - <a class="nav" href="/support/index.php">Support</a><br>
+
+                        - <a class="nav" href="/support/faqs.php">FAQs</a><br>
+
+                        - <a class="nav" href="http://forum.ingame.de/warcraft/forumdisplay.php?&forumid=5" target=_blank>Support Forum</a> <br>
+
+                        <img src="/gfx/1x1.gif" width="5" height="5"></td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+
+        <tr>
+
+                <td colspan="3" height="32" background="/gfx/menuback.jpg">
+
+                        <div align="center"><span class="menu">Redaktion</span></div>
+
+                </td>
+
+        </tr>
+
+        <tr>
+
+                <td width="23">&nbsp;</td>
+
+                <td width="120">
+
+                  - <a class="nav" href="/staff/impressum.php">Impressum</a><br>
+
+                        - <a class="nav" href="/staff/kontakt.php">Kontakt</a><br>
+
+                        - <a class="nav" href="/staff/staff.php">Staff</a><br>
+
+                        - <a class="nav" href="/staff/jobs.php">Jobs @ WarCraft.de</a><br>
+
+                        - <a class="nav" href="/staff/banners.php">Buttons & Banner</a><br>
+
+      - <a class="nav" href="/support/irc/index.php"> #warcraft.de IRC</a><br>
+
+      - <a class="nav" href="http://ingame.alternate.de" target="_blank"> Hardware
+
+      Shop</a><br>
+
+      - <a class="nav" href="http://partners.webmasterplan.com/click.asp?ref=72353&site=1331&type=text&tnb=1" target="_blank">
+
+      Games Shop</a><br>
+
+      - <a class="nav" href="http://www.ingame.de/handylogos/index.php?cid=www.warcraft.de">Gamelogos</a><br>
+
+      <img src="/gfx/1x1.gif" width="5" height="5"></td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+        <tr>
+                <td colspan="3" height="32" background="/gfx/menuback.jpg"><div align="center"><span class="menu">Willkommen</span></div></td>
+        </tr>
+        <tr>
+
+                <td colspan="3">
+
+                        <div align="center">
+
+                        <font face="verdana, arial, sans.serif, helvetica" size=1>
+
+                        <center>
+
+                                <b>Hallo du Gnoll!</b><br>
+
+                                Mit Dir befinden sich<br>
+
+                                gerade <b><font color="#8DC853">
+
+                                        <script language="Javascript" src="/nbconnectes.php3?action=show"></script>
+
+                                </font></b>Besucher<br>
+
+                                auf WarCraft.de<br>
+                        </center>
+                        <img src="/gfx/1x1.gif" width="5" height="5">
+                </td>
+        </tr>
+        <tr>
+                <td colspan="3" height="32" background="/gfx/menuback.jpg"><div align="center"><span class="menu">Partner</span></div></td>
+        </tr>
+        <tr>
+
+                <td width="23">&nbsp;</td>
+
+                <td width="120" align="center"><a href="http://www.wwcl.net" target="_blank"><img src="/gfx/wwcl_button_deu_pca4.gif" width="88" height="31" border="0"></a><br>
+      <a href="http://www.warcraftleague.org" target=_blank><img src="/liga/images/button_league.gif" border=0 width="88" height="31"></a><br>
+      <a href="http://www.sogamed.com" target=_blank><img src="/gfx/button_sogamed.gif" border=0 width="88" height="31"></a><a href="http://www.sogamed.com" target=_blank></a><br>
+      <font size="1">Staff Bouncer by</font><br><a href="http://www.xlhost.de" target="_blank"><img src="http://planetquake.ingame.de/gfx/button88x33_01.gif" border="0"></a><br>
+      <img src="/gfx/1x1.gif" width="2" height="2"></td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+        <tr>
+                <td colspan="3" height="32" background="/gfx/menuback.jpg">
+                        <div align="center"><span class="menu">Link us</span></div>
+
+                </td>
+
+        </tr>
+        <tr>
+                <td colspan="3">
+                        <div align=center>
+
+                        <a href="http://www.warcraft.de" target=_blank><img src="/staff/wcdebutton.gif" border=0></a> </div>
+
+                        <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">
+
+                        <b>Warcraft.de</b> is part of</font><br>
+
+                        <!-- Begin inGame Network Button -->
+  <table width="120" border="0" cellspacing="0" cellpadding="0" height="46">
+    <tr>
+      <form name="networkSelect"> 
+        <td background="http://ingame.ingame.de/network_button/inGame_logo.gif" valign="bottom" align="center"> 
+          <select  onchange="location.href = document.networkSelect.network.options[document.networkSelect.network.selectedIndex].value;" name="network" style="background-color:#FF5400; font-size: 10px; width=119px; color: #ffffff; font-family: verdana,geneva,arial">
+          <option>inGame Network:</option>
+          <option value="http://www.Broodwar.de">Broodwar.de</option>
+          <option value="http://www.Diablo2.de">Diablo2.de</option>
+          <option value="http://www.Doom3.de">Doom3.de</option>
+          <option value="http://www.inCounterstrike.de">inCounterstrike</option>
+          <option value="http://www.inUnreal.de">inUnreal.de</option>
+          <option value="http://www.Planetquake.de">Planetquake.de</option>
+          <option value="http://www.Planetwolfenstein.de">Planetwolfen</option>
+          <option value="http://www.Warcraft.de">Warcraft.de</option>
+        </select>
+        </td>
+     </form>
+    </tr>
+  </table>
+<!-- Ende inGame Network Button -->
+
+                        <br>
+
+                        </div>
+
+                </td>
+
+        </tr>
+<tr>
+                <td colspan="3" height="32" background="/gfx/menuback.jpg">&nbsp;</td>
+
+        </tr>
+        <tr>
+
+                <td width="23">&nbsp;</td>
+
+                <td width="120">&nbsp;</td>
+
+                <td width="20">&nbsp;</td>
+
+        </tr>
+
+</table>
+    </td>
+
+    <td>
+
+	<table cellpadding=0 cellspacing=0 border=0 width=100%>
+
+
+
+
+	<tr>
+
+	<td width=10 valign="top"><img src="/gfx/1x1.gif" width="10" height="10"></td>
+
+      <td width="100%">
+
+<div align="center">
+
+<iframe id='a8265c65' name='a8265c65' src='http://adserver.hg-computer.de/inads/adframe.php?n=a8265c65&amp;what=zone:4&amp;target=_blank' framespacing='0' frameborder='no' scrolling='no' width='468' height='60' allowtransparency='true'><a href='http://adserver.hg-computer.de/inads/adclick.php?n=a8265c65' target='_blank'><img src='http://adserver.hg-computer.de/inads/adview.php?what=zone:4&amp;target=_blank&amp;n=a8265c65' border='0' alt=''></a></iframe>
+
+</div>
+
+<br><a name="oben"></a>
+<font size = 1>
+<a href = /tips/allgemeines/>Allgemeines</a> -
+<a href = /tips/menschen/>Menschen</a> -
+<a href = /tips/orks/>Ork</a> -
+<a href = /tips/nachtelfen/>Nachtelfen</a> -
+<a href = /tips/untoten/>Untote</a> -
+<a href = /tips/maps/>Maps</a> -
+<a href = /tips/calcs/>Calcs</a> -
+<a href = /tips/walkthroughs/>Walkthroughs</a>
+</font><br /><br />
+
+<!-- ---------- INHALT BEGINN ---------- -->
+<style type="text/css">
+input, select
+        {
+        FONT-SIZE: 12px;
+        FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif;
+        COLOR: #000000;
+        BACKGROUND-COLOR: #CFCFCF
+        }
+</style>
+
+<div class=content>
+<h2><font face="verdana">Schadensbrechner [v1.2]</font></h2>
+</div>
+
+<body bgcolor="#000000" text="#abaf9a" link="#FF0000" vlink="#FF0000" alink="#FF0000">
+<strong>
+<font face="verdana" size="2" color="#abaf9a">Version für: WarCraft III - The Frozen Throne<br></font></strong>
+<font color="#abaf9a" face="verdana" size="2">
+<form action="" method="post">
+<p>Angriffstyp: <select name="attacktype">
+    <option>Normal
+    <option>Pierce
+    <option>Siege
+        <option>Magic
+        <option>Chaos
+    <option>Spells
+</select></p>
+<p>Panzerungstyp: <select name="armortype">
+    <option>Light
+    <option>Medium
+    <option>Heavy
+    <option>Fort
+    <option>Hero
+        <option>Unarmored
+</select></p>
+<p>Waffenschaden: <input name="attack" type="text" size="4" value=""></p>
+<p>Panzerung: <input name="armor" type="text" size="2" value=""></p>
+<input type="submit">
+<p><b>Info über:</b> <a href="http://www.battle.net/war3/basics/armorandweapontypes.shtml" target="_blank">Angriffs- und Panzerungstypen</a>
+<br>
+<b>Info über Angriffstyp/Schaden der:</b> <a href="http://www.battle.net/war3/human/unitstats.shtml" target="_blank">Menschen</a>, <a href="http://www.battle.net/war3/orc/unitstats.shtml" target="_blank">Orks</a>, <a href="http://www.battle.net/war3/nightelf/unitstats.shtml" target="_blank">Nachtelfen</a>, <a href="http://www.battle.net/war3/undead/unitstats.shtml" target="_blank">Untote</a>
+<br><br>
+<!-- Darf nicht gelöscht werden //-->
+<a href="mailto:patrick-wallukat@gmx.de">&copy; Halo</a>
+</font>
+<!-- ----------- INHALT ENDE ----------- -->
+
+<br />
+<br />
+<table cellpadding="3" border="0" width="100%" cellspacing="2">
+<tr>
+<td class="oben"><b>Gehe zur&uuml;ck:</b>
+
+<a href="./">zu den Kalkulatoren</a> - <a href="../">zur Strategiesektion</a> - <a href="#top">nach oben</a></TD>
+
+</tr>
+</table><!-- KOMMENTARE BEGINN -->
+<br /><br />
+<b>Kommentare:</b>
+<br /><br />
+<a name="comments"></a>        <script language="JavaScript">          function openwin() {            F1 = open("/redirect/comment_write.php?referer=/tips/calcs/damage.php&add=1&catid=6","comwin","width=410,height=410,locationbar=no,menubar=no,resizable=no,status=no");          }        </script><a href="javascript:openwin()"><span style="font-size=12px; font-family=verdana">--&gt; Meine Meinung schreiben</span></a><br><br><table width="98%" border="0" cellspacing="1" cellpadding="2">
+  <tr bgcolor="#0C0F18"> 
+    <td> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>&lt;1&gt; <b>Gast </b></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr bgcolor="#0C0F18"> 
+    <td>F&uuml;r theoretiker ganz nett gemacht !!!<br />
+und ERSTER !!</td>
+  </tr>
+</table><br><table width="98%" border="0" cellspacing="1" cellpadding="2">
+  <tr bgcolor="#0C0F18"> 
+    <td> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>&lt;2&gt; <b>Gast </b></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr bgcolor="#0C0F18"> 
+    <td>2ter</td>
+  </tr>
+</table><br> <br />
+<!-- KOMMENTARE ENDE -->
+
+<br /><br /><font size = 1>
+<a href = /tips/allgemeines/>Allgemeines</a> -
+<a href = /tips/menschen/>Menschen</a> -
+<a href = /tips/orks/>Ork</a> -
+<a href = /tips/nachtelfen/>Nachtelfen</a> -
+<a href = /tips/untoten/>Untote</a> -
+<a href = /tips/maps/>Maps</a> -
+<a href = /tips/calcs/>Calcs</a> -
+<a href = /tips/walkthroughs/>Walkthroughs</a>
+</font>    </td>
+
+
+
+    <td width="11" valign="top"><img src="/gfx/1x1.gif" width="11" height="11"></td>
+
+
+
+</tr></table>
+
+
+
+    <td background="/gfx/rightback.jpg" width="161"> 
+
+
+
+<img src="/gfx/rightback_top.jpg" width="221" height="21">
+
+
+
+
+<table width="221" border="0" cellspacing="0" cellpadding="0">
+
+  <tr>
+
+    <td colspan="3">
+
+			<div align="center">
+
+			<span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span><br>
+
+      <span class="menu"><b>Warcraft.de Shop</b></span><br>
+
+      <span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201" align="center"> 
+
+      <p><a href="http://partners.webmasterplan.com/click.asp?ref=72353&site=1331&type=b1&bnb=1&diurl=http://www.gameworld.de/item.jsp?action=show&productId=176917" target="_blank"><br>
+
+        </a><a href="http://www.ingame.de/ingameshop/" target="_blank"><img src="http://www.ingame.de/ingameshop/shopimages/gamershirts_banner_small_2.gif" alt="Gamer-Shirts onwz" border="0"></a> 
+
+        <br>
+
+        <font size="1"> Im Spiele-Shop suchen:</font> 
+
+      <table>
+
+        <tr>
+
+          <form name="formular2" action="http://partners.webmasterplan.com/click.asp" method="GET" target="_blank">
+
+            <input type="hidden" name="site" value="1331">
+
+            <input type="hidden" name="ref" value="72353">
+
+            <input type="hidden" name="type" value="form">
+
+            <input type="hidden" name="formid" value="2">
+
+            <input type="hidden" name="shopId" value="0">
+
+            <input type="hidden" name="action" value="search">
+
+            <td valign="middle">
+
+              <input type="text" name="searchLongTitle" size="18" maxlength="30" style="background-color: #111111; color: #CBC1AB; font-family: Verdana; font-size: 9pt; border: 1 solid #CBC1AB">
+
+            </td>
+
+            <td valign="middle">
+
+              <input type="image" value="submit" src="/gfx/kpf.png" alt="Suchen!" name="image">
+
+            </td>
+
+          </form>
+
+        </tr>
+
+      </table>
+
+      <font size="1"><a href="http://partners.webmasterplan.com/click.asp?ref=72353&site=1331&type=b1&bnb=1&diurl=http://www.gameworld.de/item.jsp?action=show&productId=176917" target="_blank">Warcraft
+
+      3 dt.</a> / <a href="http://partners.webmasterplan.com/click.asp?ref=72353&site=1331&type=b1&bnb=1&diurl=http://www.gameworld.de/item.jsp?action=show&productId=201470" target="_blank">Warcraft
+
+      CE</a></font><br>
+
+      <br>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3">
+
+			<div align="center">
+
+
+
+
+
+			<span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span><br>
+
+      <span class="menu"><b>Warcraft.de Gamelogos</b></span><br>
+
+      <span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+  <tr>
+
+    <td colspan="3">
+
+			<div align="center">
+
+<table cellpadding="0" cellspacing="6">
+
+<tr><td valign="top" align="center">
+
+<b><a href="http://www.ingame.de/handylogos/index.php?cid=www.warcraft.de">Top
+
+                  Nokia:</a></b>
+
+
+<script type="text/javascript">
+<!--
+function openWindowLogoid( logoid ) {
+ MeinFenster = window.open("http://www.ingame.de/handylogos/details.php?cid=www.warcraft.de&lid=" + logoid, "Zweitfenster", "width=300,height=480");
+ MeinFenster.focus();
+}
+//-->
+</script>
+<table cellpadding=0 cellspacing=0>
+<table border=0 cellpadding=0 cellspacing=0>  <tr>
+    <!--<td valign=top>-</td>-->
+    <td align="center">
+      <a href="javascript:openWindowLogoid( '165' )"><img border="0" src="http://ingame.ingame.de/handylogos/logos/165.jpg"></a>
+    </td>
+  </tr>
+  <tr>
+    <!--<td valign=top>-</td>-->
+    <td align="center">
+      <a href="javascript:openWindowLogoid( '140' )"><img border="0" src="http://ingame.ingame.de/handylogos/logos/140.jpg"></a>
+    </td>
+  </tr>
+  <tr>
+    <!--<td valign=top>-</td>-->
+    <td align="center">
+      <a href="javascript:openWindowLogoid( '166' )"><img border="0" src="http://ingame.ingame.de/handylogos/logos/166.jpg"></a>
+    </td>
+  </tr>
+  <tr>
+    <!--<td valign=top>-</td>-->
+    <td align="center">
+      <a href="javascript:openWindowLogoid( '164' )"><img border="0" src="http://ingame.ingame.de/handylogos/logos/164.jpg"></a>
+    </td>
+  </tr>
+  <tr>
+    <!--<td valign=top>-</td>-->
+    <td align="center">
+      <a href="javascript:openWindowLogoid( '167' )"><img border="0" src="http://ingame.ingame.de/handylogos/logos/167.jpg"></a>
+    </td>
+  </tr>
+</table>
+
+</td><td valign="top" align="center">
+
+                  <b><a href="http://www.ingame.de/handylogos/index.php?cid=www.warcraft.de">Top
+
+                  Siemens:</a></b>
+
+<script type="text/javascript">
+<!--
+function openWindowLogoid( logoid ) {
+ MeinFenster = window.open("http://www.ingame.de/handylogos/details.php?cid=www.warcraft.de&lid=" + logoid, "Zweitfenster", "width=300,height=480");
+ MeinFenster.focus();
+}
+//-->
+</script>
+<table cellpadding=0 cellspacing=0>
+<table border=0 cellpadding=0 cellspacing=0>  <tr>
+    <!--<td valign=top>-</td>-->
+    <td align="center">
+      <a href="javascript:openWindowLogoid( '153' )"><img border="0" src="http://ingame.ingame.de/handylogos/logos/153.jpg"></a>
+    </td>
+  </tr>
+  <tr>
+    <!--<td valign=top>-</td>-->
+    <td align="center">
+      <a href="javascript:openWindowLogoid( '152' )"><img border="0" src="http://ingame.ingame.de/handylogos/logos/152.jpg"></a>
+    </td>
+  </tr>
+  <tr>
+    <!--<td valign=top>-</td>-->
+    <td align="center">
+      <a href="javascript:openWindowLogoid( '142' )"><img border="0" src="http://ingame.ingame.de/handylogos/logos/142.jpg"></a>
+    </td>
+  </tr>
+</table>
+
+</td></tr>
+
+</table>                  <b><a href="http://www.ingame.de/handylogos/index.php?cid=www.warcraft.de">[Weitere
+
+                  Logos]</a></b></div>
+
+
+
+
+
+
+
+<!--
+
+      <a href="http://ingame.alternate.de"><img src="/gfx/ingame_shop_button.gif" width="200" border="0"></a>
+
+-->
+
+
+
+<!-- Auskommentiert von Sven wegen Problemen mit Ticker-Script
+
+  <tr>
+
+    <td colspan="3">
+
+	  <div align="center">
+
+      <span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span><br>
+
+      <span class="menu"><b>Latest Replays</b></span><br>
+
+      <span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      
+      <img src="/gfx/1x1.gif" width="7" height="7">
+
+
+
+-->
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+  <tr valign="middle">
+
+    <td colspan="3">
+
+      <div align="center"><span class="menu"><img src="/gfx/1x1.gif" width="5" height="5"><br><b>
+
+				<span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span>
+
+        Aktuelle Features</b></span><br>
+
+        <span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201" align="center" valign="middle">
+
+      <div align="center"><font size="1">
+
+				<img src="/gfx/1x1.gif" width="3" height="3"><br>
+
+        <a href="/das_spiel/exp/diary.php" target="_blank"><img src="/gfx/war3xtageb.jpg" border="0" alt="Stoned Betatagebuch" width="200"></a><br>
+
+        <a href="http://www.wc3l.de" target="_blank"><img src="/gfx/button_wc3l.gif" border="0" alt="Warcraft 3 Championsleague" width="200" height="51"></a><br>
+
+			  <img src="/gfx/1x1.gif" width="3" height="3"><br>
+
+        <a href="http://turnier.warcraftleague.org" target="_blank"><img src="/liga/images/fest/turnierbutton.gif" border="0" alt="1 on 1 Turnier" width="200" height="51"></a><br>
+
+				<img src="/gfx/1x1.gif" width="3" height="3"><br>
+
+				<a href="http://www.warcraftleague.org/" target="_blank"><img src="/liga/images/button_liga.gif" width="200" height="51" border="0" alt="Warcraft 3 1on1 Liga"></a><br>
+
+				<img src="/gfx/1x1.gif" width="3" height="3"><br>
+
+     </div>
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+  <!--
+
+  <tr>
+
+    <td colspan="3" height="32">
+
+      <div align="center"><span class="menu"><b>Letzte Updates<br>
+
+        <img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      <div class=menuright> 
+      </div>
+
+      <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <img src="/gfx/1x1.gif" width="10" height="10"><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <td width="10">&nbsp;</td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+  <tr>
+
+    <td colspan="3" height="32" class="menu">
+
+      <div align="center"><span class="menu"><img src="/gfx/news_line_1.gif" width="200" height="5"><br><b>
+
+        Szene News<br>
+
+        <img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      <div class=menuright>
+
+        <li><a class="nav" href="/szene/index.php#news200073">Loe.de)SlaDe gewinnt Gosus Latenight-Turnier (6)</a><br><li><a class="nav"  href="/szene/index.php#news200128">And the winner is ... (2)</a><br><li><a class="nav"   href="/szene/index.php#news200050">Playercard von mTw.aTn|Tak3r online (16)</a><br><li><a class="nav"    href="/szene/index.php#news200046">ESL - FNG heute Abend! (6)</a><br><li><a class="nav"     href="/szene/index.php#news200018">Interview mit 4K^Assassin auf w3c.de (6)</a><br><li><a class="nav"      href="/szene/index.php#news199987">Neues Interview mit esu.kiko (6)</a><br>
+      </div>
+
+      <img src="/gfx/1x1.gif" width="5" height="5"><br>
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3" height="32" class="menu">
+
+      <div align="center"><span class="menu"><img src="/gfx/news_line_1.gif" width="200" height="5"><br><b>Forum Watcher<br>
+
+        <img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      <span class="menu"><img src=http://warcraft3.ingame.de/gfx/arrow.gif><a class="nav" style="color: #8DC853" target=_blank  href="http://forum.ingame.de/warcraft/showthread.php?threadid=30298">Was machen n1. etc anders als an...</a><br><img src=http://warcraft3.ingame.de/gfx/arrow.gif><a class="nav" style="color: #8DC853" target=_blank  href="http://forum.ingame.de/warcraft/showthread.php?threadid=30268">Sind Frauen die besseren wc3 spi...</a><br><img src=http://warcraft3.ingame.de/gfx/arrow.gif><a class="nav" style="color: #8DC853" target=_blank  href="http://forum.ingame.de/warcraft/showthread.php?threadid=30297">Frohe Ostern</a><br><img src=http://warcraft3.ingame.de/gfx/arrow.gif><a class="nav" style="color: #8DC853" target=_blank  href="http://forum.ingame.de/warcraft/showthread.php?threadid=30257">Clikarena</a><br><img src=http://warcraft3.ingame.de/gfx/arrow.gif><a class="nav" style="color: #8DC853" target=_blank  href="http://forum.ingame.de/warcraft/showthread.php?threadid=30238">2on2 netzstatt reps</a><br><img src=http://warcraft3.ingame.de/gfx/arrow.gif><a class="nav" style="color: #8DC853" target=_blank  href="http://forum.ingame.de/warcraft/showthread.php?threadid=30151">Wc3CL Account zu verschenken ;)</a><br><img src=http://warcraft3.ingame.de/gfx/arrow.gif><a class="nav" style="color: #8DC853" target=_blank  href="http://forum.ingame.de/warcraft/showthread.php?threadid=30302">mag blizz ud am liebsten?</a><br><img src=http://warcraft3.ingame.de/gfx/arrow.gif><a class="nav" style="color: #8DC853" target=_blank  href="http://forum.ingame.de/warcraft/showthread.php?threadid=24717">witzige noob sprüche</a><br></span><img src="/gfx/1x1.gif" width="7" height="7">
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+	<tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      <div align="center"><span class="menu"><img src="/gfx/news_line_1.gif" width="200" height="5"><br><b>WarCraft.de Leser-Tipps</b></span><br>
+
+        <span class="menu"><b><img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+      <img src="/gfx/arrow.gif"><a href="/w3tips/index.php?show=189">Sappers</a><br><img src="/gfx/arrow.gif"><a href="/w3tips/index.php?show=176">AMS einsetzen!</a><br><img src="/gfx/arrow.gif"><a href="/w3tips/index.php?show=175">Exen vs Human - FE kicken</a><br><img src="/gfx/arrow.gif"><a href="/w3tips/index.php?show=170">kleiner FFA-Guide</a><br><img src="/gfx/arrow.gif"><a href="/w3tips/index.php?show=167">Menschent&uuml;rme zerst&ouml;ren</a><br><img src="/gfx/1x1.gif" width="7" height="7">
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3">
+
+      <div align="center"><span class="menu"><img src="/gfx/news_line_1.gif" width="200" height="5"><br>
+
+				<b>Umfrage<br>
+
+        <img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3" height="32">
+
+      <div align="center">
+
+        <center>
+
+          <form action="/redirect/poll.php" method="post" name="form">
+<input type="hidden" name="categoryid" value="6">
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+<tr><td align="center"><span style="font-family: verdana, arial, helvetica; font-size: 8pt; color: #96D558; font-weight: bold">Was bedeutet Ostern f&uuml;r Dich?</span><br><br><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr width="100%"><td width="10" valign="top"><input type="radio" name="answer" value="2475" checked>
+</td><td width="100%" valign="top">
+<span style="font-size: 8pt; font-family: verdana, arial, helvetica;">zocken, zocken und nochmal zocken !!!</span><br></td></tr>
+<tr width="100%"><td width="10" valign="top"><input type="radio" name="answer" value="2476">
+</td><td width="100%" valign="top">
+<span style="font-size: 8pt; font-family: verdana, arial, helvetica;">...irgendwas mit Jesus?</span><br></td></tr>
+<tr width="100%"><td width="10" valign="top"><input type="radio" name="answer" value="2477">
+</td><td width="100%" valign="top">
+<span style="font-size: 8pt; font-family: verdana, arial, helvetica;">langes Wochenende.</span><br></td></tr>
+<tr width="100%"><td width="10" valign="top"><input type="radio" name="answer" value="2478">
+</td><td width="100%" valign="top">
+<span style="font-size: 8pt; font-family: verdana, arial, helvetica;">nervige Familienbesuche</span><br></td></tr>
+<tr width="100%"><td width="10" valign="top"><input type="radio" name="answer" value="2479">
+</td><td width="100%" valign="top">
+<span style="font-size: 8pt; font-family: verdana, arial, helvetica;">Besinnung auf meinen christlichen Glauben</span><br></td></tr>
+<tr width="100%"><td width="10" valign="top"><input type="radio" name="answer" value="2480">
+</td><td width="100%" valign="top">
+<span style="font-size: 8pt; font-family: verdana, arial, helvetica;">Ostern? Ist das ein Spell?</span><br></td></tr>
+<tr width="100%"><td width="10" valign="top"><input type="radio" name="answer" value="2481">
+</td><td width="100%" valign="top">
+<span style="font-size: 8pt; font-family: verdana, arial, helvetica;">War das nicht letzte Woche?</span><br></td></tr>
+<tr width="100%"><td width="10" valign="top"><input type="radio" name="answer" value="2482">
+</td><td width="100%" valign="top">
+<span style="font-size: 8pt; font-family: verdana, arial, helvetica;">Eier mit Lik&ouml;rf&uuml;llung schl&uuml;rfen...</span><br></td></tr>
+<tr><td align="center" colspan="2"><br>
+<a href="javascript:document.form.submit();"><span style="font-size: 8pt; font-family: verdana, arial, helvetica;">VOTE!</span></a>
+</td></tr></table></td></tr></table></form>
+
+<br><a href="/poll_archiv.php">[Zum Umfrage-Archiv]</a><p></center>
+
+</div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      <div align="center"><span class="menu"><img src="/gfx/news_line_1.gif" width="200" height="5"><br><b>WarCraftLiga - Ladder<br>
+
+        <img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      
+<link rel="stylesheet" href="styles.css" type="text/css">
+<body topmargin="0">
+<table width = 201 cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top"> 
+      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/gleich_top.gif" width="13" height="13"><a href="http://warcraft3.ingame.de/liga/profil.php?ID=2908" class="grundneu"> <u>Xx5]fOoL</u> </a> = <font color="96D558">126 P.</font><br>      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/gleich_top.gif" width="13" height="13"><a href="http://warcraft3.ingame.de/liga/profil.php?ID=2656" class="grundneu"> <u>majesty.kr4ut</u> </a> = <font color="96D558">119 P.</font><br>      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/hoher_top.gif" width="13" height="13"><a href="http://warcraft3.ingame.de/liga/profil.php?ID=29" class="grundneu"> <u>tO_Tanga</u> </a> = <font color="96D558">109 P.</font><br>      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/gleich_top.gif" width="13" height="13"><a href="http://warcraft3.ingame.de/liga/profil.php?ID=483" class="grundneu"> <u>pLaGue-ShowTiMe</u> </a> = <font color="96D558">109 P.</font><br>      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/hoher_top.gif" width="13" height="13"><a href="http://warcraft3.ingame.de/liga/profil.php?ID=488" class="grundneu"> <u>Xx5)AbuSer(</u> </a> = <font color="96D558">109 P.</font><br>    </td>
+</table>
+      <br>
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      <div align="center"><span class="menu"><img src="/gfx/news_line_1.gif" width="200" height="5"><br><b>WarCraftLiga - Top Scorer<br>
+
+        <img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      
+<link rel="stylesheet" href="styles.css" type="text/css">
+
+
+
+<body topmargin="0">
+
+<table width = 201 cellpadding="0" cellspacing="0">
+
+  <tr>
+
+    <td valign="top"> 
+
+      
+      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/gleich_top.gif" width="13" height="13">	  
+	  
+	  
+	  <a href="http://warcraft3.ingame.de/liga/profil.php?ID=5155" class="grundneu"> <u>TheNoNameElf</u> </a> = <font color="96D558">85 P.</font><br>	  
+
+      
+      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/gleich_top.gif" width="13" height="13">	  
+	  
+	  
+	  <a href="http://warcraft3.ingame.de/liga/profil.php?ID=5139" class="grundneu"> <u>F]o[F.DaNoob</u> </a> = <font color="96D558">80 P.</font><br>	  
+
+      
+      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/gleich_top.gif" width="13" height="13">	  
+	  
+	  
+	  <a href="http://warcraft3.ingame.de/liga/profil.php?ID=5125" class="grundneu"> <u>FoiK_Seven</u> </a> = <font color="96D558">77 P.</font><br>	  
+
+      
+      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/gleich_top.gif" width="13" height="13">	  
+	  
+	  
+	  <a href="http://warcraft3.ingame.de/liga/profil.php?ID=4810" class="grundneu"> <u>Allanon[pG]</u> </a> = <font color="96D558">72 P.</font><br>	  
+
+      
+      <img src="images/picsfix/arrow.gif" width="10" height="9">	  <img src="/liga/images/hoher_top.gif" width="13" height="13">	  
+	  
+	  
+	  <a href="http://warcraft3.ingame.de/liga/profil.php?ID=5208" class="grundneu"> <u>o]Gh)o(sT[o</u> </a> = <font color="96D558">55 P.</font><br>	  
+
+      
+    </td>
+
+  
+
+</table>
+      <br>
+
+    </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3" height="32" class="menu">
+
+      <div align="center"><span class="menu"><img src="/gfx/news_line_1.gif" width="200" height="5"><br><b>Warroom Watcher<br>
+
+        <img src="/gfx/news_line_1.gif" width="200" height="5"></b></span></div>
+
+    </td>
+
+  </tr>
+
+  <tr>
+
+    <td width="10">&nbsp;</td>
+
+    <td width="201">
+
+      <br><center><font color="#8DC853"><a target="_blank" href="http://www.battle.net/forums/board.aspx?ForumName=war3-general">Warcraft III Forum</a></font></center><br>
+<img src="http://warcraft3.ingame.de/gfx/arrow.gif"><a target="_blank" style="font-size:8pt;" href=" http://www.battle.net/forums/thread.aspx?FN=war3-general&T=130851&P=1&ReplyCount=5#post130851">Attention</a><br><img src="http://warcraft3.ingame.de/gfx/arrow.gif"><a target="_blank" style="font-size:8pt;" href=" http://www.battle.net/forums/thread.aspx?FN=war3-general&T=116786&P=1&ReplyCount=45#post116786">blizzard can we get backstabbers banned?</a><br><img src="http://warcraft3.ingame.de/gfx/arrow.gif"><a target="_blank" style="font-size:8pt;" href=" http://www.battle.net/forums/thread.aspx?FN=war3-general&T=129773&P=1&ReplyCount=24#post129773">Why was Warcraft Adventures booted??????</a><br><br><center><font color="#8DC853"><a target="_blank" href="http://www.battle.net/forums/board.aspx?ForumName=wow-general">World of Warcraft Forum</a></font></center><br>
+<img src="http://warcraft3.ingame.de/gfx/arrow.gif"><a target="_blank" style="font-size:8pt;" href=" http://www.battle.net/forums/thread.aspx?FN=wow-general&T=80437&P=1&ReplyCount=156#post80437">Dear Blizzard, Dwarves do not ride horses...</a><br>
+      <img src="/gfx/1x1.gif" width="7" height="7"> </td>
+
+    <td width="10">&nbsp;</td>
+
+  </tr>
+
+</table>
+
+
+
+
+    </td>
+
+
+
+    <td width="6" valign="top"><img src="/gfx/1x1.gif" width="6" height="6"></td>
+
+
+
+  </tr>
+
+
+
+</table>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+
+  <tr> 
+
+
+
+    <td><img src="/gfx/bottom1.jpg" width="179" height="71"></td>
+
+
+
+    <td width="100%" background="/gfx/bottom2.jpg">&nbsp;</td>
+
+
+
+    <td><img src="/gfx/bottom3_neu.jpg" width="227" height="71"></td>
+
+
+
+  </tr>
+
+
+
+</table>
+
+
+
+<div align="center"><font face="Trebuchet MS, sans-serif, Arial" size="1" color="#505050"> 
+
+
+
+  © 2002 Warcraft.de by <a href="http://www.ingame-gmbh.de" target="_blank"><font color="#505050">ingame 
+
+
+
+  GmbH</font></a>, Weiterverwendung von Inhalten oder Grafiken nur mit <a href="mailto:webmaster@warcraft.de"><font color="#505050">Erlaubnis</font></a> 
+
+
+
+  - Warcraft I,II,III and World of Warcraft © <a href="http://www.blizzard.com"><font color="#505050">Blizzard 
+
+
+
+  Entertainment</font></a>.</font></div>
+
+
+
+ 
+
+
+
+
+
+
+
+<center>
+<!--toplist button start-->
+<!-- new gzone toplist code -->
+ <iframe width=60 height=60 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no  bordercolor="#000000" src="http://www.gamerzzone.com:81/stat.php?id=bb4cb6533d"></iframe>	
+<!-- end remote script code -->
+<!--toplist button ende-->
+</center>
+
+
+
+
+
+</body>
+
+
+
+</html>

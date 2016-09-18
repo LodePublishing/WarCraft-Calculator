@@ -8,7 +8,8 @@ Units		     Count Time
                  Peon    0 0
                 Grunt    0 0 
            Headhunter    0 0
-             Catapult   13 0 
+             Catapult    0 0
+               Raider    6 0
                Tauren    0 0
                Shaman    0 0
          Witch Doctor    0 0
@@ -24,7 +25,7 @@ Units		     Count Time
            Great Hall    0 0
            Stronghold    0 0
              Fortress    0 0
-      Altar of Storms    0 0
+      Altar of Storms    1 0
              Barracks    0 0
              War Mill    0 0
              Bestiary    0 0
@@ -36,14 +37,14 @@ Units		     Count Time
 
 Upgrades
        
-              Pillage    0 0
+              Pillage    1 0
              Backpack    0 0
    Berserker Strength    0 0
    Troll Regeneration    0 0
             Berserker    0 0
           Burning Oil    0 0
-   Reinforced Defense    1 0
-              Ensnare    0 0
+   Reinforced Defense    0 0
+              Ensnare    1 0
             War Drums    0 0
      Envenomed Spears    0 0
           Liquid Fire    0 0

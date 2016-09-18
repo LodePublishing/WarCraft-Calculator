@@ -21,6 +21,10 @@ Units
  Carrion Beetle LvlB  0  0
  Carrion Beetle LvlC  0  0
      Obsidian Statue  0  0
+        Death Knight  0  0
+          Dread Lord  0  0
+                Lich  0  0
+          Crypt Lord  0  0
 
 Buildings                        
    Haunted Gold Mine  0  0 

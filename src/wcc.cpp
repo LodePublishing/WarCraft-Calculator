@@ -316,7 +316,7 @@ int main(int argc, char* argv[])
 				for(t=0;t<26;t++)
 					mystats[i][j].code[t]=0;
 				
-				for(t=0;t<21;t++)
+				for(t=0;t<NAME_LENGTH;t++)
 					if(stats[i][j].name[t]>64)
 					{
 						mystats[i][j].length++;
@@ -594,7 +594,7 @@ int main(int argc, char* argv[])
 
 	// Creating Unit text... (right bottom corner)
 /*	for(s=0;s<60;s++)
-sprintf(unit[s].text,"              Unit Name: %21s    Buildtime: %3i seconds    Minerals : %3i    Gas      : %3i    Supply   : %i    Type     : %i                     ",stats[race][s].name,stats[race][s].BT,stats[race][s].mins,stats[race][s].gas,stats[race][s].supply,stats[race][s].type);*/
+sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i seconds    Minerals : %3i    Gas      : %3i    Supply   : %i    Type     : %i                     ",stats[race][s].name,stats[race][s].BT,stats[race][s].mins,stats[race][s].gas,stats[race][s].supply,stats[race][s].type);*/
                          
 			for(s=0;s<MAX_LENGTH;s++)
                                 bolog[s].count=0;
@@ -1174,7 +1174,7 @@ if((calc%80==8)||(calc%80==9)) setup.setColor(37); else setup.setColor(31);
 		 
 	for(s=0;s<building_types;s++)
 		if(Save[t]->force[s]>0)
-			fprintf(pFile,"     %21s : %2i [Last one: %.2i:%.2i]\n",stats[race][s].name,Save[t]->force[s],Save[t]->ftime[s]/60,Save[t]->ftime[s]%60);
+			fprintf(pFile,"     %NAME_LENGTHs : %2i [Last one: %.2i:%.2i]\n",stats[race][s].name,Save[t]->force[s],Save[t]->ftime[s]/60,Save[t]->ftime[s]%60);
 	for(s=0;s<RESOURCES;s++)
 		fprintf(pFile,"\n     Harvested %s : %i\n",resource[s],(short)(Save[t]->harvested_res[s]));
 	for(s=0;s<RESOURCES;s++)

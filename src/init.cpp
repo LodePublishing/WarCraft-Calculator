@@ -1,8 +1,10 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "main.h"
 #include "init.h"
 #include "io.h"
-#include "main.h"
-#include "stdlib.h"
-#include "stdio.h"
+
+
 
 myBO bo[MAX_LENGTH];
 

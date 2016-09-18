@@ -1,6 +1,7 @@
-#include "race.h"
-#include "settings.h"
 #include <stdlib.h>
+
+#include "settings.h"
+#include "race.h"
 
 // TODO: recheck the speed of the units in zerg.cpp, protoss.cpp and terra.cpp
 // TODO: Implement the locations of buildings (expansion, wallin, ...)
@@ -14,8 +15,9 @@ void RACE::CalculateFitness()
 		
 //	for(i=0;i<RESOURCES;i++)
 //		sFitness+=(unsigned short)(harvested_res[i]+res[i]);
-	sFitness=(unsigned short)harvested_res[GOLD];
+	sFitness=(unsigned short)harvested_res[GOLD]+(unsigned short)harvested_res[WOOD]/2;
 	//Fehlt Modifikator! Mineral_Blocks, Mineral Mod, ...
+//TODO: Bugfix
 	if(ready==0)
         {
 	         timer=setup.Max_Time;
@@ -26,10 +28,12 @@ void RACE::CalculateFitness()
 				{
 					if(ftime[i]>0) // ftime => when the last item is built 
 					{
-			//not all goals met and not below time
-						if(goal[i].time>0)
-							pFitness+=(stats[race][i].Worth*goal[i].time*force[i])/(goal[i].what*ftime[i]);
-						else pFitness+=(stats[race][i].Worth*force[i])/goal[i].what;
+		//not all goals met and not below time
+					if(goal[i].time>0)
+					pFitness+=(stats[race][i].Worth*goal[i].time*force[i])/(goal[i].what*ftime[i]);
+					else
+					pFitness+=(stats[race][i].Worth*setup.Max_Time*force[i])/(goal[i].what*ftime[i]);	
+					//else pFitness+=(stats[race][i].Worth*force[i])/goal[i].what;
 					}
 					else 
 					{
@@ -79,7 +83,7 @@ void RACE::CheckReady(unsigned char j)
 
 	force[building[j].type]++;
 	
-	program[building[j].IP].built=1;
+	program[building[j].IP][dominant].built=1;
 	if(((force[building[j].type]>=goal[building[j].type].what)&&(ftime[building[j].type]==0))||(goal[building[j].type].what==0))
 		ftime[building[j].type]=timer; // Get time when the goal was fulfilled OR the time when the last item was build (if goal = 0)
 	if((stats[race][building[j].type].type==RESEARCH)||(stats[race][building[j].type].type==UPGRADE))
@@ -101,18 +105,18 @@ void RACE::Harvest_Resources()
 
 	if((Max_Supply-Supply)>80)
 	{
-		res[GOLD]+=8*i;
-		harvested_res[GOLD]+=8*i;
+		res[GOLD]+=0.8*i;
+		harvested_res[GOLD]+=0.8*i;
 	}
 	if((Max_Supply-Supply)>50)	
 	{
-		res[GOLD]+=14*i;
-		harvested_res[GOLD]+=14*i;
+		res[GOLD]+=1.4*i;
+		harvested_res[GOLD]+=1.4*i;
 	}
 	else
 	{
-		res[GOLD]+=20*i;
-		harvested_res[GOLD]+=20*i;
+		res[GOLD]+=2*i;
+		harvested_res[GOLD]+=2*i;
 	}
 
 	res[WOOD]+=Harvest_Speed*PeonAt[FOREST]; //TODO!!! mehr :)
@@ -146,6 +150,17 @@ void RACE::Produce(unsigned char what)
 	building[nr].on_the_run=0;
 	switch(stats[race][what].type)
 	{
+	case BUILDING:
+			building[nr].RB+=REACH_BUILDING_SITE; //5 in game seconds to reach the building site
+			if(race!=UNDEAD)
+			{
+				if(PeonAt[GOLDMINE]>0) PeonAt[GOLDMINE]--;
+				else if(PeonAt[WOOD]>0) PeonAt[WOOD]--;
+				if(race==ELVES) { force[WISP]--;Supply++;}
+				else PeonAt[BUILDING]++;	
+				if(race==HUMAN) building[nr].peons=1;
+			};break;
+		
 		case RESEARCH:availible[what]=0;break;
 		case UPGRADE:availible[what]=0;
 	   	             building[nr].RB+=force[what]*16; //16 in WC, 32 in SC
@@ -155,6 +170,7 @@ void RACE::Produce(unsigned char what)
 		default:break;
         };
 	building[nr].IP=IP;
+	building[nr].dominant=dominant;
 	ok=1;
 	nr=255;
         for(i=0;i<MAX_BUILDINGS;i++) if(building[i].RB==0)
@@ -164,58 +180,120 @@ void RACE::Produce(unsigned char what)
         }
 }
 
+unsigned char sqrt(unsigned char a)
+{
+	unsigned char i,b;
+	b=a/2;
+	for(i=0;i<3;i++)
+	{
+		if(b==0) return 0;
+		b=(b+a/b)/2;	
+	}
+	return b;
+};
 
 // some functions to modify the list of orders
 // One of the Core functions
 void RACE::Mutate()
 {
-	unsigned char ta,i,x,y;
+	unsigned char ta,x,y,k;
 //	unsigned char tb,tmp[MAX_LENGTH];
 	//length=MAX_LENGTH;
 	if(length==0) return;
 	
-	for(i=0;i<setup.Mutations;i++)
+	for(k=0;k<2;k++)
+	for(x=0;x<MAX_LENGTH;x++)
 	{
-		x=rand()%MAX_LENGTH;
 		//delete one variabel entry and move
-		if((rand()%(setup.Mutation_Rate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
-			//Mehrere Schmieden/Kasernen etc. zulassen!
-			for(y=x;y<MAX_LENGTH-1;y++)
-				program[y].order=program[y+1].order;
-	
-		//add one variabel entry
-		x=rand()%MAX_LENGTH;
-		if((rand()%(setup.Mutation_Rate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
+		if(((setup.GenerateBuildorder==0)||(Variabel[Build_Bv[program[x][k].order]]==1))&&(rand()%MAX_LENGTH==0))
 		{
-			for(y=MAX_LENGTH-1;y>x;y--)
-				program[y].order=program[y-1].order;
-			y=rand()%Max_Build_Types;
-			while(Variabel[Build_Bv[program[y].order]]==0) y=rand()%Max_Build_Types;
-				program[x].order=y;
+			switch(rand()%3)
+			{
+				case 0://delete one variabel entry and move - Mehrere Schmieden/Kasernen etc. zulassen!
+					for(y=x;y<MAX_LENGTH-1;y++)
+						program[y][k].order=program[y+1][k].order;
+					program[x][k].newmut=1;break;
+				case 1://add one variabel entry
+					for(y=MAX_LENGTH-1;y>x;y--)
+						program[y][k].order=program[y-1][k].order;
+					program[y][k].newmut=2;
+					y=rand()%Max_Build_Types;
+					if(setup.GenerateBuildorder==1)
+						while(Variabel[y]==0) y=rand()%Max_Build_Types;
+						program[x][k].order=y;break;
+				case 2://change one entry
+					y=rand()%Max_Build_Types;//Optimieren
+					if(setup.GenerateBuildorder==1)
+						while(Variabel[y]==0) y=rand()%Max_Build_Types;
+						program[x][k].order=y;break;
+			}
 		}
-
-		//change one entry
-		x=rand()%MAX_LENGTH;
-		if((rand()%(setup.Mutation_Rate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
+		else 
+		if(rand()%MAX_LENGTH==0)
 		{
-			y=rand()%Max_Build_Types;//Optimieren
-			while(Variabel[y]==0) y=rand()%Max_Build_Types;
-			program[x].order=y;
-		}
-		
-		
 		//exchange two entries
-		if(rand()%(setup.Mutation_Rate)==0)
-		{
-			x=rand()%MAX_LENGTH;
-			y=rand()%MAX_LENGTH;
-			ta=program[x].order;
-			program[x].order=program[y].order;
-			program[y].order=ta;
+			y=rand()%MAX_LENGTH; //TODO: Aendern in bevorzugtes Ziel => Naehe
+			if(x!=y)
+			{
+				program[x][k].mutate=y;
+				program[y][k].mutate=x;
+				ta=program[x][k].order;
+				program[x][k].order=program[y][k].order;
+				program[y][k].order=ta;
+			}
 		}
 
+/*        for(i=0;i<currentMutation;i++)
+        {
+                x=rand()%MAX_LENGTH;
+                //delete one variabel entry and move
+                if((rand()%(currentMutationRate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
+                {
+                        //Mehrere Schmieden/Kasernen etc. zulassen!
+                        for(y=x;y<MAX_LENGTH-1;y++)
+                                program[y].order=program[y+1].order;
+                        program[x].newmut=1;
+                } else
+
+                //add one variabel entry
+//              x=rand()%MAX_LENGTH;
+                if((rand()%(currentMutationRate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
+                {
+                        for(y=MAX_LENGTH-1;y>x;y--)
+                                program[y].order=program[y-1].order;
+                        program[y].newmut=2;
+                        y=rand()%Max_Build_Types;
+                        while(Variabel[Build_Bv[program[y].order]]==0) y=rand()%Max_Build_Types;
+                                program[x].order=y;
+                } else
+
+                //change one entry
+//              x=rand()%MAX_LENGTH;
+                if((rand()%(currentMutationRate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
+                {
+                        y=rand()%Max_Build_Types;//Optimieren
+                        while(Variabel[y]==0) y=rand()%Max_Build_Types;
+                        program[x].order=y;
+                } else
+
+
+                //exchange two entries
+                if(rand()%(currentMutationRate)==0)
+                {
+                        y=sqrt(rand()%(length*length));
+                        if(x!=y)
+                        {
+                        program[x].mutate=y;
+                        program[y].mutate=x;
+
+                        ta=program[x].order;
+                        program[x].order=program[y].order;
+                        program[y].order=ta;
+                        }
+                }
+*/ 
 		//rotate a list [ta, ta+1, ..., tb] -> [ta+1, ..., tb, ta]
-/*		if(rand()%(setup.Mutation_Rate)==0)
+/*		if(rand()%(currentMutationRate)==0)
 		{
 			ta=rand()%MAX_LENGTH;
 			tb=rand()%MAX_LENGTH;
@@ -230,7 +308,7 @@ void RACE::Mutate()
 
 		//move a block of orders  [a..b..ta..tb..c..d] -> [a..ta..tb..b..c..d]
 		//TODO switch ta and tb if tb<ta
-		if(rand()%(setup.Mutation_Rate)==0)
+		if(rand()%(currentMutationRate)==0)
 		{
 			ta=rand()%MAX_LENGTH;
 			tb=rand()%MAX_LENGTH;
@@ -267,7 +345,7 @@ void RACE::Build(unsigned char what)
 	stat=&stats[race][what];
 	suc=0;
 	ok=0;
-	if((ADDITIONAL_ORDERS==1)&&(what==IF))
+/*	if((ADDITIONAL_ORDERS==1)&&(what==IF))
 	{
 		if((IP<MAX_LENGTH-1)&&(force[Build_Av[program[IP+1].order]]>0))
 		{
@@ -287,7 +365,7 @@ void RACE::Build(unsigned char what)
 			program[IP].built=1;
 			IP+=2;			
 		}
-	} else
+	} else*/
 	if(what==ONE_GOLD_PEASANT_TO_FOREST)
 	{
 		if(PeonAt[GOLDMINE]>0)
@@ -295,7 +373,7 @@ void RACE::Build(unsigned char what)
 			ok=1;
 			PeonAt[GOLDMINE]--;
 			PeonAt[FOREST]++;
-			program[IP].built=1;
+			program[IP][dominant].built=1;
 		} else suc=WORKER_AVAILIBLE;
 	}
 	else
@@ -306,7 +384,7 @@ void RACE::Build(unsigned char what)
 			ok=1;
 			PeonAt[FOREST]--;
 			PeonAt[GOLDMINE]++;
-			program[IP].built=1;
+			program[IP][dominant].built=1;
 		} else suc=WORKER_AVAILIBLE;
 	}
 /*	else 
@@ -405,22 +483,14 @@ void RACE::Build(unsigned char what)
 			if(stat->facility>0) availible[stat->facility]--;
 		}
 	                
-		if((ok==1)&&(stat->type==BUILDING))
-		{
-//	!!!!! TODO:CHECKEN
-			building[nr].RB+=REACH_BUILDING_SITE; //5 in game seconds to reach the building site
-			if(race!=UNDEAD)
-			{
-				if(PeonAt[GOLDMINE]>0) PeonAt[GOLDMINE]--;
-				else if(PeonAt[WOOD]>0) PeonAt[WOOD]--;
-				if(race==ELVES) { force[WISP]--;Supply++;}
-				else PeonAt[BUILDING]++;	
-				if(race==HUMAN) building[nr].peons=1;
-			}
-		}
-
+	
         if((suc==OK)&&(ok==0))
 	        suc=TECHNOLOGY_AVAILIBLE;
+	if(suc==OK)
+	{
+		protein[what]++;
+		totalProteins[what]++;
+	}
 }
 
 
@@ -428,7 +498,7 @@ void RACE::Build(unsigned char what)
 // Reset all ongoing data (between two runs)
 void RACE::Init()
 {
-	unsigned char i,j;
+	unsigned char i,j,k;
 	heroes=0;
 	for(i=0;i<MAX_GOALS;i++)
         {
@@ -445,23 +515,35 @@ void RACE::Init()
 	       	building[i].type=255;
 	       	building[i].IP=0;
 		building[i].peons=0;	       
+		building[i].on_the_run=0;
+		building[i].multi=0;
+		building[i].peons=0;
+		building[i].facility=0;
+		building[i].IP=0;
+		
 	}
+
+	for(k=0;k<2;k++)
 	for(i=0;i<MAX_LENGTH;i++)
 	{
-		program[i].built=0;
-		program[i].success=0;
-		program[i].have_Supply=0;
-		program[i].need_Supply=0;
-		program[i].time=0;
+		program[i][k].mutate=MAX_LENGTH;
+		program[i][k].built=0;
+		program[i][k].success=0;
+		program[i][k].have_Supply=0;
+		program[i][k].need_Supply=0;
+		program[i][k].time=0;
 		for(j=0;j<RESOURCES;j++)
-			program[i].res[j]=0;
-		program[i].temp=0;
+			program[i][k].res[j]=0;
+		program[i][k].temp=0;
+		program[i][k].newmut=0;
 	}
         pFitness=0;
 	sFitness=0;
 	res[GOLD]=450; //TFT settings... for classic: 800/200
 	res[WOOD]=200;
 	expansions=0;
+	for(i=0;i<MAX_GOALS;i++)
+		protein[i]=0;
 	for(i=0;i<MAX_EXPANSIONS;i++)
 	{
 		for(j=0;j<MAX_CREEPS;j++)
@@ -472,6 +554,12 @@ void RACE::Init()
 	PeonAt[GOLDMINE]=5; //Undead!?
 	PeonAt[FOREST]=0;
 	IP=0;ok=0;nr=0;
+	min=0;n=0;unsummon=0;wait_nop=0;suc=0;ready=0;
+	harvested_res[GOLD]=0;
+	harvested_res[WOOD]=0;
+	timer=0;
+
+	
 	InitRaceSpecific();
 }
 //TODO KEEP 255!?
@@ -481,22 +569,24 @@ void RACE::GenerateBasicBuildOrder()
 	//problem wieder mit keep/castle
 	unsigned char i,j,k,pre[MAX_GOALS],build_max,sup;
 	build_max=0;
+	for(j=0;j<2;j++)
 	for(i=0;i<MAX_LENGTH;i++)
-		Basic[i]=0;
+		Basic[i][j]=0;
 	Basic_Length=0;
+
 	if(race!=UNDEAD)
 	{
-		Basic[0]=Build_Bv[ONE_GOLD_PEASANT_TO_FOREST];
-		Basic[1]=Build_Bv[ONE_GOLD_PEASANT_TO_FOREST];
-		Basic[2]=Build_Bv[WISP];
-		Basic[3]=Build_Bv[WISP];
+		Basic[0][0]=Build_Bv[ONE_GOLD_PEASANT_TO_FOREST];
+		Basic[1][0]=Build_Bv[ONE_GOLD_PEASANT_TO_FOREST];
+		Basic[2][0]=Build_Bv[WISP];
+		Basic[3][0]=Build_Bv[WISP];
 		i=3;
 		sup=3;
 	}
 	else
 	{
-		Basic[0]=Build_Bv[ACOLYTE];
-		Basic[1]=Build_Bv[ACOLYTE];
+		Basic[0][0]=Build_Bv[ACOLYTE];
+		Basic[1][0]=Build_Bv[ACOLYTE];
 		i=1;
 		sup=2;
 	}
@@ -511,7 +601,9 @@ void RACE::GenerateBasicBuildOrder()
 	
 	for(j=0;j<MAX_GOALS;j++)
 		if(force[j]>0) pre[j]=force[j]; else pre[j]=0;	
-
+//TODO: Problem bei KEEPs
+	if(setup.GenerateBuildorder==1)
+	{
 	for(k=0;k<MAX_LENGTH;k++)
 	{
 		j=0;
@@ -539,45 +631,49 @@ void RACE::GenerateBasicBuildOrder()
 					if((stats[race][j].type==BUILDING)&&(race==ELVES))
 					{
 						i++;
-						Basic[i]=Build_Bv[WISP];
+						Basic[i][0]=Build_Bv[WISP];
 					}
 					
-					if((stats[race][j].type==UNIT)&&(stats[race][j].supply>sup))
+					if(((stats[race][j].type==UNIT)||(stats[race][j].type==HERO))&&(stats[race][j].supply>sup))
 					{
 						i++;
 						switch(race)
 						{
-							case HUMAN:Basic[i]=Build_Bv[FARM];pre[FARM]++;sup+=6;break;
-							case ORC:Basic[i]=Build_Bv[BURROW];pre[BURROW]++;sup+=8;break;
-							case ELVES:Basic[i]=Build_Bv[MOONWELL];pre[MOONWELL]++;sup+=9;break;
-							case UNDEAD:Basic[i]=Build_Bv[ZIGGURAT];pre[ZIGGURAT]++;sup+=10;break;
+							case HUMAN:Basic[i][0]=Build_Bv[FARM];pre[FARM]++;sup+=6;break;
+							case ORC:Basic[i][0]=Build_Bv[BURROW];pre[BURROW]++;sup+=8;break;
+							case ELVES:Basic[i][0]=Build_Bv[MOONWELL];pre[MOONWELL]++;sup+=9;break;
+							case UNDEAD:Basic[i][0]=Build_Bv[ZIGGURAT];pre[ZIGGURAT]++;sup+=10;break;
 							default:break;
 						};
 					};
 					i++;
 					if((stats[race][j].type==UNIT)&&(stats[race][j].supply>0)) sup-=stats[race][j].supply;
-					Basic[i]=Build_Bv[j];
+					Basic[i][0]=Build_Bv[j];
 					pre[j]++;
 					j++;
 				}
 			} else j++;
 		}
 	}
+	}
 	Basic_Length=i+1;
+	for(j=0;j<MAX_LENGTH;j++)
+		Basic[j][1]=Basic[j][0];
 }
 
 void RACE::Restart()
 {
-	unsigned char i;
+	unsigned char i,k;
 	length=Basic_Length;
 
+	for(k=0;k<2;k++)
 	for(i=0;i<length;i++)
 	{		
-		program[i].order=Basic[i];
-		program[i].built=0;
-		program[i].success=0;
-		program[i].time=20000;
-		program[i].temp=0;
+		program[i][k].order=Basic[i][k];
+		program[i][k].built=0;
+		program[i][k].success=0;
+		program[i][k].time=20000;
+		program[i][k].temp=0;
 	}
 	timer=setup.Max_Time;
 	IP=0;

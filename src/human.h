@@ -1,3 +1,6 @@
+#ifndef __HUMAN_H
+#define __HUMAN_H
+
 #include "race.h"
 
 class Player_Human: public RACE
@@ -10,3 +13,5 @@ public:
 	Player_Human();
 	virtual ~Player_Human();
 };
+
+#endif

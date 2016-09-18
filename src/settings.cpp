@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include "io.h"
+
+#define DATA_SET_SIZE 16
+
 Settings setup;
 
 
@@ -99,6 +102,7 @@ unsigned char Settings::InitSettings()
 		Mineral_Blocks=8;
 		Time_to_Wallin=0;
 		Scout_Time=160;
+		GenerateBuildorder=1;
 		Max_Time=45;
 		Max_Generations=150;
 		Mutations=50;
@@ -117,11 +121,12 @@ unsigned char Settings::InitSettings()
 		Mineral_Blocks=data[7];
 		Time_to_Wallin=data[8];
 		Scout_Time=data[9];
-		Max_Time=data[10];
-		Max_Generations=data[11];
-		Mutations=data[12];
-		Mutation_Rate=data[13];
-		Verbose=data[14];
+		GenerateBuildorder=data[10];
+		Max_Time=data[11];
+		Max_Generations=data[12];
+		Mutations=data[13];
+		Mutation_Rate=data[14];
+		Verbose=data[15];
 	}
 
 	
@@ -198,6 +203,14 @@ unsigned char Settings::InitSettings()
 		printf("WARNING: 'Mineral Blocks' is set very high! (%i)\n",Mineral_Blocks);
 		printf("This is not recommended. Mineral Mining Calculation will be very inaccurate...\n");
 		printf("Try to change the 'settings.txt'\n");
+	}
+
+	if((GenerateBuildorder!=0)&&(GenerateBuildorder!=1))
+	{
+	       printf("ERROR: 'GenerateBuildorder' not correctly initialized [%i].\n",GenerateBuildorder);
+               printf("Please use 0 (always start from the scratch) or 1 (pregenerated build orders)!\n");
+	       printf("Falling back to default: GenerateBuildorder = 1\n");
+	                 Verbose=1;
 	}
 	
 
@@ -277,7 +290,6 @@ unsigned char Settings::InitSettings()
                 printf("Please use 0 (no verbose output) or 1 (verbose output)!\n");
 		printf("Falling back to default: Verbose = 1\n");
 	        Verbose=1;
-		printf("Verbose: %i\n",Verbose);
 	}
 
 	printf("Reformatting Data Minutes -> Seconds\n");
@@ -385,7 +397,7 @@ unsigned char Settings::InitGoal(char Input[11])
 		
 		count_goals+=goal[s].what;
 	}
-	
+
 	print("Reformatting Data Minutes -> Seconds\n");
 	for(s=0;s<MAX_GOALS;s++)
 		goal[s].time*=60;
@@ -393,7 +405,6 @@ unsigned char Settings::InitGoal(char Input[11])
 	sprintf(tmp,"All goals [%i] successfully initialized!\n\n",count_goals);
 	print(tmp);
 	setColor(37);
-	//TODO: SCC: add here an ENTER to 
 	print("Press ENTER to continue...");
 	if(setup.Verbose==1) d=getchar();
 	return(0);

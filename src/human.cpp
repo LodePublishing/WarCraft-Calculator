@@ -73,6 +73,9 @@
 		Variabel[PEASANT]=1;
 		Variabel[FARM]=1;
 		Variabel[TOWN_HALL]=1;
+		Variabel[MARKER]=0;
+		buildable[MARKER]=0;
+		goal[MARKER].what=0;
 if(ADDITIONAL_ORDERS==1)
 {
                 buildable[ADD_PEASANT_TO_BUILDING]=1;
@@ -85,7 +88,7 @@ if(ADDITIONAL_ORDERS==1)
 }	
 
  
- 
+ 		Need_Wood=0;
 		for(i=0;i<MAX_GOALS;i++)
 			Need_Wood+=(goal[i].what*stats[HUMAN][i].res[WOOD]);
 		//TODO: Fehler: Morphupgrades (mit nur 'buildable=...' werden ignoriert) Also die Schritte townhall->keep->castle nur castle
@@ -113,7 +116,7 @@ if(ADDITIONAL_ORDERS==1)
 // Do one run, go through one build order and record the results	
 	void Player_Human::Calculate()
 	{
-		unsigned char tt,j,tSupply,tMax_Supply,i,passt;
+		unsigned char tt,j,tSupply,tMax_Supply,i,passt,BuildingRunning;
 		ready=0;
 		timer=0;
 		for(i=0;i<RESOURCES;i++)
@@ -231,7 +234,7 @@ if(ADDITIONAL_ORDERS==1)
 //                       program[IP].res[WOOD]=(unsigned short)res[WOOD];
 																						       
 			ok=0;
-                        if(wait_nop>0)
+/*                        if(wait_nop>0)
                         {
 	                        wait_nop--;
 	                        if(wait_nop==0)
@@ -246,6 +249,8 @@ if(ADDITIONAL_ORDERS==1)
 			{
 				if(wait_nop==0) wait_nop=IP/10;
 			}
+			else if(Build_Av[program[IP].order]==MARKER)
+				IP++;
 			else if(Build_Av[program[IP].order]==ADD_PEASANT_TO_BUILDING)
 			{
 				if(PeonAt[GOLDMINE]+PeonAt[FOREST]>0)
@@ -292,28 +297,40 @@ if(ADDITIONAL_ORDERS==1)
 					tt=0;
 				}
 			} else
-			{	
+			{	*/
 			tt++;
-			Build(Build_Av[program[IP].order]);
-			if(suc>0) program[IP].success=suc;
+			dominant=0;
+			if(program[IP][0].order<program[IP][1].order) //simple Dominanz ueber Wert
+			{
+				Build(Build_Av[program[IP][0].order]);
+				if(ok==0) {dominant=1;Build(Build_Av[program[IP][1].order]);}
+				
+			}
+			else
+			{
+				dominant=1;
+				Build(Build_Av[program[IP][1].order]);
+				if(ok==0) {dominant=0;Build(Build_Av[program[IP][0].order]);}
+			}
+			if(suc>0) program[IP][dominant].success=suc;
 			if((ok==1)||(tt>MAX_BUILD_TIME))
 			{
 				if(tt<=MAX_BUILD_TIME) 
-					program[IP].time=timer;
+					program[IP][dominant].time=timer;
 				else 
 				{
-					program[IP].success=TIMEOUT;
-					program[IP].time=20000;
+					program[IP][dominant].success=TIMEOUT;
+					program[IP][dominant].time=20000;
 				}
-				program[IP].res[GOLD]=(unsigned short)res[GOLD];
-				program[IP].res[WOOD]=(unsigned short)res[WOOD];
-				program[IP].need_Supply=tMax_Supply-tSupply;
-				program[IP].have_Supply=tMax_Supply;
-				program[IP].temp=availible[BARRACKS]+force[BARRACKS];
+				program[IP][dominant].res[GOLD]=(unsigned short)res[GOLD];
+				program[IP][dominant].res[WOOD]=(unsigned short)res[WOOD];
+				program[IP][dominant].need_Supply=tMax_Supply-tSupply;
+				program[IP][dominant].have_Supply=tMax_Supply;
+//				program[IP][dominant].temp=availible[BARRACKS]+force[BARRACKS];
 				tt=0;
 				IP++;
 			}
-		}
+//		}
 		//Scoutpeon
 			//TODO: Allgemein!
 		if((setup.Scout_Time>0)&&(timer==setup.Scout_Time)&&((PeonAt[GOLD]>0)||(PeonAt[WOOD]>0)))

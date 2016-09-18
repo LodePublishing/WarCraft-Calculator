@@ -41,7 +41,7 @@ const Names kurz[MAX_RACES][MAX_GOALS+2]=
 		{"Altar"},{"LMill"},{"SctTw"},{"Smith"},{"WrkSh"},{"ArcSn"},{"GryAv"},{"ArcVl"},{"GrdTw"},
 		{"CanTw"},{"ArcTw"},{"Defnd"},{"LngRf"},{"AnWar"},{"GyrBm"},{"WarEn"},{"Flare"},{"FrgSh"},
 		{"StrmH"},{"LmbHa"},{"Mason"},{"MelWe"},{"MelPl"},{"RanWe"},{"LeaAr"},{"PriTr"},{"SrcTr"},
-		{"CntrM"},{"MagSe"},{"AddPe"},{"N O P"},{">>Gld"},{">>Wod"},{" I F "},{" JMP "}
+		{"CntrM"},{"MagSe"},{"AddPe"},{"N O P"},{">>Gld"},{">>Wod"},{" I F "},{" JMP "},{"Mark "}
 	},
 
 	{
@@ -51,7 +51,7 @@ const Names kurz[MAX_RACES][MAX_GOALS+2]=
 		{"Barra"},{"Besti"},{"SprtL"},{"TauTo"},{"VoodL"},{"WtchT"},{"Pilla"},{"BrsSt"},{"TrlRe"},
 		{"Brskr"},{"BurnO"},{"ReDef"},{"Ensna"},{"WarDr"},{"EnvSp"},{"LiqFi"},{"Pulvr"},{"MelWe"},
 		{"UnArm"},{"RanWe"},{"SpkBa"},{"ShamT"},{"WtchT"},{"SpWTr"},{"NULL!"},{"NULL!"},{"NULL!"},
-		{"NULL!"},{"NULL!"},{"NULL!"},{"N O P"},{">>Gld"},{">>Wod"},{" I F "},{" JMP "}
+		{"NULL!"},{"NULL!"},{"NULL!"},{"N O P"},{">>Gld"},{">>Wod"},{" I F "},{" JMP "},{"Mark "}
 	},
 
 	{
@@ -61,7 +61,7 @@ const Names kurz[MAX_RACES][MAX_GOALS+2]=
 		{"MoonW"},{"AltEl"},{"HuntH"},{"ChRoo"},{"ImpBo"},{"Markm"},{"Senti"},{"MoonG"},{"ImpBo"},
 		{"UltrV"},{"WellS"},{"NatBl"},{"AboMg"},{"EnBea"},{"HrdSk"},{"ResSk"},{"HipTr"},{"EnCrw"},
 		{"CorBr"},{"StrMo"},{"MoArm"},{"StrWl"},{"ReiHd"},{"DoCTr"},{"DoTTr"},{"Cancl"},{"NULL!"},
-		{"NULL!"},{"NULL!"},{"NULL!"},{"N O P"},{">>Gld"},{">>Wod"},{" I F "},{" JMP "}
+		{"NULL!"},{"NULL!"},{"NULL!"},{"N O P"},{">>Gld"},{">>Wod"},{" I F "},{" JMP "},{"Mark "}
 	},
 		
 	{
@@ -71,7 +71,7 @@ const Names kurz[MAX_RACES][MAX_GOALS+2]=
 		{"Ziggu"},{"AltDa"},{"Grave"},{"Slaug"},{"TmplD"},{"SacPi"},{"BoneY"},{"ToRel"},{"NerTw"},
 		{"SpiTw"},{"Cannb"},{"GhouF"},{"  Web"},{"Burrw"},{"StonF"},{"DisCl"},{"ExCor"},{"Destr"},
 		{"SkLon"},{"SkMas"},{"FrzBr"},{"UnStr"},{"UnArm"},{"CrAtt"},{"CrCap"},{"NecTr"},{"BanTr"},
-		{"Unsum"},{"NULL!"},{"NULL!"},{"N O P"},{"NULL!"},{"NULL!"},{" I F "},{" JMP "}
+		{"Unsum"},{"NULL!"},{"NULL!"},{"N O P"},{"NULL!"},{"NULL!"},{" I F "},{" JMP "},{"Mark "}
 	}
 };	
 

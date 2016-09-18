@@ -7,8 +7,8 @@ Units		     Count Time
 
               Peasant   0  0
               Militia   0  0 
-              Footman   1  0
-             Rifleman   0  0 
+              Footman   4  0
+             Rifleman   7  0 
                Knight   0  0
                Priest   0  0
             Sorceress   0  0
@@ -55,10 +55,10 @@ Buildings
         Storm Hammers   0  0
     Lumber Harvesting   0  0
               Masonry   0  0
-        Melee Weapons   0  0
-        Melee Plating   0  0
-       Ranged Weapons   0  0
-        Leather Armor   0  0
+        Melee Weapons   1  0
+        Melee Plating   1  0
+       Ranged Weapons   1  0
+        Leather Armor   1  0
       Priest Training   0  0
    Sorceress Training   0  0
         Control Magic   0  0

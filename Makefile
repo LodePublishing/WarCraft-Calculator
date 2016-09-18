@@ -1,6 +1,6 @@
 CXX=g++
-FLAGS= -g -Wall -gstats
-OBJ= src/wcc.o src/human.o src/ork.o src/elves.o src/undead.o src/race.o src/settings.o src/io.o src/init.o 
+FLAGS= -O3 -Wall
+OBJ= src/wcc.o src/human.o src/race.o src/settings.o src/io.o src/init.o 
 TARGET=wcc
 
 all:  $(OBJ)

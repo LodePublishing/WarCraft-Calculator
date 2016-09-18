@@ -2,7 +2,7 @@
 #define __IO_H
 
 #define HEIGHT 16 // Number of entries (build order list)
-#define WIDTH 11 // witdh of the entries
+#define WIDTH 13 // witdh of the entries
 
 inline unsigned char UpperCase(char x) {if(x>91) return (x-32); else return(x);}
 extern void setColor(unsigned char c);
@@ -17,7 +17,7 @@ const unsigned char colorsWin32[7]=
 {
 	                FOREGROUND_RED,FOREGROUND_GREEN,FOREGROUND_RED|FOREGROUND_GREEN,FOREGROUND_BLUE,FOREGROUND_RED|FOREGROUND_BLUE,FOREGROUND_GREEN|FOREGROUND_BLUE,FOREGROUND_RED|FOREGROUND_BLUE|FOREGROUND_GREEN
 };
-extern void print(const char * x);
+extern void print(const char * x); 
 #define clrscr() system("clear");
 #define gotoxy(x,y) {COORD pos={(x),(y)}; SetConsoleCursorPosition(scr,pos); }
 

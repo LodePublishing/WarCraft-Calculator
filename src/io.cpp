@@ -1,6 +1,6 @@
+#include <stdio.h>
 #include "io.h"
 #include "main.h"
-#include "stdio.h"
 
 void setColor(unsigned char c)
 {
@@ -33,6 +33,7 @@ void setAt(unsigned char cnt)
         else if(cnt<=16) setColor(31); //RED
         else setColor(37); //WHITE
 };*/
+
 #ifdef WIN32
 HANDLE scr;
 void print(const char * x) {DWORD num; WriteConsole(scr,x,strlen(x),&num,0); }

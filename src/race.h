@@ -2,8 +2,9 @@
 #define __RACE_H
 
 #include "main.h"
+//#include "genetic.h"
 
-class RACE
+class RACE 
 {
 public:
 	unsigned char expansions,heroes;
@@ -16,16 +17,18 @@ public:
 	unsigned short min,n,unsummon,wait_nop;
 	
 	unsigned short PeonAt[WORKPLACES]; // 0: Nothing, 1: building, 2+ :resources 
-	unsigned short length,BuildingRunning;
+	unsigned short length;
 	short Supply,Max_Supply;
-	unsigned char suc,IP;
-
+	unsigned char suc,IP,dominant;
+	long protein[MAX_GOALS];
 	unsigned char ready;
 	struct Program
 	{
 		unsigned char order,location,need_Supply,have_Supply,success,built;
 		unsigned short time,temp,res[RESOURCES];
-	} program[MAX_LENGTH];
+		unsigned char mutate; //from where did it came
+		unsigned char newmut;
+	} program[MAX_LENGTH][2];
 	struct Building
 	{
 		unsigned short RB; // Remaining Buildtime
@@ -35,7 +38,7 @@ public:
 		float multi;
 		unsigned char peons; //ONLY for humans
 		unsigned char facility; //in what building is it produced (currently only for peons...)
-		unsigned char IP;
+		unsigned char IP,dominant;
 		// Main, Front, Enemy Front, Enemy Main, Drop(?), Expansion(?)
 	} building[MAX_BUILDINGS];
 
@@ -44,10 +47,10 @@ public:
 	unsigned short pFitness,sFitness,timer; // DELETED: minsready, gasready
 
 	// => human.h, ork.h, elves.h, undead.h
-	virtual void Set_Goals() {};
-	virtual void Calculate() {}; 
-	virtual void InitRaceSpecific() {};
-	virtual void readjust_goals() {};
+	virtual void Set_Goals()=0;
+	virtual void Calculate()=0; 
+	virtual void InitRaceSpecific()=0;
+	virtual void readjust_goals()=0;
 
 	void CheckReady(unsigned char j);
 	void CalculateFitness();
@@ -59,7 +62,6 @@ public:
 	void Init();
 	void GenerateBasicBuildOrder();
 	RACE();
-
 };
 
 #endif //__RACE_H

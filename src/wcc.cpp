@@ -30,9 +30,9 @@
 
 #include "io.h"
 #include "human.h"
-#include "ork.h"
-#include "elves.h"
-#include "undead.h"
+//#include "ork.h"
+//#include "elves.h"
+//#include "undead.h"
 #include "init.h"
 #include "names.h"
 #include "settings.h"
@@ -41,7 +41,7 @@
 
 #define ALPHA_TIER 5 //in percent
 #define ZELL_TEILUNG 5 
-#define CROSSING_OVER 15
+#define CROSSING_OVER 25
 
 //96!?
 // Here are some global variables (accessible by any class due to 'extern' declaration in 'main.h'
@@ -49,36 +49,63 @@ double Harvest_Speed;
 
 unsigned char buildable[MAX_GOALS],Build_Av[MAX_GOALS],Build_Bv[MAX_GOALS],tgoal[MAX_GOALS],Variabel[MAX_GOALS]; 
 unsigned char Max_Build_Types,race,colors;
-unsigned short total_goals;//,Mut_Window;
+unsigned short total_goals,currentMutation,currentMutationRate,Generations;//,Mut_Window;
 unsigned char counter,who_crosses;//,Test;//,tcount;
+long totalProteins[MAX_GOALS];
 GOAL goal[MAX_GOALS]; // GOAL := what buildings should be there AT THE END
 EXPANSION Expansion[MAX_EXPANSIONS];
 RACE * player[MAX_PLAYER];
 RACE * Save[RUNNINGS];
 RACE * tempp;
 		
-unsigned char Basic[MAX_LENGTH],Basic_Length;
+unsigned char Basic[MAX_LENGTH][2],Basic_Length;
 /*struct UNIT
 {
 	char text[162]; //or 161?
 } unit[MAX_GOALS];*/
 
 
+#define MAX_MUT_DISPLAY 3
 struct boLog
 {
 	unsigned char count;
 	unsigned char order;
 } bolog[MAX_LENGTH],forcelog[MAX_GOALS];
 
+struct mutLog
+{
+	unsigned char count,from,to;
+}
+mutlog[MAX_LENGTH][MAX_MUT_DISPLAY];
+
+
+int compare(const void * a,const void * b)
+{
+	if(( (*(Player_Human*)a).pFitness<(*(Player_Human*)b).pFitness)||(((*(Player_Human*)a).pFitness==(*(Player_Human*)b).pFitness)&&((*(Player_Human*)a).sFitness<=(*(Player_Human*)b).sFitness)))
+		return (1);
+	else if(( (*(Player_Human*)a).pFitness>(*(Player_Human*)b).pFitness)|| ((*(Player_Human*)a).sFitness>(*(Player_Human*)b).sFitness))
+		return (-1);
+	else return(0);
+}
+				
+
 int main(int argc, char* argv[])
 {	
-	unsigned short run,unchangedRuns,bestPrimaryFitness,bestSecondaryFitness,basicFitness;
-	unsigned char counter,gcount;
+	unsigned short Mutation,MutationRate,run,unchangedRuns,bestPrimaryFitness,bestSecondaryFitness,basicFitness;
+	unsigned char counter,gcount,dom,worst;
 	char Input[11],Output[9],RaceName[7];
 	char tmp[255];
-	unsigned short old_bestTime,old_bestPrimaryFitness,old_bestSecondaryFitness,orderTemp,old_Time,old_Food,s,t,u,v,generation,calc,gen_count[RUNNINGS];
-	RACE Child1,Child2;
-
+	int race_size=0;
+	unsigned short old_bestTime,old_bestPrimaryFitness,old_bestSecondaryFitness,orderTemp,old_Time,old_Food,s,t,u,v,generation,calc,gen_count[RUNNINGS],totalCrossOver,negativeCrossOver,temp_pFitness,temp_sFitness,negative_Crossing_Over,selection;
+	
+	struct MUTCOUNT
+	{
+		unsigned char on;
+		unsigned char target;
+	} mut_count[MAX_MUT_DISPLAY];
+	RACE * Child1;
+	RACE * Child2;
+	long diversity,d2;
 	unsigned char a;
 //	char * gizmo;
 	
@@ -94,7 +121,7 @@ int main(int argc, char* argv[])
 	old_bestPrimaryFitness=0;
 	old_bestSecondaryFitness=0;
 	for(s=0;s<MAX_GOALS;s++) Variabel[s]=0;
-        for(s=0;s<MAX_LENGTH;s++) bolog[s].count=0;
+        for(s=0;s<MAX_LENGTH;s++) {bolog[s].count=0;for(t=0;t<4;t++) mutlog[s][t].count=0;};
 		 
 	srand(time(NULL));
 //	clrscr();
@@ -111,10 +138,10 @@ int main(int argc, char* argv[])
 	if(setup.Verbose==1)
 	print("Setting Race and initializing player models... ");
         
-	Player_Human playerh[MAX_PLAYER]; Player_Human Saveh[RUNNINGS];
-	Player_Orc playero[MAX_PLAYER];   Player_Orc Saveo[RUNNINGS];
-        Player_Elves playere[MAX_PLAYER]; Player_Elves Savee[RUNNINGS]; 
-	Player_Undead playeru[MAX_PLAYER];Player_Undead Saveu[RUNNINGS];
+	Player_Human playerh[MAX_PLAYER],Saveh[RUNNINGS],Child1h,Child2h;
+//	Player_Orc playero[MAX_PLAYER],Saveo[RUNNINGS],Child1o,Child2o;
+  //      Player_Elves playere[MAX_PLAYER],Savee[RUNNINGS],Child1e,Child2e; 
+//	Player_Undead playeru[MAX_PLAYER],Saveu[RUNNINGS],Child1u,Child2u;
 								
 	switch(race)
 	{
@@ -126,6 +153,8 @@ int main(int argc, char* argv[])
 				Harvest_Speed=0.8;
 				for(s=0;s<MAX_PLAYER;s++) player[s]=&playerh[s];
 				for(s=0;s<RUNNINGS;s++) Save[s]=&Saveh[s];
+				Child1=&Child1h;Child2=&Child2h;
+				race_size=sizeof(Player_Human);
 			};break;
 		case ORC:
 			{
@@ -133,8 +162,9 @@ int main(int argc, char* argv[])
 				sprintf(Output,"bo_o.txt");
 				sprintf(RaceName,"Orc");
 				Harvest_Speed=0.8;
-				for(s=0;s<MAX_PLAYER;s++) player[s]=&playero[s];
-				for(s=0;s<RUNNINGS;s++) Save[s]=&Saveo[s];
+//				for(s=0;s<MAX_PLAYER;s++) player[s]=&playero[s];
+//				for(s=0;s<RUNNINGS;s++) Save[s]=&Saveo[s];
+//				Child1=&Child1o;Child2=&Child2o;
 			};break;
 		case ELVES:
 			{
@@ -142,8 +172,9 @@ int main(int argc, char* argv[])
 				sprintf(Output,"bo_e.txt");
 				sprintf(RaceName,"Elves");
 				Harvest_Speed=0.62;
-				for(s=0;s<MAX_PLAYER;s++) player[s]=&playere[s];
-				for(s=0;s<RUNNINGS;s++) Save[s]=&Savee[s];
+//				for(s=0;s<MAX_PLAYER;s++) player[s]=&playere[s];
+//				for(s=0;s<RUNNINGS;s++) Save[s]=&Savee[s];
+//				Child1=&Child1e;Child2=&Child2e;
 			};break;
 		case UNDEAD:
 			{
@@ -151,8 +182,9 @@ int main(int argc, char* argv[])
 				sprintf(Output,"bo_u.txt");
 				sprintf(RaceName,"Undead");
 				Harvest_Speed=1.33;
-				for(s=0;s<MAX_PLAYER;s++) player[s]=&playeru[s];
-				for(s=0;s<RUNNINGS;s++) Save[s]=&Saveu[s];
+//				for(s=0;s<MAX_PLAYER;s++) player[s]=&playeru[s];
+//				for(s=0;s<RUNNINGS;s++) Save[s]=&Saveu[s];
+//				Child1=&Child1u;Child2=&Child2u;
 			};break;
 		default:print("not enough arguments");return 0;break;
 	}
@@ -167,6 +199,8 @@ int main(int argc, char* argv[])
 		        return(1);
 		}
 //	}
+	
+	for(s=0;s<MAX_PLAYER;s++)
 	setup.AdjustMining();		 
 /*	if(Test>0)
 	{
@@ -360,29 +394,73 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 #ifdef WIN32
 	SetConsoleActiveScreenBuffer(scr);
 #endif
+	for(s=0;s<MAX_MUT_DISPLAY;s++) 
+	{
+		mut_count[s].on=0;
+		mut_count[s].target=0;
+	}
 	player[0]->Init();
 	player[0]->Calculate();	
-	basicFitness=player[0]->pFitness;
+	basicFitness=0;
+//	basicFitness=player[0]->pFitness;
+	Mutation=setup.Mutations;
+        MutationRate=setup.Mutation_Rate;
+        Generations=setup.Max_Generations;
+	totalCrossOver=1;
+	negativeCrossOver=0;
+
+	for(s=0;s<RUNNINGS;s++)
+	{
+		Save[s]->pFitness=0;
+		Save[s]->sFitness=0;
+	}
+	
 	while(run<RUNNINGS)
 	{
-		print("_");
-	  	generation++;
+		calc++;
+		if(calc%10==0)
+		{
+			negative_Crossing_Over=(negativeCrossOver*100)/totalCrossOver;///(CROSSING_OVER*10);
+			totalCrossOver=1;
+			negativeCrossOver=0;
+		}
+		generation++;
                 unchangedRuns++;
+		currentMutation=Mutation*(unchangedRuns+Generations)*(unchangedRuns+Generations)/(Generations*Generations);
+		currentMutationRate=Mutation*(Generations-unchangedRuns/2)*(Generations-unchangedRuns/2)/(Generations*Generations);
 // Core of the Program
 //Crossing over!
                 old_bestTime=player[0]->timer;
 		old_bestPrimaryFitness=player[0]->pFitness;
 		old_bestSecondaryFitness=player[0]->sFitness;
+		for(t=0;t<MAX_GOALS;t++) totalProteins[t]=0;
 		for(s=0;s<MAX_PLAYER;s++) (*player[s]).Init();
                 for(s=1;s<MAX_PLAYER;s++) (*player[s]).Mutate();
                 for(s=0;s<MAX_PLAYER;s++) (*player[s]).Calculate();
-		for(s=1;s<MAX_PLAYER-1;s++)
-                if((player[s]->pFitness>player[0]->pFitness)||((player[s]->pFitness==player[0]->pFitness)&&(player[s]->sFitness>player[0]->sFitness)))
+		diversity=0;
+		for(t=0;t<MAX_GOALS;t++)
+			totalProteins[t]/=MAX_PLAYER;
+		for(s=0;s<MAX_PLAYER;s++)
+			for(t=0;t<MAX_GOALS;t++)
+				diversity+=(totalProteins[t]-player[s]->protein[t])*(totalProteins[t]-player[s]->protein[t]);
+		diversity/=MAX_PLAYER;
+		
+		
+
+		qsort(*player,MAX_PLAYER,race_size,compare);
+if(basicFitness==0) basicFitness=player[0]->pFitness;
+		
+		/*
+		for(s=1;s<MAX_PLAYER;s++)
+                if((player[s]->pFitness>player[0]->pFitness)||((player[s]->pFitness==player[0]->pFitness)&&(player[s]->sFitness>=player[0]->sFitness)))
                 {
 	                tempp=player[s];
 	                player[s]=player[0];
 	                player[0]=tempp;
 	        }
+		
+		*/	
+		
 	        if(player[0]->pFitness>bestPrimaryFitness)
 	        {
 	 	       bestPrimaryFitness=player[0]->pFitness;
@@ -394,17 +472,34 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 	                bestSecondaryFitness=player[0]->sFitness;
 	                unchangedRuns=0;
 	        }
-		
+		selection=0;
 		for(v=0;v<MAX_PLAYER*CROSSING_OVER/100;v++)
 		{
-			s=rand()%(MAX_PLAYER-1)+1;
-			t=rand()%(MAX_PLAYER-1)+1;
+			s=rand()%(MAX_PLAYER/2);
+			t=rand()%(MAX_PLAYER/2);
+			d2=0;
+			for(u=0;u<MAX_GOALS;u++)
+				d2+=(player[s]->protein[u]-player[t]->protein[u])*(player[s]->protein[u]-player[t]->protein[u]);
+
+			if(d2*d2<100)
+			{
+
+			
+			//TODO: s und t tauschen ...
+			if((player[t]->pFitness<player[s]->pFitness)||((player[t]->pFitness==player[s]->pFitness)&&(player[t]->sFitness<player[s]->sFitness)))
+			{u=s;s=t;t=u;};
+
 			if((player[s]->pFitness<player[t]->pFitness)||((player[s]->pFitness==player[t]->pFitness)&&(player[s]->sFitness<player[t]->sFitness)))
 			{
-				who_crosses=rand()%2;
+				selection++;
+				who_crosses=0;
 				counter=MAX_LENGTH;// => 1/MAX_LENGTH probability for a cut for any place
+				temp_pFitness=player[s]->pFitness;
+				temp_sFitness=player[s]->sFitness;
 				for(u=0;u<MAX_LENGTH;u++)
 				{
+//					if(((who_crosses==0)&&(Build_Av[player[t]->program[u].order]==MARKER))||((who_crosses==1)&&(Build_Av[player[s]->program[u].order]==MARKER)))/						counter=2;
+//					if(counter==0) counter=1;
 					if(rand()%counter==0)
 					{
 						if(who_crosses==0) who_crosses=1; else who_crosses=0;
@@ -412,63 +507,100 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 					}
 					if(who_crosses==0)
 					{
-						Child1.program[u].order=player[t]->program[u].order;
+						Child1->program[u][0].order=player[t]->program[u][0].order;
+						Child1->program[u][1].order=player[s]->program[u][1].order;
+						Child2->program[u][0].order=player[s]->program[u][0].order;
+						Child2->program[u][1].order=player[t]->program[u][1].order;
 					}
-					else Child2.program[u].order=player[s]->program[u].order;
+					else
+					{
+						Child1->program[u][0].order=player[s]->program[u][0].order;
+                                                Child1->program[u][1].order=player[t]->program[u][1].order;
+                                                Child2->program[u][0].order=player[t]->program[u][0].order;
+                                                Child2->program[u][1].order=player[s]->program[u][1].order;
+					}
 				}
-				Child1.Init();
-				Child1.Calculate();
-				Child2.Init();
-				Child2.Calculate();
-				if((Child1.pFitness>Child2.pFitness)||((Child1.pFitness==Child2.pFitness)&&(Child1.sFitness>Child2.sFitness)))
+				Child1->length=MAX_LENGTH;Child2->length=MAX_LENGTH;
+				Child1->Init();
+				Child1->Mutate();
+				Child1->Calculate();
+				Child2->Init();
+				Child2->Mutate();
+				Child2->Calculate();
+				
+/*				if( 
+	(
+	 (Child1->pFitness>player[s]->pFitness)||
+((Child1->pFitness==player[s]->pFitness)&&(Child1->sFitness>=player[s]->sFitness))
+
+	)
+						&&*/
+				if(
+				((Child1->pFitness>Child2->pFitness)||((Child1->pFitness==Child2->pFitness)&&(Child1->sFitness>=Child2->sFitness))
+				 )
+				)
 				{
 					for(u=0;u<MAX_LENGTH;u++)
-						player[s]->program[u].order=Child1.program[u].order;
+					{
+						player[MAX_PLAYER-selection]->program[u][0].order=Child1->program[u][0].order;
+						player[MAX_PLAYER-selection]->program[u][1].order=Child1->program[u][1].order;
+					}
 					// mehr kopieren?
-					player[s]->pFitness=Child1.pFitness;
-					player[s]->sFitness=Child1.sFitness;
+					player[MAX_PLAYER-selection]->pFitness=Child1->pFitness;
+					player[MAX_PLAYER-selection]->sFitness=Child1->sFitness;
+					totalCrossOver++;
 				}
 				else
+//				if((Child2->pFitness>player[s]->pFitness)||((Child2->pFitness==player[s]->pFitness)&&(Child2->sFitness>=player[s]->sFitness)))
 				{
 					 for(u=0;u<MAX_LENGTH;u++)
-	                                         player[s]->program[u].order=Child2.program[u].order;
-					 player[s]->pFitness=Child2.pFitness;
-					 player[s]->sFitness=Child2.sFitness;
+				 	 {
+	                                         player[MAX_PLAYER-selection]->program[u][0].order=Child2->program[u][0].order;
+						 player[MAX_PLAYER-selection]->program[u][1].order=Child2->program[u][1].order;
+					 }
+					 player[MAX_PLAYER-selection]->pFitness=Child2->pFitness;
+					 player[MAX_PLAYER-selection]->sFitness=Child2->sFitness;
+					 totalCrossOver++;
 				}
+				if((temp_pFitness>player[MAX_PLAYER-selection]->pFitness)||((temp_pFitness==player[MAX_PLAYER-selection]->pFitness)&&(temp_sFitness>player[MAX_PLAYER-selection]->sFitness)))
+					negativeCrossOver++;
 			}
 			
+			}
 		}
 
 
 		
 		for(v=0;v<MAX_PLAYER*ZELL_TEILUNG/100;v++)
 		{
-			t=rand()%MAX_PLAYER;
-			s=rand()%(MAX_PLAYER-1)+1;
-			if((player[s]->pFitness<player[t]->pFitness)||((player[s]->pFitness==player[t]->pFitness)&&(player[s]->sFitness<player[t]->sFitness)))
+			t=rand()%(MAX_PLAYER/2);
+			selection++;
+			for(u=0;u<MAX_LENGTH;u++)
 			{
-				for(u=0;u<MAX_LENGTH;u++)
-					player[s]->program[u].order=player[t]->program[u].order;
-				player[s]->pFitness=player[t]->pFitness;
-				player[s]->sFitness=player[t]->sFitness;
+				player[MAX_PLAYER-selection]->program[u][0].order=player[t]->program[u][0].order;
+				player[MAX_PLAYER-selection]->program[u][1].order=player[t]->program[u][1].order;
 			}
+			player[MAX_PLAYER-selection]->pFitness=player[t]->pFitness;
+			player[MAX_PLAYER-selection]->sFitness=player[t]->sFitness;
 		}
 		
                 for(s=0;s<MAX_PLAYER*ALPHA_TIER/100;s++)
 	                {
-                        t=rand()%(MAX_PLAYER-1)+1;
-			if((player[t]->pFitness<player[0]->pFitness)||((player[t]->pFitness==player[0]->pFitness)&&(player[t]->sFitness<player[0]->sFitness)))
+			selection++;	
+                        t=MAX_PLAYER-selection;
+			for(u=0;u<MAX_LENGTH;u++)
 			{
-				for(u=0;u<MAX_LENGTH;u++)
-        		                player[t]->program[u].order=player[0]->program[u].order;
+        			player[t]->program[u][0].order=player[0]->program[u][0].order;
+				player[t]->program[u][1].order=player[0]->program[u][1].order;
+			}
 				player[t]->pFitness=player[0]->pFitness;
 		                player[t]->sFitness=player[0]->sFitness;
-	                }
+	                
 			}
 		
-		
+				
 	// Save the program when 'Max_Generations' Generations were no change
-	    if(unchangedRuns>=setup.Max_Generations)
+	    if(unchangedRuns>=Generations)
 		{
 			unchangedRuns=0;
 			gen_count[run]=generation;
@@ -478,20 +610,21 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 			for(t=0;t<RUNNINGS;t++)
 				if((Save[t]->pFitness<player[0]->pFitness)||((Save[t]->pFitness==player[0]->pFitness)&&(Save[t]->sFitness<player[0]->sFitness)))
 				{
-					for(u=RUNNINGS-1;u>t+1;u--)
+					for(u=RUNNINGS-1;u>t;u--)
 						Save[u]=Save[u-1];
 					u=t;
 					t=RUNNINGS;
 				}
+			for(t=0;t<2;t++)
 			for(s=0;s<MAX_LENGTH;s++)
 			{
-				Save[u]->program[s].order=player[0]->program[s].order;
-				Save[u]->program[s].time=player[0]->program[s].time;
-				Save[u]->program[s].need_Supply=player[0]->program[s].need_Supply;
-				Save[u]->program[s].have_Supply=player[0]->program[s].have_Supply;
-				Save[u]->program[s].success=player[0]->program[s].success;
-				Save[u]->program[s].built=player[0]->program[s].built;
-//				Save[u]->program[s].temp=player[0]->program[s].temp;
+				Save[u]->program[s][t].order=player[0]->program[s][t].order;
+				Save[u]->program[s][t].time=player[0]->program[s][t].time;
+				Save[u]->program[s][t].need_Supply=player[0]->program[s][t].need_Supply;
+				Save[u]->program[s][t].have_Supply=player[0]->program[s][t].have_Supply;
+				Save[u]->program[s][t].success=player[0]->program[s][t].success;
+				Save[u]->program[s][t].built=player[0]->program[s][t].built;
+//				Save[u]->program[s][t].temp=player[0]->program[s][t].temp;
 			}
 			Save[u]->pFitness=player[0]->pFitness;
 			Save[u]->timer=player[0]->timer;
@@ -509,28 +642,23 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 				Save[u]->ftime[s]=player[0]->ftime[s];
 			}
 
-/*			if(run==RUNNINGS-2)
+			switch(run)
 			{
-				for(s=0;s<MAX_PLAYER;s++)
-				{
+				case RUNNINGS-2:
+					
+			// Last run: Get the best run and retry to optimize it.
+					Generations*=2;
+					Mutation*=2;
+					MutationRate/=2;
+					Basic_Length=Save[0]->length;
+					for(s=0;s<2;s++)
 					for(t=0;t<Save[0]->length;t++)
-					{
-						player[s]->program[t].order=Save[0]->program[t].order;
-						player[s]->program[t].time=20000;
-						player[s]->program[t].built=0;
-						player[s]->program[t].success=0;
-						player[s]->program[t].temp=0;
-					}
-					player[s]->timer=setup.Max_Time;
-					player[s]->IP=0;
-					player[s]->length=Save[0]->length;
-				}
-				
-			} else*/
-			
+						Basic[t][s]=Save[0]->program[t][s].order;
+				default:
 //			if(Test<2)
 		        	for(s=0;s<MAX_PLAYER;s++)
 			        	player[s]->Restart();
+				//TODO: Mehr auf 0 setzen...
  /*        		else
 		        {
 				for(s=0;s<MAX_PLAYER;s++)
@@ -545,6 +673,8 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 				player[s]->length=MAX_LENGTH;
 				}
 			}*/
+				break;
+			}
 
 			bestPrimaryFitness=0;
 			bestSecondaryFitness=0;
@@ -552,11 +682,10 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 			old_bestPrimaryFitness=0;
 			old_bestSecondaryFitness=0;
 			run++;
-			printf("*");
-			for(s=0;s<MAX_LENGTH;s++) bolog[s].count=0;
+			for(s=0;s<MAX_LENGTH;s++) {bolog[s].count=0;for(t=0;t<MAX_MUT_DISPLAY;t++) mutlog[s][t].count=0;};
 		}
 	    
-		
+
 		//Print the screen :)
 		if(setup.Verbose==1)
 		{
@@ -596,9 +725,13 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 			else
 			print(" searching . . .      ");
 		}
-		
 		setColor(37);
-		gotoxy(1,2);sprintf(tmp,"%i runs and %i+ generations remaining. [Total %i generations]      ",RUNNINGS-run,setup.Max_Generations-unchangedRuns,generation);
+		print("diversity:");
+		setColor(32);
+		printf("%5i",diversity);
+		print("    \n");
+
+		gotoxy(1,2);sprintf(tmp,"%2i runs and %3i+ generations remaining. [Total %4i] [negative CO: %3i] ",RUNNINGS-run,Generations-unchangedRuns,generation,negative_Crossing_Over);
 		print(tmp);
 		gotoxy(0,4);
 		if(player[0]->timer<setup.Max_Time)
@@ -619,7 +752,8 @@ sprintf(unit[s].text,"              Unit Name: %NAME_LENGTHs    Buildtime: %3i s
 			print(tmp);
 		}
 		
-         
+printf("C1 %i [%i] || C2 %i [%i]",Child1->pFitness,Child1->sFitness,Child2->pFitness,Child2->sFitness);
+       /*		
 	setColor(31);
 if((calc%80==0)||(calc%80==1)) setColor(37); else setColor(31);
 	gotoxy(35,3);print("   /   / __ __  ___    / ");
@@ -629,7 +763,7 @@ if((calc%80==4)||(calc%80==5)) setColor(37); else setColor(31);
 	gotoxy(35,5);print(" / / / /  /   /  /   ----  ");
 if((calc%80==6)||(calc%80==7)) setColor(37); else setColor(31);
 	gotoxy(35,6);print("/_/_/ /_ /_  /__/.   /     ");
-if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
+if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);*/
 		
 		for(s=0;s<MAX_GOALS;s++) tgoal[s]=goal[s].what;
 //bolog logs how long which build order stands there (you know, the colors ;-)
@@ -644,107 +778,207 @@ if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
 			
 		if(setup.Detailed_Output==1)
 		{
-			for(s=0;s<5;s++)
+/*			for(s=0;s<5;s++)
                 	{
-		       			t=0;
-		                while((t<HEIGHT)&&(player[0]->program[(s+1)*HEIGHT-t].built==0)) t++;
+		       		t=0;
+		                while((t<HEIGHT)&&((player[0]->program[(s+1)*HEIGHT-t][0].built==0)||(player[0]->program[(s+1)*HEIGHT-t][1].built==1))) t++;
 		               	gotoxy(WIDTH*s+2,25-setup.Console24Lines);//WIN32 1 <> LINUX 0
-				if((t<HEIGHT)||(player[0]->program[s*HEIGHT].built>0))
+				if(t<HEIGHT)
 				{
-					sprintf(tmp,"[%.2i:%.2i]",player[0]->program[(s+1)*HEIGHT-t].time/60,player[0]->program[(s+1)*HEIGHT-t].time%60);
+					if(player[0]->program[s*HEIGHT][0].built>0)
+						sprintf(tmp,"[%.2i:%.2i]",player[0]->program[(s+1)*HEIGHT-t][0].time/60,player[0]->program[(s+1)*HEIGHT-t][0].time%60);
+					else if(player[0]->program[s*HEIGHT][1].built>0)
+						sprintf(tmp,"[%.2i:%.2i]",player[0]->program[(s+1)*HEIGHT-t][1].time/60,player[0]->program[(s+1)*HEIGHT-t][1].time%60);
+					else sprintf(tmp,"       ");
 					print(tmp);
 				}
-				else print("       ");
-			}
+			}*/
 			
 			t=0;
+			/*for(s=0;s<MAX_MUT_DISPLAY;s++)
+		        {
+		                mut_count[s].on=0;
+		                mut_count[s].target=0;
+		        }*/
+
+/*			for(s=0;s<player[0]->length;s++)
+			if(player[0]->program[s].mutate<MAX_LENGTH)
+                                        {
+                                                if(player[0]->program[s].mutate>s)
+                                                {
+                                                        for(v=0;v<MAX_MUT_DISPLAY;v++)
+                                                                if(mut_count[v].on==0)
+                                                                {
+                                                                        for(u=s;u<player[0]->program[s].mutate+1;u++)
+                                                                        {
+                                                                                mutlog[u][v].count=80;
+                                                                                mutlog[u][v].from=s;
+                                                                                mutlog[u][v].to=player[0]->program[s].mutate;
+                                                                        }
+                                                                        mut_count[v].on=1;
+                                                                        mut_count[v].target=player[0]->program[s].mutate;
+                                                                        v=MAX_MUT_DISPLAY;
+                                                                }
+                                                }
+                                                else
+                                                {
+                                                        for(v=0;v<MAX_MUT_DISPLAY;v++)
+                                                                if((mut_count[v].on==1)&&(mut_count[v].target==s))
+                                                                {
+                                                                        mut_count[v].on=0;
+                                                                        v=MAX_MUT_DISPLAY;
+                                                                }
+                                                }
+                                        }
+			
+*/
 			if(player[0]->length>0)
-			for(s=0;s<MAX_LENGTH;s++)
+			for(s=0;s<4*HEIGHT;s++)
 			{
+/*				if(player[0]->program[s].newmut==1)
+				{
+					for(u=s;u<MAX_LENGTH-1;u++)
+					{
+						bolog[u].count=bolog[u+1].count;
+						bolog[u].order=bolog[u+1].order;
+					}
+				}
+				else if(player[0]->program[s].newmut==2)
+				{
+					for(u=MAX_LENGTH-1;u>s+1;u--)
+					{
+						bolog[u].count=bolog[u-1].count;
+						bolog[u].order=bolog[u-1].count;
+					}
+				}*/
 				gotoxy((t/HEIGHT)*WIDTH,9+t%HEIGHT-setup.Console24Lines);
 				t++;
 				setColor(37);
-				if(player[0]->program[s].built==1)
+				if(player[0]->program[s][0].built==1) dom=0;
+				else if(player[0]->program[s][1].built==1) dom=1;
+				else dom=2;
+				if(dom!=2)
 				{
-					if(bolog[s].order==player[0]->program[s].order)
+					if(bolog[s].order==player[0]->program[s][dom].order)
                                 	{
 				        	if(bolog[s].count<160)
 							bolog[s].count++;
 					} else
 					{
 						bolog[s].count=0;
-						bolog[s].order=player[0]->program[s].order;
+						bolog[s].order=player[0]->program[s][dom].order;
 					}
 					
-					//TODO: Markieren wo was hingeschieben wurde
 					setColor(35);
-					sprintf(tmp,"%c",error_sm[player[0]->program[s].success]);
+					sprintf(tmp,"%c",error_sm[player[0]->program[s][dom].success]);
 					print(tmp);
 					setAt(bolog[s].count);
-					sprintf(tmp,"%s",kurz[race][Build_Av[player[0]->program[s].order]].b);
+					sprintf(tmp,"%s|%s",kurz[race][Build_Av[player[0]->program[s][0].order]].b,kurz[race][Build_Av[player[0]->program[s][1].order]].b);
 					print(tmp);
 					setColor(37);
-					if(player[0]->program[s].need_Supply<100)
-						sprintf(tmp," %.2i",player[0]->program[s].need_Supply);
-					else sprintf(tmp,"%3i",player[0]->program[s].need_Supply);
-//					sprintf(tmp,"%i",player[0]->program[s].temp);
+//					if(player[0]->program[s][dom].need_Supply<100)
+//						sprintf(tmp," %.2i",player[0]->program[s][dom].need_Supply);
+//					else sprintf(tmp,"%3i",player[0]->program[s][dom].need_Supply);
+//					print(tmp);
+					
 
-					print(tmp);
+					/*if(player[0]->program[s].mutate<MAX_LENGTH)
+					{
+						if(player[0]->program[s].mutate>s)
+						{
+							for(v=0;v<MAX_MUT_DISPLAY;v++)
+								if(mut_count[v].on==0)
+								{
+									for(u=s;u<player[0]->program[s].mutate+1;u++) 
+									{
+										mutlog[u][v].count=160;
+										mutlog[u][v].from=s;
+										mutlog[u][v].to=player[0]->program[s].mutate;
+									}
+									mut_count[v].on=1;
+									mut_count[v].target=player[0]->program[s].mutate;
+									v=MAX_MUT_DISPLAY;
+								}
+						}
+	        				else 
+						{
+							for(v=0;v<MAX_MUT_DISPLAY;v++)
+								if((mut_count[v].on==1)&&(mut_count[v].target==s))
+								{
+									mut_count[v].on=0;
+									v=MAX_MUT_DISPLAY;
+								}
+						}
+					}*/
+					
+					/*for(u=0;u<MAX_MUT_DISPLAY;u++) 
+						if(mutlog[s][u].count>0)
+						{
+							setAt(80-mutlog[s][u].count);
+							if(mutlog[s][u].from==s) print("*");
+							else
+							if(mutlog[s][u].to==s) print("/");
+							else
+							print("|");
+							mutlog[s][u].count--;
+						} else print(" ");*/
+//					if((player[0]->program[s].mutate<MAX_LENGTH)&&(player[0]->program[s].mutate>s)&&(mut_count<MAX_MUT_DISPLAY)) mut_count++;
 				}
-   				else print("  ------  "); 
+   				else print("  ------  ");
 			}
 		}
-		else
+		}
+/*		else
 		{
-		for(s=0;(s<MAX_LENGTH)&&(t<3*HEIGHT+3);s++)
-		{
-			while((player[0]->program[s].built==0)&&(s<MAX_LENGTH-1))
-                        	s++;
-                        if(orderTemp==Build_Av[player[0]->program[s].order]) counter++;
-			else if(orderTemp<200)
+			for(s=0;(s<MAX_LENGTH)&&(t<3*HEIGHT+3);s++)
 			{
-				if(bolog[t].order==orderTemp)
-	                        {
-					if(bolog[t].count<160)
-					bolog[t].count++;
-				}
-                                else
+				while((player[0]->program[s][dom].built==0)&&(s<MAX_LENGTH-1))
+	                        	s++;
+        	                if(orderTemp==Build_Av[player[0]->program[s][dom].order]) counter++;
+				else if(orderTemp<200)
 				{
-					bolog[t].count=0;
-					bolog[t].order=orderTemp;
-				}
+					if(bolog[t].order==orderTemp)
+	        	                {
+						if(bolog[t].count<160)
+						bolog[t].count++;
+					}
+                        	        else
+					{
+						bolog[t].count=0;
+						bolog[t].order=orderTemp;
+					}
 				
-				gotoxy((t/(HEIGHT+1))*17,9+t%(HEIGHT+1)-setup.Console24Lines);
-				if(counter>1) { sprintf(tmp,"%2i",counter);setColor(35);print(tmp);} else print("  ");
-					setAt(bolog[t].count);
-				t++;
-				sprintf(tmp,"%s",kurz[race][orderTemp].b);
-				print(tmp);
-				setColor(37);
-			        sprintf(tmp," %.2i:%.2i ",old_Time/60,old_Time%60);
-				print(tmp);
-				setColor(35);
-				if(old_Food<100) sprintf(tmp,"%.2i",old_Food); else sprintf(tmp,"%3i",old_Food);
-				print(tmp);
-				setColor(37);
-				counter=1;
-				orderTemp=Build_Av[player[0]->program[s].order];
-				old_Time=player[0]->program[s].time;
-				old_Food=player[0]->program[s].need_Supply;
+					gotoxy((t/(HEIGHT+1))*17,9+t%(HEIGHT+1)-setup.Console24Lines);
+					if(counter>1) { sprintf(tmp,"%2i",counter);setColor(35);print(tmp);} else print("  ");
+						setAt(bolog[t].count);
+					t++;
+					sprintf(tmp,"%s",kurz[race][orderTemp].b);
+					print(tmp);
+					setColor(37);
+				        sprintf(tmp," %.2i:%.2i ",old_Time/60,old_Time%60);
+					print(tmp);
+					setColor(35);
+					if(old_Food<100) sprintf(tmp,"%.2i",old_Food); else sprintf(tmp,"%3i",old_Food);
+					print(tmp);
+					setColor(37);
+					counter=1;
+					orderTemp=Build_Av[player[0]->program[s][0].order];
+					old_Time=player[0]->program[s][0].time;
+					old_Food=player[0]->program[s][0].need_Supply;
+				}
+				else
+				{
+					orderTemp=Build_Av[player[0]->program[s][0].order];
+					old_Time=player[0]->program[s][0].time;
+					old_Food=player[0]->program[s][0].need_Supply;
+				}
 			}
-			else
+			for(s=t;(s<=MAX_LENGTH)&&(s<3*(HEIGHT+1));s++)
 			{
-				orderTemp=Build_Av[player[0]->program[s].order];
-				old_Time=player[0]->program[s].time;
-				old_Food=player[0]->program[s].need_Supply;
+				gotoxy((s/(HEIGHT+1))*17,9+s%(HEIGHT+1)-setup.Console24Lines);
+				print("  ------       x");
 			}
-		}
-		for(s=t;(s<=MAX_LENGTH)&&(s<3*(HEIGHT+1));s++)
-		{
-			gotoxy((s/(HEIGHT+1))*17,9+s%(HEIGHT+1)-setup.Console24Lines);
-			print("  ------       x");
-		}
-		}
+		}*/
 
 		setColor(37);
 
@@ -803,7 +1037,7 @@ if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
 		{
 			gotoxy(70,t+s);
 			print("         ");
-		}
+//		}
 		}
 		
 /*		if(setup.Gizmo==1)
@@ -839,6 +1073,9 @@ if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
 			
 
 	} // end while...
+	
+	//TODO: Ende des letzten Runs verkleinern... braucht ja net alles neu initialisiert werden...
+	
 	
 //	delete [] gizmo;
 
@@ -893,7 +1130,7 @@ if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
 #ifdef WIN32
 	CloseHandle(scr);
 #endif
-	setColor(37);
+//	setColor(37);
 	print("\n");
 // Even best run did not find a solution?
 	if(Save[0]->timer>=setup.Max_Time)
@@ -927,11 +1164,11 @@ if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
 			fprintf(pFile,"     Time used: %.2i:%.2i minutes\n",Save[t]->timer/60,Save[t]->timer%60);	
 			fprintf(pFile,"     Scouting unit after %.2i:%.2i minutes\n",setup.Scout_Time/60,setup.Scout_Time%60);
 			if(setup.Time_to_Enemy>0) fprintf(pFile,"     Time to Enemy: %i seconds\n\n",setup.Time_to_Enemy);
-			fprintf(pFile,"[%4i generations] [%3i mutations] [%3i mutation factor]\n",gen_count[t],setup.Mutations,setup.Mutation_Rate);
+			fprintf(pFile,"[%4i generations] [%3i mutations] [%3i mutation factor]\n",gen_count[t],setup.Mutations/2,setup.Mutation_Rate*2);
 //			old=200;
 			counter=1;
-			for(s=0;s<=Save[t]->length;s++)
-			{
+//			for(s=0;s<=Save[t]->length;s++)
+//			{
 /*				if(setup.Detailed_Output==0)
 				{
 					while(((Save[t]->program[s].time>=Save[t]->timer)||(Build_Av[Save[t]->program[s].order]>=MAX_GOALS))&&(s<MAX_LENGTH-1)) s++;
@@ -947,8 +1184,9 @@ if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
 						old=Build_Av[Save[t]->program[s].order];
 				}
 				else*/
-				if(Save[t]->program[s].built==1)
+/*				if(Save[t]->program[s].built==1)
 					fprintf(pFile,"     [%.2i:%.2i] [%.2i/%.2i] %s [%s]\n",(Save[t]->program[s].time+0)/60,(Save[t]->program[s].time+0)%60,Save[t]->program[s].need_Supply,Save[t]->program[s].have_Supply,stats[race][Build_Av[Save[t]->program[s].order]].name,error_m[Save[t]->program[s].success]);
+					
 			}
 		        fprintf(pFile,"\n     ---Force at the end---\n");
 			for(s=0;s<MAX_GOALS;s++)
@@ -960,7 +1198,7 @@ if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
 				fprintf(pFile,"     %s at the end: %i\n",resource[s],(short)(Save[t]->res[s]));
 			fprintf(pFile,"[----#%i solution end--------]\n\n",t+1);
 			sprintf(tmp,"#%i solution [%.2i:%.2i] succesfully saved... [%4i generations]\n",t+1,Save[t]->timer/60,Save[t]->timer%60,gen_count[t]);
-			print(tmp);
+			print(tmp);*/
 		}
 	
 	fclose (pFile);
@@ -976,4 +1214,4 @@ if((calc%80==8)||(calc%80==9)) setColor(37); else setColor(31);
 		Save[s]=NULL;
 	tempp=NULL;
 	return 0;
-};
+}

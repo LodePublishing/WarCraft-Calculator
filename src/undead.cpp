@@ -101,7 +101,7 @@ if(ADDITIONAL_ORDERS==1)
 // Do one run, go through one build order and record the results	
 	void Player_Undead::Calculate()
 	{
-		unsigned char tt,j,tSupply,tMax_Supply,i;
+		unsigned char tt,j,tSupply,tMax_Supply,i,BuildingRunning;
 		ready=0;
 		timer=0;
 		for(i=0;i<RESOURCES;i++)

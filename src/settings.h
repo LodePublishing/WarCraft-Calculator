@@ -10,7 +10,7 @@ class Settings
 	Settings();
 	~Settings();
 	//Output Switches 0/1
-	unsigned short Detailed_Output,Console24Lines,Gizmo;
+	unsigned short Detailed_Output,Console24Lines,Gizmo,GenerateBuildorder;
 	//Map Data
 	unsigned short Time_to_Enemy,Mineral_Mod,Time_to_Wallin,Scout_Time;
 	unsigned short Mineral_Blocks,Vespene_Geysirs,Verbose;

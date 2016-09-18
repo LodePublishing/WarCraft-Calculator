@@ -8,8 +8,7 @@
 #define RUNNINGS 5 
 #define MAX_PLAYER 100
 #define MAX_BUILDINGS 10 // How many buildings can you built simultaneously?
-#define MAX_GOALS 62
-#define DATA_SET_SIZE 15
+#define MAX_GOALS 63
 
 #define MAX_CREEPS 10
 
@@ -305,6 +304,7 @@
 
 #define IF 60
 #define JMP 61
+#define MARKER 62
 
 #define NOP 57
 #define WAIT_NOP_TIME 10
@@ -331,11 +331,12 @@ struct GOAL
 
 extern unsigned char buildable[MAX_GOALS],Build_Av[MAX_GOALS],Build_Bv[MAX_GOALS],Variabel[MAX_GOALS]; //Variabel -> Add/remove peasants as much as you want
 extern unsigned char Max_Build_Types,race,colors;//,Test;
-extern unsigned short total_goals;
+extern unsigned short total_goals,currentMutationRate,currentMutation,Generations;
 extern GOAL goal[MAX_GOALS];
 extern double Harvest_Speed; //~~~
+extern long totalProteins[MAX_GOALS];
 extern EXPANSION Expansion[MAX_EXPANSIONS];
-extern unsigned char Basic[MAX_LENGTH],Basic_Length; //Basic: Basic valid build order
+extern unsigned char Basic[MAX_LENGTH][2],Basic_Length; //Basic: Basic valid build order
 //extern unsigned short Mut_Window;
 /*const double HARVEST_SPEED_RACE[MAX_RACES][RESOURCES][MAX_PEONS]=
 {
@@ -473,6 +474,10 @@ const Stats stats[MAX_RACES][MAX_GOALS]=
 		{"                    NOP",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
 		{"   Wood Peasant to Mine",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
 		{" Gold Peasant to Forest",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                     IF",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                    JMP",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                 Marker",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0}
+		
 	},
 //Berserker Strength => +100 le grunt	
         {                        
@@ -535,7 +540,11 @@ const Stats stats[MAX_RACES][MAX_GOALS]=
                 {"                   NULL",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
 		{"                    NOP",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
                 {"      Wood Peon to Mine",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
-                {"    Gold Peon to Forest",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0}
+                {"    Gold Peon to Forest",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                     IF",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                    JMP",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                 Marker",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0}
+
 	},
 	{
                 {"                   Wisp", 120, 14,{ 60,  0},1,1, 25,0,{  0,  0},100, 0, {0, 0, 0}, 0},
@@ -598,7 +607,11 @@ const Stats stats[MAX_RACES][MAX_GOALS]=
 		{"                   NULL",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
 		{"                    NOP",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
 		{"      Wood Wisp to Mine",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
-		{"    Gold Wisp to Forest",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0}
+		{"    Gold Wisp to Forest",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                     IF",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                    JMP",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                 Marker",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0}
+
 	},
 {
                 {"                Acolyte", 180, 15,{ 75,  0},1,1, 25,0,{  0,  0},100, 0, {0, 0, 0}, 0}, //no facility => special code in undead.cpp
@@ -660,7 +673,11 @@ const Stats stats[MAX_RACES][MAX_GOALS]=
                 {"                   NULL",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
                 {"                    NOP",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
                 {"                   NULL",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
-                {"                   NULL",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0}
+                {"                   NULL",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                     IF",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                    JMP",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0},
+                {"                 Marker",   0,  0,{  0,  0},0,0,  0,0,{  0,  0},100, 0, {0, 0, 0}, 0}
+
 		 
 		}
 };

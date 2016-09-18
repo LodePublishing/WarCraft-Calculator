@@ -1,0 +1,259 @@
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 10:36 minutes
+     Scouting unit after 02:40 minutes
+[1888 generations] [ 20 mutations] [ 20 mutation factor]
+     [00:00] [05/12]                    Wisp [OK]
+     [00:01] [06/12]     Gold Wisp to Forest [OK]
+     [00:02] [06/12]     Gold Wisp to Forest [OK]
+     [00:14] [06/12]                    Wisp [Building availible]
+     [00:28] [07/12]                    Wisp [Building availible]
+     [00:42] [08/12]                    Wisp [Building availible]
+     [00:43] [09/12]         Altar of Elders [OK]
+     [00:56] [09/12]            Tree of Ages [Building availible]
+     [00:57] [09/12]     Gold Wisp to Forest [OK]
+     [02:56] [09/12]        Tree of Eternity [Building availible]
+     [02:57] [09/12]          Ancient of War [OK]
+     [04:56] [09/12]                    Wisp [Building availible]
+     [04:57] [10/12]               Moon Well [OK]
+     [05:10] [10/12]                    Wisp [Building availible]
+     [05:52] [11/12]                  Archer [Supply satisfied]
+     [06:12] [13/20]                  Archer [Building availible]
+     [06:13] [15/20]            Hunters Hall [OK]
+     [06:32] [15/20]                  Archer [Building availible]
+     [06:52] [17/20]                  Archer [Building availible]
+     [06:53] [19/20]               Moon Well [OK]
+     [07:18] [19/20]            Marksmanship [Technology availible]
+     [07:19] [19/20]              Moon Armor [OK]
+     [07:58] [19/28]                  Archer [Building availible]
+     [07:59] [21/28]     Gold Wisp to Forest [OK]
+     [08:18] [21/28]                  Archer [Building availible]
+     [08:19] [23/28]    Strength of the Moon [OK]
+     [08:20] [23/28]               Moon Well [OK]
+     [08:38] [23/28]                  Archer [Building availible]
+     [08:58] [25/28]                  Archer [Building availible]
+     [09:15] [27/28]   Priestess of the Moon [Supply satisfied]
+     [09:19] [32/36]    Strength of the Moon [Building availible]
+     [09:20] [32/36]           Improved Bows [OK]
+     [09:21] [32/36]       Wood Wisp to Mine [OK]
+     [09:22] [32/36]       Wood Wisp to Mine [OK]
+     [09:23] [32/36]       Wood Wisp to Mine [OK]
+     [09:24] [32/36]       Wood Wisp to Mine [OK]
+     [09:55] [32/36]                  Archer [Building availible]
+     [10:15] [34/36]                  Archer [Building availible]
+
+     ---Force at the end---
+                       Wisp : 11 [Last one: 05:24]
+                     Archer : 10 [Last one: 10:35]
+      Priestess of the Moon :  1 [Last one: 10:10]
+             Ancient of War :  1 [Last one: 04:02]
+           Tree of Eternity :  1 [Last one: 04:56]
+                  Moon Well :  3 [Last one: 09:15]
+            Altar of Elders :  1 [Last one: 01:48]
+               Hunters Hall :  1 [Last one: 07:18]
+              Improved Bows :  1 [Last one: 09:55]
+               Marksmanship :  1 [Last one: 07:58]
+       Strength of the Moon :  2 [Last one: 10:35]
+                 Moon Armor :  1 [Last one: 08:19]
+
+     Harvested Gold : 4042
+
+     Harvested Wood : 1060
+     Gold at the end: 407
+     Wood at the end: 5
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 11:00 minutes
+     Scouting unit after 02:40 minutes
+[ 619 generations] [ 20 mutations] [ 20 mutation factor]
+     [00:00] [05/12]                    Wisp [OK]
+     [00:01] [06/12]     Gold Wisp to Forest [OK]
+     [00:14] [06/12]                    Wisp [Building availible]
+     [00:15] [07/12]     Gold Wisp to Forest [OK]
+     [00:28] [07/12]                    Wisp [Building availible]
+     [00:42] [08/12]                    Wisp [Building availible]
+     [00:43] [09/12]         Altar of Elders [OK]
+     [00:44] [09/12]          Ancient of War [OK]
+     [00:45] [09/12]       Wood Wisp to Mine [OK]
+     [00:46] [09/12]     Gold Wisp to Forest [OK]
+     [00:56] [09/12]            Tree of Ages [Building availible]
+     [02:58] [09/12]        Tree of Eternity [enough Wood]
+     [02:59] [09/12]     Gold Wisp to Forest [OK]
+     [04:58] [09/12]                    Wisp [Building availible]
+     [04:59] [10/12]                  Archer [OK]
+     [05:00] [12/12]               Moon Well [OK]
+     [05:55] [12/12]                  Archer [Supply satisfied]
+     [05:56] [14/20]            Hunters Hall [OK]
+     [07:01] [14/20]    Strength of the Moon [Building availible]
+     [07:02] [14/20]                  Archer [OK]
+     [07:03] [16/20]                    Wisp [OK]
+     [07:04] [17/20]     Gold Wisp to Forest [OK]
+     [07:22] [17/20]                  Archer [Building availible]
+     [07:23] [19/20]       Wood Wisp to Mine [OK]
+     [07:24] [19/20]               Moon Well [OK]
+     [07:25] [19/20]     Gold Wisp to Forest [OK]
+     [07:42] [19/20]            Marksmanship [Building availible]
+     [08:22] [19/28]                  Archer [Building availible]
+     [08:42] [21/28]                  Archer [Building availible]
+     [08:43] [23/28]              Moon Armor [OK]
+     [08:44] [23/28]               Moon Well [OK]
+     [09:02] [23/28]           Improved Bows [Building availible]
+     [09:03] [23/28]       Wood Wisp to Mine [OK]
+     [09:37] [23/28]                  Archer [Building availible]
+     [09:38] [25/28]       Wood Wisp to Mine [OK]
+     [09:43] [25/36]    Strength of the Moon [Building availible]
+     [09:44] [25/36]   Priestess of the Moon [OK]
+     [09:45] [30/36]       Wood Wisp to Mine [OK]
+     [09:57] [30/36]                  Archer [Building availible]
+     [10:17] [32/36]                  Archer [Building availible]
+     [10:18] [34/36]       Wood Wisp to Mine [OK]
+     [10:37] [34/36]                  Archer [Building availible]
+
+     ---Force at the end---
+                       Wisp : 11 [Last one: 07:17]
+                     Archer : 10 [Last one: 10:57]
+      Priestess of the Moon :  1 [Last one: 10:39]
+             Ancient of War :  1 [Last one: 01:49]
+           Tree of Eternity :  1 [Last one: 04:58]
+                  Moon Well :  3 [Last one: 09:39]
+            Altar of Elders :  1 [Last one: 01:48]
+               Hunters Hall :  1 [Last one: 07:01]
+              Improved Bows :  1 [Last one: 09:37]
+               Marksmanship :  1 [Last one: 08:22]
+       Strength of the Moon :  2 [Last one: 10:59]
+                 Moon Armor :  1 [Last one: 09:43]
+
+     Harvested Gold : 3840
+
+     Harvested Wood : 1055
+     Gold at the end: 205
+     Wood at the end: 0
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 13:11 minutes
+     Scouting unit after 02:40 minutes
+[ 817 generations] [ 20 mutations] [ 20 mutation factor]
+     [00:00] [05/12]                    Wisp [OK]
+     [00:01] [06/12]            Hunters Hall [OK]
+     [00:02] [06/12]     Gold Wisp to Forest [OK]
+     [00:14] [06/12]                    Wisp [Building availible]
+     [01:06] [07/12]    Strength of the Moon [Building availible]
+     [01:07] [07/12]                    Wisp [OK]
+     [01:31] [08/12]            Tree of Ages [enough Wood]
+     [03:32] [08/12]              Moon Armor [enough Wood]
+     [03:33] [08/12]     Gold Wisp to Forest [OK]
+     [04:21] [08/12]          Ancient of War [enough Wood]
+     [05:02] [08/12]         Altar of Elders [enough Wood]
+     [05:03] [08/12]     Gold Wisp to Forest [OK]
+     [05:04] [08/12]     Gold Wisp to Forest [OK]
+     [06:31] [08/12]        Tree of Eternity [enough Wood]
+     [08:31] [08/12]            Marksmanship [Technology availible]
+     [09:11] [08/12]           Improved Bows [Building availible]
+     [09:12] [08/12]               Moon Well [OK]
+     [09:21] [08/12]    Strength of the Moon [enough Wood]
+     [09:46] [08/12]                  Archer [Building availible]
+     [09:47] [10/12]                    Wisp [OK]
+     [09:48] [11/12]               Moon Well [OK]
+     [10:01] [11/12]                    Wisp [Building availible]
+     [10:07] [12/12]                  Archer [Supply satisfied]
+     [10:15] [14/20]                    Wisp [Building availible]
+     [10:27] [15/20]                  Archer [Building availible]
+     [10:47] [17/28]                  Archer [Building availible]
+     [10:48] [19/28]       Wood Wisp to Mine [OK]
+     [10:49] [19/28]               Moon Well [OK]
+     [11:07] [19/28]                  Archer [Building availible]
+     [11:27] [21/28]                  Archer [Building availible]
+     [11:28] [23/28]   Priestess of the Moon [OK]
+     [11:47] [28/36]                  Archer [Building availible]
+     [12:08] [30/36]                  Archer [enough Gold]
+     [12:30] [32/36]                  Archer [enough Gold]
+     [12:31] [34/36]       Wood Wisp to Mine [OK]
+     [12:50] [34/36]                  Archer [Building availible]
+
+     ---Force at the end---
+                       Wisp : 11 [Last one: 10:29]
+                     Archer : 10 [Last one: 13:10]
+      Priestess of the Moon :  1 [Last one: 12:23]
+             Ancient of War :  1 [Last one: 05:26]
+           Tree of Eternity :  1 [Last one: 08:31]
+                  Moon Well :  3 [Last one: 11:44]
+            Altar of Elders :  1 [Last one: 06:07]
+               Hunters Hall :  1 [Last one: 01:06]
+              Improved Bows :  1 [Last one: 09:46]
+               Marksmanship :  1 [Last one: 09:11]
+       Strength of the Moon :  2 [Last one: 10:37]
+                 Moon Armor :  1 [Last one: 04:32]
+
+     Harvested Gold : 3828
+
+     Harvested Wood : 1064
+     Gold at the end: 193
+     Wood at the end: 9
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 22:00 minutes
+     Scouting unit after 02:40 minutes
+[1341 generations] [ 20 mutations] [ 20 mutation factor]
+     [00:00] [05/12]            Hunters Hall [OK]
+     [00:01] [05/12]         Altar of Elders [OK]
+     [00:02] [05/12]                    Wisp [OK]
+     [00:16] [06/12]                    Wisp [Building availible]
+     [00:32] [07/12]               Moon Well [enough Gold]
+     [00:33] [07/12]     Gold Wisp to Forest [OK]
+     [02:26] [07/20]            Tree of Ages [enough Wood]
+     [04:26] [07/20]                    Wisp [Building availible]
+     [08:21] [08/20]        Tree of Eternity [enough Wood]
+     [09:58] [08/20]          Ancient of War [enough Wood]
+     [09:59] [08/20]     Gold Wisp to Forest [OK]
+     [10:00] [08/20]   Priestess of the Moon [OK]
+     [11:03] [13/20]                  Archer [Building availible]
+     [11:07] [15/20]    Strength of the Moon [enough Wood]
+     [11:23] [15/20]                  Archer [Building availible]
+     [11:43] [17/20]                  Archer [Building availible]
+     [11:44] [19/20]                    Wisp [OK]
+     [12:24] [20/20]              Moon Armor [enough Wood]
+     [14:53] [20/20]            Tree of Life [enough Wood]
+     [16:48] [20/20]                  Archer [Supply satisfied]
+     [17:08] [22/30]                  Archer [Building availible]
+     [17:28] [24/30]                  Archer [Building availible]
+     [17:48] [26/30]                  Archer [Building availible]
+     [18:08] [28/30]            Marksmanship [Building availible]
+     [18:19] [28/30]               Moon Well [enough Wood]
+     [18:48] [28/30]                  Archer [Building availible]
+     [19:47] [30/38]    Strength of the Moon [enough Wood]
+     [19:56] [30/38]                  Archer [enough Wood]
+     [20:16] [32/38]                  Archer [Building availible]
+     [21:24] [34/38]           Improved Bows [enough Wood]
+
+     ---Force at the end---
+                       Wisp :  9 [Last one: 11:58]
+                     Archer : 10 [Last one: 20:36]
+      Priestess of the Moon :  1 [Last one: 10:55]
+             Ancient of War :  1 [Last one: 11:03]
+               Tree of Life :  1 [Last one: 16:48]
+           Tree of Eternity :  1 [Last one: 10:21]
+                  Moon Well :  2 [Last one: 19:14]
+            Altar of Elders :  1 [Last one: 01:06]
+               Hunters Hall :  1 [Last one: 01:05]
+              Improved Bows :  1 [Last one: 21:59]
+               Marksmanship :  1 [Last one: 18:48]
+       Strength of the Moon :  2 [Last one: 21:03]
+                 Moon Armor :  1 [Last one: 13:24]
+
+     Harvested Gold : 4752
+
+     Harvested Wood : 1243
+     Gold at the end: 1077
+     Wood at the end: 43
+[----#4 solution end--------]
+

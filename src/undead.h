@@ -2,9 +2,11 @@
 
 class Player_Undead: public RACE
 {
+	unsigned char last_used; //only for unsummon: the last required / used building
+	unsigned char unsummon_count[3];
+	unsigned char unsummon_type[3];
 public:
 	virtual void Set_Goals();
-	virtual void Build(unsigned char what);
 	virtual void Calculate();
 	virtual void InitRaceSpecific();
 	virtual void readjust_goals();

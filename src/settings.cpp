@@ -2,31 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+#include "io.h"
 Settings setup;
 
-#ifdef WIN32
-HANDLE scr;
-	
-const unsigned char colorsWin32[7]= //Translate Linux ANSI Colors to SetConsoleTextAttribute Colors
-{
-	FOREGROUND_RED,FOREGROUND_GREEN,FOREGROUND_RED|FOREGROUND_GREEN,FOREGROUND_BLUE,FOREGROUND_RED|FOREGROUND_BLUE,FOREGROUND_GREEN|FOREGROUND_BLUE,FOREGROUND_RED|FOREGROUND_BLUE|FOREGROUND_GREEN
-};
-
-void print(const char * x) {DWORD num; WriteConsole(scr,x,strlen(x),&num,0); }
-
-#endif
-
-void Settings::setColor(unsigned char c)
-{
-	if(colors==0) return;
-	#ifdef WIN32
-
-	SetConsoleTextAttribute(scr,colorsWin32[c-31]);
-	#elif __linux__
-	printf("\033[0;%d;40m",c);
-	#endif
-};
 
 void Settings::Fatal(char * strn)
 { 
@@ -311,7 +289,7 @@ unsigned char Settings::InitSettings()
 	return(0);
 };
 
-unsigned char Settings::InitGoal(char I[11])
+unsigned char Settings::InitGoal(char Input[11])
 {
 	const unsigned short power[4]={1,10,100,1000};
         unsigned short size,s,count_goals;
@@ -320,24 +298,25 @@ unsigned char Settings::InitGoal(char I[11])
         unsigned short data[2*MAX_GOALS];
         char * buffer;
 	FILE * pFileS;
+	char tmp[255];
 	
-	printf("Moving on to %s...\n",I);
+	printf("Moving on to %s...\n",Input);
 
 	for(s=0;s<MAX_GOALS;s++)
 	{
 		goal[s].what=0;
 		goal[s].time=0;
-		Ziel[s]=0;
+		buildable[s]=0;
 		data[2*s]=0;
 		data[2*s+1]=0;
 	}
 
-	printf("Checking input file [%s]...\n",I);
+	printf("Checking input file [%s]...\n",Input);
 	
-        pFileS = fopen (I,"rb");
+        pFileS = fopen (Input,"rb");
 	if(pFileS==NULL)
 	{
-		printf("[%s]:",I);Fatal("Goal file not found!");
+		printf("[%s]:",Input);Fatal("Goal file not found!");
 		return(1);		
 	};
 	printf("File found. Reading... ");
@@ -363,7 +342,7 @@ unsigned char Settings::InitGoal(char I[11])
 			}
 			if(t>3)
 			{
-				printf("[%s]: ",I);
+				printf("[%s]: ",Input);
 				Fatal("Do not use numbers bigger than 9999 in the goal file!");
 			        delete buffer;
 				return(1);
@@ -389,38 +368,41 @@ unsigned char Settings::InitGoal(char I[11])
 		if((stats[race][s].type==3)&&(data[s*2]>1))
 		{
 			printf("ERROR: Research projects cannot be build more than a single time.\n");
-			printf("Section %s in %s: Using 1 instead of %i...\n",stats[race][s].name,I,data[s*2]);
+			printf("Section %s in %s: Using 1 instead of %i...\n",stats[race][s].name,Input,data[s*2]);
 			data[s*2]=1;
 		}
 		if((data[s*2+1]>0)&&(data[s*2+1]*60+stats[race][s].BT >= Max_Time))
 		{
 			printf("ERROR: Build Time nearly exceeds Max Time!\n");
-			printf("Try to increase Max Time [%i] in 'settings.txt' or reduce the goal time [%i] in %s!\n",Max_Time/60,data[s*2+1],I);
+			printf("Try to increase Max Time [%i] in 'settings.txt' or reduce the goal time [%i] in %s!\n",Max_Time/60,data[s*2+1],Input);
 			printf("Disabling goal time for %s...\n",stats[race][s].name);
 			data[s*2+1]=0;
 		}
 		goal[s].what=data[s*2];
 		goal[s].time=data[s*2+1];
+
+		//TODO: CHECK!
+		
 		count_goals+=goal[s].what;
 	}
 	
-	printf("Reformatting Data Minutes -> Seconds\n");
+	print("Reformatting Data Minutes -> Seconds\n");
 	for(s=0;s<MAX_GOALS;s++)
 		goal[s].time*=60;
 	setColor(32);
-	printf("All goals [%i] successfully initialized!\n\n",count_goals);
+	sprintf(tmp,"All goals [%i] successfully initialized!\n\n",count_goals);
+	print(tmp);
 	setColor(37);
 	//TODO: SCC: add here an ENTER to 
-	printf("Press ENTER to continue...");
-	unsigned char a;
-	a=getchar();
+	print("Press ENTER to continue...");
+	if(setup.Verbose==1) d=getchar();
 	return(0);
 }
 
 void Settings::AdjustMining()
 {
-	unsigned short i,j,k;
-	float f,g;
+//	unsigned short i,j,k;
+//	float f,g;
 //	const double * Harvest_Speed_tmp[RESOURCES][MAX_PEONS];
 		// TODO: ARGH hier noch was machen
 //	for(j=0;j<RESOURCES;j++) 

@@ -1,19 +1,8 @@
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#ifndef __SETTINGS_H
+#define __SETTINGS_H
 
 #include "main.h"
 #include <stdio.h>
-#ifdef WIN32
-#include <windows.h>
-#define clrscr() system("clear"); //~~~~
-extern HANDLE scr;
-#define gotoxy(x,y) {COORD pos={(x),(y)}; SetConsoleCursorPosition(scr,pos); }       
-extern void print(const char * x); 
-#elif __linux__
-#define clrscr() printf("\033[2J") // Bildschirm loeschen
-#define gotoxy(x,y) printf("\033[%d;%dH",(y),(x))
-#define print(x) printf((x))
-#endif
 
 class Settings
 {
@@ -29,11 +18,8 @@ class Settings
 	unsigned short Max_Time,Max_Generations,Mutations,Mutation_Rate;
 	unsigned char InitSettings();
 	unsigned char InitGoal(char I[11]);
-	void setColor(unsigned char c);
 	void AdjustMining();
 	void Fatal(char * strn);
-	private:
-	unsigned char colors;
 };
 
 extern Settings setup;	// definiert in settings.cpp

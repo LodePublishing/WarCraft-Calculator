@@ -1,11 +1,10 @@
 CXX=g++
-OBJ= src/wcc.o src/human.o src/ork.o src/elves.o src/undead.o src/race.o src/settings.o 
-CXXFLAGS= -O3
-LIBS=
+FLAGS= -g -Wall -gstats
+OBJ= src/wcc.o src/human.o src/ork.o src/elves.o src/undead.o src/race.o src/settings.o src/io.o src/init.o 
 TARGET=wcc
 
 all:  $(OBJ)
-	$(CXX) -o $(TARGET) $(OBJ) $(LIBS) 
+	$(CXX) $(FLAGS) -o $(TARGET) $(OBJ) 
 
 clean: 
 	@rm -f src/*.o

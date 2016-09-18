@@ -3,26 +3,22 @@
 
 // MOVED all #defines for units/buildings/upgrades to main.h (because the stats thingy)
 
-#define BUILDING_TYPES_ORC 50
-
 	void Player_Orc::Set_Goals()
 	{
 		unsigned char i,j,k;
 		long Need_Wood;
-		building_types=BUILDING_TYPES_ORC;
-
 
 //-----General (put it in races.cpp later)----------
 		for(j=0;j<6;j++)
-		for(i=0;i<BUILDING_TYPES_ORC;i++)
+		for(i=0;i<MAX_GOALS;i++)
 			if(goal[i].what>0)
 			{
-				Ziel[i]=1;
+				buildable[i]=1;
 
 				for(k=0;k<3;k++)
 					if((stats[ORC][i].prerequisite[k]>0)&&(goal[stats[ORC][i].prerequisite[k]].what==0))
 						goal[stats[ORC][i].prerequisite[k]].what=1;
-				if((stats[ORC][i].facility>0)&&(goal[stats[ORC][i].facility].what==0))
+				if((stats[ORC][i].facility>0)&&(goal[stats[ORC][i].facility].what==0)&&(i!=TIER2)&&(i!=TIER3))
 					goal[stats[ORC][i].facility].what=1;
 //-------------------------------------------------				
 				
@@ -35,13 +31,13 @@
 					case SPIRIT_LODGE:
 					case BESTIARY:
 					case FORTRESS:
-						Ziel[STRONGHOLD]=1;break;
+						buildable[STRONGHOLD]=1;break;
 
 					case MELEE_WEAPONS_ORC:
 					case UNIT_ARMOR:
 					case RANGED_WEAPONS_ORC:
 					case LEATHER_ARMOR:
-						if(goal[i].what==2) Ziel[STRONGHOLD]=1; else if((goal[i].what==3)&&(goal[FORTRESS].what==0)) goal[FORTRESS].what=1;break;
+						if(goal[i].what==2) buildable[STRONGHOLD]=1; else if((goal[i].what==3)&&(goal[FORTRESS].what==0)) goal[FORTRESS].what=1;break;
 					
 					case SHAMAN_TRAINING:
 					case WITCH_DOCTOR_TRAINING:
@@ -50,26 +46,35 @@
 					default:break;
 				}
 			}
-		if((goal[FORTRESS].what==0)&&(Ziel[STRONGHOLD]>0)) goal[STRONGHOLD].what=1; // ERROR: goal[stronghold]>1
+		if((goal[TIER3].what==0)&&(buildable[TIER2]>0)&&(goal[TIER2].what==0)) goal[TIER2].what=1;
 		
-		Ziel[PEON]=1;
-		Ziel[GREAT_HALL]=1;
-		Ziel[BURROW]=1;
+		buildable[PEON]=1;
+		buildable[GREAT_HALL]=1;
+		buildable[BURROW]=1;
+if(ADDITIONAL_ORDERS==1)
+{
+		buildable[NOP]=1;
+		goal[NOP].what=0;			
+		buildable[IF]=1;
+		buildable[JMP]=1;
+		goal[IF].what=1;
+		goal[JMP].what=1;
+}
 
 		Need_Wood=0;
-		for(i=0;i<BUILDING_TYPES_ORC;i++)
+		for(i=0;i<MAX_GOALS;i++)
 			Need_Wood+=(goal[i].what*stats[ORC][i].res[WOOD]);
-		//TODO: Fehler: Morphupgrades (mit nur 'Ziel=...' werden ignoriert) Also die Schritte townhall->keep->castle nur castle
+		//TODO: Fehler: Morphupgrades (mit nur 'buildable=...' werden ignoriert) Also die Schritte townhall->keep->castle nur castle
 
 		if(Need_Wood>0)
 		{
-			Ziel[ONE_WOOD_PEON_TO_MINE]=1;
-			Ziel[ONE_GOLD_PEON_TO_FOREST]=1;
+			buildable[ONE_WOOD_PEON_TO_MINE]=1;
+			buildable[ONE_GOLD_PEON_TO_FOREST]=1;
 		}
 
 		Max_Build_Types=0;
-		for(i=0;i<BUILDING_TYPES_ORC;i++)
-		if(Ziel[i]==1)
+		for(i=0;i<MAX_GOALS;i++)
+		if(buildable[i]==1)
 		{
 			Build_Av[Max_Build_Types]=i;
 			Max_Build_Types++;
@@ -80,149 +85,6 @@
 		goal[ONE_WOOD_PEON_TO_MINE].what=0;		
 	}
 	
-// Test whether the item can be build (minerals, wood, supply, buildings, ...)
-	void Player_Orc::Build(unsigned char what)
-	{
-		unsigned char m;
-		suc=0;
-
-	//	Das ganze zeug hier in die Race.cpp schreiben (ausser die Spezialfaelle und die peonverschiebeaktion (Undead, ghuls!)
-			if(what==ONE_GOLD_PEON_TO_FOREST)
-			{
-				if(PeonAt[GOLDMINE]>0)
-				{
-					ok=1;
-					PeonAt[GOLDMINE]--;
-					PeonAt[FOREST]++;
-					program[IP].built=1;
-				} else suc=6;
-			}
-			else
-			if(what==ONE_WOOD_PEON_TO_MINE)
-			{
-				if(PeonAt[FOREST]>0)
-				{
-					ok=1;
-					PeonAt[FOREST]--;
-					PeonAt[GOLDMINE]++;
-					program[IP].built=1;
-				} else suc=6;
-			}
-			else
-			{
-				nr=255;
-				for(m=0;m<MAX_BUILDINGS;m++)
-				if(building[m].RB==0)
-				{
-					nr=m;
-					m=MAX_BUILDINGS;			
-				}
-		
-			if( (Supply<stats[ORC][what].supply) && (stats[ORC][what].supply>0)) suc=4;
-			else 
-				//TODO: Allgemein schreib0rn!
-			if ( res[GOLD]<stats[ORC][what].res[GOLD]+(stats[race][what].type==4)*force[what]*stats[race][what].upres[GOLD]) suc=2;
-			else
-			if ( res[WOOD]<stats[ORC][what].res[WOOD]+(stats[race][what].type==4)*force[what]*stats[race][what].upres[WOOD]) suc=3;
-			else if	(PeonAt[GOLD]+PeonAt[WOOD]<1*(stats[ORC][what].type==2)) suc=6;
-			else //Check whether this is already researched/upgraded
-				
-			if(
-			 (stats[ORC][what].type>=3)&&
-			 ((stats[ORC][what].type!=4)||(force[what]>=3)||(availible[what]!=1))&&
-			 ((stats[ORC][what].type!=3)||(force[what]!=0)||(availible[what]!=1))
-			) suc=7;
-			else
-		       if( ((stats[ORC][what].prerequisite[0]==0)||(force[stats[ORC][what].prerequisite[0]]>0))&&
- 			   ((stats[ORC][what].prerequisite[1]==0)||(force[stats[ORC][what].prerequisite[1]]>0))&&
-			   ((stats[ORC][what].prerequisite[2]==0)||(force[stats[ORC][what].prerequisite[2]]>0))&&
-			   ((stats[ORC][what].facility==0)||(availible[stats[ORC][what].facility]>0)) && (nr<255))
-//TODO: 'suc' rein
-		{
-			switch(what) 
-	// TODO: Maybe generalize the whole part... i.e. prequesite and availible building in the stats :-o
-	// TODO: Maybe optimize the order of checks to improve speed
-			{
-				case PILLAGE:
-				case BACKPACK_ORC:
-				case PEON:if(availible[FORTRESS]>0)
-						{
-						building[nr].facility=FORTRESS;
-						Produce(what);
-						availible[FORTRESS]--;
-						}					     
-					     else if(availible[STRONGHOLD]>0)
-					     {
-						building[nr].facility=STRONGHOLD;
-					      	     Produce(what);
-						availible[STRONGHOLD]--;
-					     }
-					     else if(availible[GREAT_HALL]>0)
-					     {
-						building[nr].facility=GREAT_HALL;
-						     Produce(what);
-						     availible[GREAT_HALL]--;
-					     };break;//~~
-				case TROLL_REGENERATION:
-				case BERSERKER_STRENGTH:
-					     if(force[STRONGHOLD]+force[FORTRESS]>0)
-					     {
-						     Produce(what);
-						     availible[BARRACKS]--;
-					     };break;
-				case SPIRIT_LODGE:
-				case BESTIARY:
-					     if(force[STRONGHOLD]+force[FORTRESS]>0) Produce(what);break;
-				case MELEE_WEAPONS_ORC:
-				case UNIT_ARMOR:
-				case RANGED_WEAPONS_ORC:
-				case LEATHER_ARMOR:
-					     if( (force[what]==0)|| ((force[what]==1)&&(force[STRONGHOLD]+force[FORTRESS]>0)) || ((force[what]==2)&&(force[FORTRESS]>0)))
-					     {
-						     Produce(what);
-						     availible[WARMILL]--;
-					     };break;
-                                case SHAMAN_TRAINING:
-				case WITCH_DOCTOR_TRAINING:
-				case SPIRIT_WALKER_TRAINING:
-					     if( (force[what]==0) || ((force[what]==1)&&(force[FORTRESS]>0)))
-					     { 
-						     Produce(what);
-						     availible[SPIRIT_LODGE]--;
-					     };break;
-					
-				case STRONGHOLD:if(availible[GREAT_HALL]>0)
-						  {
-							Produce(what);
-		      					availible[GREAT_HALL]--;
-						  };break;
-	    //well... if I write 'town_hall' in facility it gets a goal... TODO: Change this :)
-				case FORTRESS:if(availible[STRONGHOLD]>0)
-						    {
-							   Produce(what);
-							   availible[STRONGHOLD]--;
-						    };break;
-			        default:Produce(what);if(stats[ORC][what].facility>0) availible[stats[ORC][what].facility]--;break;
-				
-			}
-			if((ok==1)&&(stats[race][what].type==2))				        
-			{
-			building[nr].RB+=5; //5 in game seconds to reach the building site
-			//TODO: Verallgemeinern!
-			if(PeonAt[GOLD]>0)
-				PeonAt[GOLD]--;
-			else if(PeonAt[WOOD]>0)
-				PeonAt[WOOD]--;
-
-			//TODO: Insert check whether there are enough peons!!
-			PeonAt[BUILDING]++;
-	         }
-		}
-	}
-			if((suc==0)&&(ok==0))
-				suc=1;
-	}
-
 // Do one run, go through one build order and record the results	
 	void Player_Orc::Calculate()
 	{
@@ -232,8 +94,8 @@
 		for(i=0;i<RESOURCES;i++)
 			harvested_res[i]=0;
 		
-		Vespene_Av=setup.Vespene_Geysirs;		
-		Vespene_Extractors=0;
+//		Vespene_Av=setup.Vespene_Geysirs;		
+//		Vespene_Extractors=0;
 		tt=0;
 
 		while((timer<setup.Max_Time) && (ready==0) && (IP<MAX_LENGTH))
@@ -283,13 +145,13 @@
 						switch(building[j].type)
 						{
 							case PILLAGE:
-							case BACKPACK_ORC:availible[building[j].facility]++;break;
+							case BACKPACK:availible[building[j].facility]++;break;
 							case PEON:PeonAt[GOLDMINE]++;
 								  availible[building[j].facility]++;break;
 							case BURROW:Supply+=8;Max_Supply+=8;break;
-							case GREAT_HALL:Supply+=10;Max_Supply+=10;break;
-							case STRONGHOLD:force[GREAT_HALL]--;break; 
-							case FORTRESS:force[STRONGHOLD]--;break;
+							case GREAT_HALL:expansions++;Supply+=10;Max_Supply+=10;break;
+							case STRONGHOLD:force[GREAT_HALL]--;availible[GREAT_HALL]--;break; 
+							case FORTRESS:force[STRONGHOLD]--;availible[STRONGHOLD]--;break;
 							default:break;
 						}
 						
@@ -306,20 +168,42 @@
 				}
 			}
 			
-			tt++;
 			ok=0;
+			if(wait_nop>0)
+			{
+				wait_nop--;
+				if(wait_nop==0)
+				{
+					program[IP].built=1;
+					program[IP].need_Supply=tMax_Supply-tSupply;
+					program[IP].have_Supply=tMax_Supply;
+					program[IP].res[GOLD]=(unsigned short)res[GOLD];
+					program[IP].res[WOOD]=(unsigned short)res[WOOD];
+					IP++;
+				}
+			}
+
+			if(Build_Av[program[IP].order]==NOP)
+			{
+				if(wait_nop==0) wait_nop=WAIT_NOP_TIME;
+			}
+			else
+				
+
+			tt++;
 			Build(Build_Av[program[IP].order]);
 			if(suc>0) program[IP].success=suc;
-			if((ok==1)||(tt>267))
+			if((ok==1)||(tt>MAX_BUILD_TIME))
 			{
-				if(tt<=267) program[IP].time=timer;
+				if(tt<=MAX_BUILD_TIME) program[IP].time=timer;
 				else 
 				{
-					program[IP].success=8;
+					program[IP].success=TIMEOUT;
 					program[IP].time=20000;
 				}
 				program[IP].need_Supply=tMax_Supply-tSupply;
 				program[IP].have_Supply=tMax_Supply;
+//				program[IP].
 				tt=0;
 				IP++;
 			}
@@ -361,5 +245,22 @@ Player_Orc::~Player_Orc()
 
 void Player_Orc::readjust_goals()
 {
-	//nothing to readjust here as Terra has no morphing units
+	//TODO: schoener schreiben
+	unsigned char i;
+	for(i=0;i<MAX_GOALS;i++)
+		if(goal[i].what>0)
+		{
+			if(i==FORTRESS)
+			{
+				if(goal[FORTRESS].what<=goal[STRONGHOLD].what)
+					goal[STRONGHOLD].what-=goal[FORTRESS].what;
+				else goal[STRONGHOLD].what=0;
+			}
+			else if(i==STRONGHOLD)
+			{
+				if(goal[STRONGHOLD].what<=goal[GREAT_HALL].what)
+					goal[GREAT_HALL].what-=goal[STRONGHOLD].what;
+				else goal[GREAT_HALL].what=0;
+			}
+		}
 }

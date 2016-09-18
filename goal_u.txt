@@ -5,7 +5,7 @@ set Dark Templars to for example two and left everything else at zero)
 
 Units
              Acolyte  0  0    
-               Ghoul  15  0
+               Ghoul 15  0
          Crypt Fiend  0  0
             Gargoyle  0  0
          Abomination  0  0

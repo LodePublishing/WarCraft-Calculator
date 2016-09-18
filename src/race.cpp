@@ -7,18 +7,19 @@
 
 void RACE::CalculateFitness()
 {
-	unsigned char i,j;
+	unsigned char i;
 	unsigned char bonus[MAX_GOALS]; // temporary data to check whether a bonus is already given (only applies if force > goal)
 	pFitness=0;
 	sFitness=0;
 		
-	for(i=0;i<RESOURCES;i++)
-		sFitness+=(unsigned short)(harvested_res[i]);
+//	for(i=0;i<RESOURCES;i++)
+//		sFitness+=(unsigned short)(harvested_res[i]+res[i]);
+	sFitness=(unsigned short)harvested_res[GOLD];
 	//Fehlt Modifikator! Mineral_Blocks, Mineral Mod, ...
 	if(ready==0)
         {
 	         timer=setup.Max_Time;
-		 for(i=0;i<building_types;i++)
+		 for(i=0;i<MAX_GOALS;i++)
                  	if(goal[i].what>0)
 	        	{
 	                	if(goal[i].what>force[i])
@@ -27,25 +28,25 @@ void RACE::CalculateFitness()
 					{
 			//not all goals met and not below time
 						if(goal[i].time>0)
-							pFitness+=(100*goal[i].time*force[i])/(goal[i].what*ftime[i]);
-						else pFitness+=(100*force[i])/goal[i].what;
+							pFitness+=(stats[race][i].Worth*goal[i].time*force[i])/(goal[i].what*ftime[i]);
+						else pFitness+=(stats[race][i].Worth*force[i])/goal[i].what;
 					}
 					else 
 					{
 						if(goal[i].time>0)
-							pFitness+=(100*goal[i].time*force[i])/(goal[i].what*setup.Max_Time);
-			        		else pFitness+=(100*force[i])/goal[i].what;
+							pFitness+=(stats[race][i].Worth*goal[i].time*force[i])/(goal[i].what*setup.Max_Time);
+			        		else pFitness+=(stats[race][i].Worth*force[i])/goal[i].what;
 					}
 				}
 				else //force >= goal
 				{
 				if((goal[i].time>0)&&(ftime[i]>goal[i].time))
-					pFitness+=(goal[i].time*100/ftime[i]);
-				else pFitness+=100;
+					pFitness+=(goal[i].time*stats[race][i].Worth/ftime[i]);
+				else pFitness+=stats[race][i].Worth;
 					
-				if(goal[i].what<force[i])
+/*				if(goal[i].what<force[i])
 					for(j=0;j<RESOURCES;j++)
-						sFitness-=(force[i]-goal[i].what)*stats[race][i].res[j];
+						sFitness-=(force[i]-goal[i].what)*stats[race][i].res[j];*/
 				}
 		}
 // TODO: Check for very small 'goal.time' values, probably in scc.cpp!!	 
@@ -55,18 +56,18 @@ void RACE::CalculateFitness()
                 if((building[i].RB>0)&&(goal[building[i].type].what>force[building[i].type])&&(bonus[building[i].type]>0))
 		{
 			if((goal[building[i].type].time>0)&&(force[building[i].type]==0))
-	                	pFitness+=(building[i].RB*100*goal[building[i].type].time*force[i])/(goal[building[i].type].what*stats[race][building[i].type].BT*setup.Max_Time);
+	                	pFitness+=(building[i].RB*stats[race][building[i].type].Worth*goal[building[i].type].time*force[i])/(goal[building[i].type].what*stats[race][building[i].type].BT*setup.Max_Time);
 			else 				   		
-				pFitness+=((building[i].RB*100)/(goal[building[i].type].what*stats[race][building[i].type].BT));
+				pFitness+=((building[i].RB*stats[race][building[i].type].Worth)/(goal[building[i].type].what*stats[race][building[i].type].BT));
 			bonus[building[i].type]--;
 		}
 	}
 	else   // all goals fulfilled, fitness <- timer 
 	{
 		pFitness=setup.Max_Time-timer;
-		for(i=0;i<building_types;i++)
+		for(i=0;i<MAX_GOALS;i++)
 	               	if(goal[i].what>0)
-	                	pFitness+=100;
+	                	pFitness+=race[stats][i].Worth;
 	}
 }
 
@@ -81,14 +82,14 @@ void RACE::CheckReady(unsigned char j)
 	program[building[j].IP].built=1;
 	if(((force[building[j].type]>=goal[building[j].type].what)&&(ftime[building[j].type]==0))||(goal[building[j].type].what==0))
 		ftime[building[j].type]=timer; // Get time when the goal was fulfilled OR the time when the last item was build (if goal = 0)
-	
-	if(stats[race][building[j].type].type<3)
-		availible[building[j].type]++;
-	else
+	if((stats[race][building[j].type].type==RESEARCH)||(stats[race][building[j].type].type==UPGRADE))
 		availible[building[j].type]=1;
+	else
+		availible[building[j].type]++;
 	ready=1;
-	for(i=0;i<building_types;i++)
-		ready&=((goal[i].what<=force[i])&&((goal[i].time>=ftime[i])||(goal[i].time==0)));
+	for(i=0;i<MAX_GOALS;i++)
+//		ready&=((goal[i].what<=force[i])&&((goal[i].time>=ftime[i])||(goal[i].time==0)));
+		ready&=(goal[i].what<=force[i]);	
 }
 
 
@@ -100,18 +101,18 @@ void RACE::Harvest_Resources()
 
 	if((Max_Supply-Supply)>80)
 	{
-		res[GOLD]+=0.8*i;
-		harvested_res[GOLD]+=0.8*i;
+		res[GOLD]+=8*i;
+		harvested_res[GOLD]+=8*i;
 	}
 	if((Max_Supply-Supply)>50)	
 	{
-		res[GOLD]+=1.4*i;
-		harvested_res[GOLD]+=1.4*i;
+		res[GOLD]+=14*i;
+		harvested_res[GOLD]+=14*i;
 	}
 	else
 	{
-		res[GOLD]+=2*i;
-		harvested_res[GOLD]+=2*i;
+		res[GOLD]+=20*i;
+		harvested_res[GOLD]+=20*i;
 	}
 
 	res[WOOD]+=Harvest_Speed*PeonAt[FOREST]; //TODO!!! mehr :)
@@ -139,21 +140,28 @@ void RACE::Produce(unsigned char what)
 {
 	unsigned char i;
 	building[nr].RB=stats[race][what].BT;
-	for(i=0;i<RESOURCES;i++)
-		res[i]-=stats[race][what].res[i];
+	for(i=0;i<RESOURCES;i++) res[i]-=stats[race][what].res[i];
 	building[nr].type=what;
 	Supply-=stats[race][what].supply;
 	building[nr].on_the_run=0;
-	if(stats[race][what].type>2) // Researches, Upgrades
-		availible[what]=0; //Temporaliy/permanently shut down possibility to re-research the item while it is currently in research
-	if(stats[race][what].type==4) // Upgrade!
+	switch(stats[race][what].type)
 	{
-		building[nr].RB+=force[what]*16; //16 in WC, 32 in SC
-		for(i=0;i<RESOURCES;i++)
-			res[i]-=stats[race][what].upres[i]*force[what];
-        }
+		case RESEARCH:availible[what]=0;break;
+		case UPGRADE:availible[what]=0;
+	   	             building[nr].RB+=force[what]*16; //16 in WC, 32 in SC
+                  		for(i=0;i<RESOURCES;i++)
+		                 	res[i]-=stats[race][what].upres[i]*force[what];break;
+		case HERO:if(heroes>0) {res[GOLD]-=425;res[WOOD]-=100;};heroes++;;break;
+		default:break;
+        };
 	building[nr].IP=IP;
 	ok=1;
+	nr=255;
+        for(i=0;i<MAX_BUILDINGS;i++) if(building[i].RB==0)
+        {
+	        nr=i;
+	        i=MAX_BUILDINGS;
+        }
 }
 
 
@@ -161,51 +169,56 @@ void RACE::Produce(unsigned char what)
 // One of the Core functions
 void RACE::Mutate()
 {
-	unsigned char ta,tb,i,x,y,tmp[MAX_LENGTH];
-	length=MAX_LENGTH;
+	unsigned char ta,i,x,y;
+//	unsigned char tb,tmp[MAX_LENGTH];
+	//length=MAX_LENGTH;
 	if(length==0) return;
 	
 	for(i=0;i<setup.Mutations;i++)
 	{
-		//delete one entry
-		if(rand()%setup.Mutation_Rate==0)
-		{
-			x=rand()%length; //MAX_LENGTH
-			for(y=x;y<length-1;y++)
-			program[y].order=program[y+1].order;
-		}
+		x=rand()%MAX_LENGTH;
+		//delete one variabel entry and move
+		if((rand()%(setup.Mutation_Rate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
+			//Mehrere Schmieden/Kasernen etc. zulassen!
+			for(y=x;y<MAX_LENGTH-1;y++)
+				program[y].order=program[y+1].order;
 	
-		//add one entry
-		if(rand()%setup.Mutation_Rate==0)
+		//add one variabel entry
+		x=rand()%MAX_LENGTH;
+		if((rand()%(setup.Mutation_Rate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
 		{
-			x=rand()%length;
-			for(y=length-1;y>x;y--)
+			for(y=MAX_LENGTH-1;y>x;y--)
 				program[y].order=program[y-1].order;
-			program[x].order=rand()%Max_Build_Types;
+			y=rand()%Max_Build_Types;
+			while(Variabel[Build_Bv[program[y].order]]==0) y=rand()%Max_Build_Types;
+				program[x].order=y;
 		}
 
 		//change one entry
-		if(rand()%setup.Mutation_Rate==0)
+		x=rand()%MAX_LENGTH;
+		if((rand()%(setup.Mutation_Rate)==0)&&(Variabel[Build_Bv[program[x].order]]==1))
 		{
-			x=rand()%length;
-			program[x].order=rand()%Max_Build_Types;
+			y=rand()%Max_Build_Types;//Optimieren
+			while(Variabel[y]==0) y=rand()%Max_Build_Types;
+			program[x].order=y;
 		}
 		
+		
 		//exchange two entries
-		if(rand()%setup.Mutation_Rate==0)
+		if(rand()%(setup.Mutation_Rate)==0)
 		{
-			x=rand()%length;
-			y=rand()%length;
+			x=rand()%MAX_LENGTH;
+			y=rand()%MAX_LENGTH;
 			ta=program[x].order;
 			program[x].order=program[y].order;
 			program[y].order=ta;
 		}
 
 		//rotate a list [ta, ta+1, ..., tb] -> [ta+1, ..., tb, ta]
-		if(rand()%(setup.Mutation_Rate)==0)
+/*		if(rand()%(setup.Mutation_Rate)==0)
 		{
-			ta=rand()%length;
-			tb=rand()%length;
+			ta=rand()%MAX_LENGTH;
+			tb=rand()%MAX_LENGTH;
 			if(ta<tb)
 			{
 				x=program[ta].order;
@@ -219,9 +232,9 @@ void RACE::Mutate()
 		//TODO switch ta and tb if tb<ta
 		if(rand()%(setup.Mutation_Rate)==0)
 		{
-			ta=rand()%length;
-			tb=rand()%length;
-			x=rand()%length; //move it here
+			ta=rand()%MAX_LENGTH;
+			tb=rand()%MAX_LENGTH;
+			x=rand()%MAX_LENGTH;
 			if((ta<tb)&&(x>tb))
 			{
 				for(i=0;i<x-tb;i++)
@@ -240,29 +253,198 @@ void RACE::Mutate()
 				for(i=0;i<ta-x;i++)
 					program[tb-x].order=tmp[i];		
 			}
-		}
+		}*/
 	}
 		
 }
+
+
+void RACE::Build(unsigned char what)
+{
+	unsigned char k,l;
+	unsigned short life_creeps,life_troups;
+	const Stats * stat;
+	stat=&stats[race][what];
+	suc=0;
+	ok=0;
+	if((ADDITIONAL_ORDERS==1)&&(what==IF))
+	{
+		if((IP<MAX_LENGTH-1)&&(force[Build_Av[program[IP+1].order]]>0))
+		{
+			ok=1;
+			program[IP].built=1;
+			program[IP+1].built=1; //Obacht wegen CancelBuildign bei NE
+			IP++;
+		}
+				
+	}
+	else
+	if((ADDITIONAL_ORDERS==1)&&(what==JMP))
+	{
+		if(IP<MAX_LENGTH-10)
+		{
+			ok=1;
+			program[IP].built=1;
+			IP+=2;			
+		}
+	} else
+	if(what==ONE_GOLD_PEASANT_TO_FOREST)
+	{
+		if(PeonAt[GOLDMINE]>0)
+		{
+			ok=1;
+			PeonAt[GOLDMINE]--;
+			PeonAt[FOREST]++;
+			program[IP].built=1;
+		} else suc=WORKER_AVAILIBLE;
+	}
+	else
+        if(what==ONE_WOOD_PEASANT_TO_MINE)
+	{
+		if(PeonAt[FOREST]>0)
+		{
+			ok=1;
+			PeonAt[FOREST]--;
+			PeonAt[GOLDMINE]++;
+			program[IP].built=1;
+		} else suc=WORKER_AVAILIBLE;
+	}
+/*	else 
+	if((race==UNDEAD)&&(what==UNSUMMON_BUILDING))
+	{
+	//TODO ?!	
+	}*/
+	else 
+//TODO: Array und testen wo der comp am meisten haengenbleibt und abbricht... moeglichst dann nach oben bringen!			
+		if(((stat->prerequisite[0]>0)&&(force[stat->prerequisite[0]]==0))||((stat->prerequisite[1]>0)&&(force[stat->prerequisite[1]]==0))||((stat->prerequisite[2]>0)&&(force[stat->prerequisite[2]]==0))||((stat->special==1)&&(((stat->type==UPGRADE)&&(  ((force[what]==0)&&(force[TIER3]+force[TIER2]==0))||((force[what]==1)&&(force[TIER3]==0))))|| ((stat->type!=UPGRADE)&&(force[TIER3]+force[TIER2]==0))))) suc=TECHNOLOGY_AVAILIBLE;
+		//Undead/ork hier rein! merken was als letztes benoetigt wurde!
+		else
+		if((stat->facility>0)&&(availible[stat->facility]==0)) suc=BUILDING_AVAILIBLE;
+                else
+                if ((unsigned short)res[GOLD]<(stat->res[GOLD]+(stat->type==UPGRADE)*force[what]*stat->upres[GOLD])) suc=ENOUGH_GOLD;
+                else
+                if ((unsigned short)res[WOOD]<(stat->res[WOOD]+(stat->type==UPGRADE)*force[what]*stat->upres[WOOD])) 
+		suc=ENOUGH_WOOD;
+                else
+		if( (Supply<stat->supply) && (stat->supply>0)) suc=SUPPLY_SATISFIED;
+		else
+		if((stat->type==UPGRADE)&&(((force[what]==2)&&(force[TIER3]==0))||((force[what]==1)&&(force[TIER3]+force[TIER2]==0)))) suc=TECHNOLOGY_AVAILIBLE;
+		else
+		if((stat->type==HERO)&&((force[what]>0)||(heroes>=3)||((heroes==2)&&(force[CASTLE]==0))||((heroes==1)&&(force[CASTLE]+force[KEEP]==0))||((heroes>0)&&((res[GOLD]<425)||(res[WOOD]<100))))) suc=HERO_PROBLEM;
+		else
+		if((((stat->type==RESEARCH))&&((force[what]>0)||(availible[what]==0)))||(((stat->type==UPGRADE))&&((force[what]>3)||(availible[what]==0)))) suc=RESEARCHED;
+		else       		
+		if (PeonAt[GOLDMINE]+PeonAt[WOOD]*(race!=UNDEAD)<1*(stat->type==BUILDING)) suc=WORKER_AVAILIBLE;
+		else
+		if(nr==255) suc=TOO_MANY_BUILDINGS;
+		else
+//TODO: bei Fehlern trotzdem Auftrag ausfuehren, aber Strafpunkte verteilen!
+		if((race==ELVES)&&(what==ENCHANTED_BEARS))
+		{
+			if(force[DRUID_OF_CLAW_TRAINING]==2)
+			{
+				Produce(what);
+				availible[ANCIENT_OF_LORE]--;
+			}
+		}
+		else if((race==ELVES)&&(what==ENCHANTED_CROWS))
+		{
+			if(force[DRUID_OF_THALON_TRAINING]==2)
+			{
+				Produce(what);
+				availible[ANCIENT_OF_WIND]--;
+			}
+		}
+		else if((race==ELVES)&&(what==NATURES_BLESSING))
+		{
+			if(availible[TIER3]>0) {building[nr].facility=TIER3;Produce(what);availible[TIER3]--;}
+  			else if(availible[TIER2]>0) {building[nr].facility=TIER2;Produce(what);availible[TIER2]--;}
+			else suc=BUILDING_AVAILIBLE;
+		}
+
+		//!! On the Run fuer building noch rein, um die exe ueberhaupt zu erreichen!
+		else if(((race==UNDEAD)&&(what==HAUNTED_GOLD_MINE))||((race!=UNDEAD)&&(what==TIER1)))
+		{
+			for(k=0;k<MAX_EXPANSIONS;k++)
+				if(Expansion[k].status==1)
+				{
+					life_troups=0;
+					life_creeps=0;
+//					for(l=0;l<MAX_CREEPS;l++)
+//						life_creeps+=Expansion[k].creeps[l];
+					for(l=0;l<MAX_GOALS;l++)
+						if(stats[race][l].type==UNIT) life_troups+=stats[race][l].hp*force[l];
+					if(life_creeps<=life_troups) { Expansion[k].status=0;}
+				}
+				for(k=0;k<MAX_EXPANSIONS;k++)
+					if(Expansion[k].status==0)
+					{
+// was ueberlegen hier... v.a. undead unsummon Code umschreiben
+//						building[nr].facility=k+1;
+						Produce(what);
+						Expansion[k].status=2;
+						k=MAX_EXPANSIONS;
+					}
+			if(k<MAX_EXPANSIONS) suc=EXPANSIONS_AVAILIBLE;
+		}
+		else if( ((race==ORC)&&(what==PILLAGE))||(what==BACKPACK)||(what==PEASANT) )
+		{
+			if(availible[TIER3]>0) { building[nr].facility=TIER3;Produce(what);availible[TIER3]--;}
+        		else if(availible[TIER2]>0) { building[nr].facility=TIER2;Produce(what);availible[TIER2]--;}
+	                else if(availible[TIER1]>0) { building[nr].facility=TIER1;Produce(what);availible[TIER1]--;}
+	                else suc=BUILDING_AVAILIBLE;
+		}
+		else if( (race==UNDEAD)&&((what==NERUBIAN_TOWER)||(what==SPIRIT_TOWER)) )
+		{
+			if(availible[ZIGGURAT]>0) { availible[ZIGGURAT]--;Produce(what);}
+			else suc=BUILDING_AVAILIBLE;
+		}
+		else
+		{
+	               	Produce(what);
+			if(stat->facility>0) availible[stat->facility]--;
+		}
+	                
+		if((ok==1)&&(stat->type==BUILDING))
+		{
+//	!!!!! TODO:CHECKEN
+			building[nr].RB+=REACH_BUILDING_SITE; //5 in game seconds to reach the building site
+			if(race!=UNDEAD)
+			{
+				if(PeonAt[GOLDMINE]>0) PeonAt[GOLDMINE]--;
+				else if(PeonAt[WOOD]>0) PeonAt[WOOD]--;
+				if(race==ELVES) { force[WISP]--;Supply++;}
+				else PeonAt[BUILDING]++;	
+				if(race==HUMAN) building[nr].peons=1;
+			}
+		}
+
+        if((suc==OK)&&(ok==0))
+	        suc=TECHNOLOGY_AVAILIBLE;
+}
+
+
 
 // Reset all ongoing data (between two runs)
 void RACE::Init()
 {
 	unsigned char i,j;
-	for(i=0;i<building_types;i++)
+	heroes=0;
+	for(i=0;i<MAX_GOALS;i++)
         {
                force[i]=0;
 	       ftime[i]=0;
-               if(stats[race][i].type<3)
-	               availible[i]=0;
+               if((stats[race][i].type==RESEARCH)||(stats[race][i].type==UPGRADE))
+	               availible[i]=1;
 	       else
-	               availible[i]=1;//Researches that can be researched only once
+	               availible[i]=0;//Researches that can be researched only once at a time
 	}
 	for(i=0;i<MAX_BUILDINGS;i++)
 	{
-	       building[i].RB=0;
-	       building[i].type=255;
-	       building[i].IP=0;	
+	      	building[i].RB=0;
+	       	building[i].type=255;
+	       	building[i].IP=0;
+		building[i].peons=0;	       
 	}
 	for(i=0;i<MAX_LENGTH;i++)
 	{
@@ -273,44 +455,138 @@ void RACE::Init()
 		program[i].time=0;
 		for(j=0;j<RESOURCES;j++)
 			program[i].res[j]=0;
-//		program[i].temp=0;
+		program[i].temp=0;
 	}
         pFitness=0;
 	sFitness=0;
 	res[GOLD]=450; //TFT settings... for classic: 800/200
 	res[WOOD]=200;
 	expansions=0;
-	availible_expansions=MAX_EXPANSIONS;
-	PeonAt[GOLDMINE]=5;
+	for(i=0;i<MAX_EXPANSIONS;i++)
+	{
+		for(j=0;j<MAX_CREEPS;j++)
+			Expansion[i].creeps[j]=rand()%200;
+		Expansion[i].status=0; //CREEPS!
+		Expansion[i].distance=0;
+	}
+	PeonAt[GOLDMINE]=5; //Undead!?
 	PeonAt[FOREST]=0;
-	IP=0;
+	IP=0;ok=0;nr=0;
 	InitRaceSpecific();
 }
+//TODO KEEP 255!?
 	
+void RACE::GenerateBasicBuildOrder()
+{
+	//problem wieder mit keep/castle
+	unsigned char i,j,k,pre[MAX_GOALS],build_max,sup;
+	build_max=0;
+	for(i=0;i<MAX_LENGTH;i++)
+		Basic[i]=0;
+	Basic_Length=0;
+	if(race!=UNDEAD)
+	{
+		Basic[0]=Build_Bv[ONE_GOLD_PEASANT_TO_FOREST];
+		Basic[1]=Build_Bv[ONE_GOLD_PEASANT_TO_FOREST];
+		Basic[2]=Build_Bv[WISP];
+		Basic[3]=Build_Bv[WISP];
+		i=3;
+		sup=3;
+	}
+	else
+	{
+		Basic[0]=Build_Bv[ACOLYTE];
+		Basic[1]=Build_Bv[ACOLYTE];
+		i=1;
+		sup=2;
+	}
+	switch(race)
+	{
+		case UNDEAD:build_max=UNDEAD_BUILDINGS;break;
+		case ORC:build_max=ORC_BUILDINGS;break;
+		case ELVES:build_max=ELVES_BUILDINGS;break;
+		case HUMAN:build_max=HUMAN_BUILDINGS;break;
+		default:break;
+	};
+	
+	for(j=0;j<MAX_GOALS;j++)
+		if(force[j]>0) pre[j]=force[j]; else pre[j]=0;	
 
-//Reinitialize programs with random orders
+	for(k=0;k<MAX_LENGTH;k++)
+	{
+		j=0;
+		while((j<build_max)&&(i<MAX_LENGTH-20))
+		{
+			if(((pre[j]<goal[j].what)&&(goal[j].what>0))||((buildable[j]>0)&&(force[j]==0)&&(pre[j]<buildable[j])))
+			{
+				if((stats[race][j].facility>0)&&(pre[stats[race][j].facility]==0))
+					j=stats[race][j].facility;
+                	        else if((stats[race][j].prerequisite[0]>0)&&(pre[stats[race][j].prerequisite[0]]==0))
+	                                j=stats[race][j].prerequisite[0];
+        	                else if((stats[race][j].prerequisite[1]>0)&&(pre[stats[race][j].prerequisite[1]]==0))
+                	                j=stats[race][j].prerequisite[1];
+				else if((stats[race][j].prerequisite[2]>0)&&(pre[stats[race][j].prerequisite[2]]==0))
+					j=stats[race][j].prerequisite[2];
+				else if((stats[race][j].type==UPGRADE)&&(stats[race][j].special>0)&&(pre[TIER3]==0))
+					j=TIER3;
+				else if((stats[race][j].special>0)&&(pre[TIER2]==0))
+					j=TIER2;
+				else if((stats[race][j].special>0)&&(pre[TIER3]==0))
+					j=TIER3;
+				else
+				{
+					//building!
+					if((stats[race][j].type==BUILDING)&&(race==ELVES))
+					{
+						i++;
+						Basic[i]=Build_Bv[WISP];
+					}
+					
+					if((stats[race][j].type==UNIT)&&(stats[race][j].supply>sup))
+					{
+						i++;
+						switch(race)
+						{
+							case HUMAN:Basic[i]=Build_Bv[FARM];pre[FARM]++;sup+=6;break;
+							case ORC:Basic[i]=Build_Bv[BURROW];pre[BURROW]++;sup+=8;break;
+							case ELVES:Basic[i]=Build_Bv[MOONWELL];pre[MOONWELL]++;sup+=9;break;
+							case UNDEAD:Basic[i]=Build_Bv[ZIGGURAT];pre[ZIGGURAT]++;sup+=10;break;
+							default:break;
+						};
+					};
+					i++;
+					if((stats[race][j].type==UNIT)&&(stats[race][j].supply>0)) sup-=stats[race][j].supply;
+					Basic[i]=Build_Bv[j];
+					pre[j]++;
+					j++;
+				}
+			} else j++;
+		}
+	}
+	Basic_Length=i+1;
+}
+
 void RACE::Restart()
 {
 	unsigned char i;
-	for(i=0;i<MAX_LENGTH;i++)
-	{
-		program[i].order=rand()%Max_Build_Types;
+	length=Basic_Length;
+
+	for(i=0;i<length;i++)
+	{		
+		program[i].order=Basic[i];
 		program[i].built=0;
 		program[i].success=0;
-	// TODO: Maybe later implement a whole function to create a start list
-	// ... mmmh... maybe just something with Set_Goals...
-	// would decrease the time until the program can start time-optimization
-	// but maybe we loose a possible solution... well...
 		program[i].time=20000;
-//		program[i].temp=0;
-	// TODO: Maybe implement later researches / updates / certain buildings only one time per build order... Trying to research things more than once is senseless...
+		program[i].temp=0;
 	}
 	timer=setup.Max_Time;
 	IP=0;
-	length=MAX_LENGTH;
 }
 
 RACE::RACE()
 {
+	int i;
+	for(i=0;i<MAX_GOALS;i++)
+		buildable[i]=0;
 }
 

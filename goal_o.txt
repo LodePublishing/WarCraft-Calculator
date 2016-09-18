@@ -5,54 +5,59 @@ set Dark Templars to for example two and left everything else at zero)
 
 Units		     Count Time
 
-                 Peon    0 0
-                Grunt    0 0 
-           Headhunter    0 0
-             Catapult    0 0
-               Raider    6 0
-               Tauren    0 0
-               Shaman    0 0
-         Witch Doctor    0 0
-        Spirit Walker    0 0
-           Kodo Beast    0 0
-         Wyvern Rider    0 0
-      Troll Bat Rider    0 0
-          Spirit Wolf    0 0
-            Dire Wolf    0 0
-          Shadow Wolf    0 0
-         Serpent Ward    0 0
+                 Peon   0  0
+                Grunt   4  0 
+           Headhunter   6  0
+             Catapult   2  0
+               Raider   2  0
+               Tauren   0  0
+               Shaman   0  0
+         Witch Doctor   0  0
+        Spirit Walker   2  0
+           Kodo Beast   2  0
+         Wyvern Rider   0  0
+      Troll Bat Rider   0  0
+          Spirit Wolf   0  0
+            Dire Wolf   0  0
+          Shadow Wolf   0  0
+         Serpent Ward   0  0
+          Blademaster   0  0
+             Far Seer   0  0
+     Tauren Chieftain   1 0
+        Shadow Hunter   0  0
 
-           Great Hall    0 0
-           Stronghold    0 0
-             Fortress    0 0
-      Altar of Storms    1 0
-             Barracks    0 0
-             War Mill    0 0
-             Bestiary    0 0
-         Spirit Lodge    0 0
-         Tauren Totem    0 0
-        Voodoo Lounge    0 0 
-               Burrow    0 0
-          Watch Tower    0 0
-
+Buildings
+               Burrow   0  0
+             War Mill   0  0
+           Great Hall   0  0
+           Stronghold   0  0
+             Fortress   0  0
+      Altar of Storms   1  0
+             Barracks   0  0
+             Bestiary   0  0
+         Spirit Lodge   0  0
+         Tauren Totem   0  0
+        Voodoo Lounge   0  0 
+          Watch Tower   0  0
+ 
 Upgrades
        
-              Pillage    1 0
-             Backpack    0 0
-   Berserker Strength    0 0
-   Troll Regeneration    0 0
-            Berserker    0 0
-          Burning Oil    0 0
-   Reinforced Defense    0 0
-              Ensnare    1 0
-            War Drums    0 0
-     Envenomed Spears    0 0
-          Liquid Fire    0 0
-            Pulverize    0 0
-        Melee Weapons    0 0
-           Unit Armor    0 0
-       Ranged Weapons    0 0
-    Spiked Barrikades    0 0
-      Shaman Training    0 0
- WitchDoctor Training    0 0
-Spirit Walker Traini..   0 0
+              Pillage   1  0
+             Backpack   0  0
+   Berserker Strength   0  0
+   Troll Regeneration   0  0
+            Berserker   0  0
+          Burning Oil   0  0
+   Reinforced Defense   0  0
+              Ensnare   1  0
+            War Drums   0  0
+     Envenomed Spears   0  0
+          Liquid Fire   0  0
+            Pulverize   0  0
+        Melee Weapons   0  0
+           Unit Armor   0  0
+       Ranged Weapons   0  0
+    Spiked Barrikades   0  0
+      Shaman Training   0  0
+ WitchDoctor Training   0  0
+Spirit Walker Traini..  2  0

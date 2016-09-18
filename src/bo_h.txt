@@ -1,0 +1,1897 @@
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 01:39 minutes
+     Scouting unit after 00:00 minutes
+[ 174 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:31] [06/12]                 Footman [Building availible]
+     [00:32] [08/12]                    Farm [OK]
+     [00:33] [08/12]                 Peasant [OK]
+     [00:34] [09/12] Add Peasant to Building [OK]
+     [00:35] [09/12]                    Farm [OK]
+     [00:36] [09/12] Add Peasant to Building [OK]
+     [00:37] [09/12]                 Footman [OK]
+     [00:48] [11/12]                 Peasant [Building availible]
+     [00:51] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                    Farm [OK]
+     [00:57] [14/24]                 Footman [Building availible]
+     [00:58] [16/24]                 Footman [OK]
+     [00:00] [00/00]                     NOP [OK]
+     [01:11] [18/24]                 Footman [Building availible]
+     [01:17] [20/24]                 Footman [Building availible]
+     [01:18] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:03]
+                    Footman : 10 [Last one: 01:38]
+                       Farm :  3 [Last one: 01:27]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:31]
+
+     Harvested Gold : 3980
+
+     Harvested Wood : 0
+     Gold at the end: 2350
+     Wood at the end: 0
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:39 minutes
+     Scouting unit after 00:00 minutes
+[ 260 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:31] [06/12]                 Footman [Building availible]
+     [00:32] [08/12]                    Farm [OK]
+     [00:33] [08/12]                 Peasant [OK]
+     [00:34] [09/12] Add Peasant to Building [OK]
+     [00:35] [09/12]                    Farm [OK]
+     [00:36] [09/12] Add Peasant to Building [OK]
+     [00:37] [09/12]                 Footman [OK]
+     [00:48] [11/12]                 Peasant [Building availible]
+     [00:51] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                    Farm [OK]
+     [00:57] [14/24]                 Footman [Building availible]
+     [00:58] [16/24]                 Footman [OK]
+     [00:00] [00/00]                     NOP [OK]
+     [01:11] [18/24]                 Footman [Building availible]
+     [01:17] [20/24]                 Footman [Building availible]
+     [01:18] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:03]
+                    Footman : 10 [Last one: 01:38]
+                       Farm :  3 [Last one: 01:27]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:31]
+
+     Harvested Gold : 3980
+
+     Harvested Wood : 0
+     Gold at the end: 2350
+     Wood at the end: 0
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:39 minutes
+     Scouting unit after 00:00 minutes
+[ 226 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:31] [06/12]                 Footman [Building availible]
+     [00:32] [08/12]                    Farm [OK]
+     [00:33] [08/12]                 Peasant [OK]
+     [00:34] [09/12] Add Peasant to Building [OK]
+     [00:35] [09/12]                    Farm [OK]
+     [00:36] [09/12] Add Peasant to Building [OK]
+     [00:37] [09/12]                 Footman [OK]
+     [00:48] [11/12]                 Peasant [Building availible]
+     [00:51] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                    Farm [OK]
+     [00:57] [14/24]                 Footman [Building availible]
+     [00:58] [16/24]                 Footman [OK]
+     [00:00] [00/00]                     NOP [OK]
+     [01:11] [18/24]                 Footman [Building availible]
+     [01:17] [20/24]                 Footman [Building availible]
+     [01:18] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:03]
+                    Footman : 10 [Last one: 01:38]
+                       Farm :  3 [Last one: 01:27]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:31]
+
+     Harvested Gold : 3980
+
+     Harvested Wood : 0
+     Gold at the end: 2350
+     Wood at the end: 0
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:39 minutes
+     Scouting unit after 00:00 minutes
+[ 346 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:31] [06/12]                 Footman [Building availible]
+     [00:32] [08/12]                    Farm [OK]
+     [00:33] [08/12]                 Peasant [OK]
+     [00:34] [09/12] Add Peasant to Building [OK]
+     [00:35] [09/12]                    Farm [OK]
+     [00:36] [09/12] Add Peasant to Building [OK]
+     [00:37] [09/12]                 Footman [OK]
+     [00:48] [11/12]                 Peasant [Building availible]
+     [00:51] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                    Farm [OK]
+     [00:57] [14/24]                 Footman [Building availible]
+     [00:58] [16/24]                 Footman [OK]
+     [00:00] [00/00]                     NOP [OK]
+     [01:11] [18/24]                 Footman [Building availible]
+     [01:17] [20/24]                 Footman [Building availible]
+     [01:18] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:03]
+                    Footman : 10 [Last one: 01:38]
+                       Farm :  3 [Last one: 01:27]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:31]
+
+     Harvested Gold : 3980
+
+     Harvested Wood : 0
+     Gold at the end: 2350
+     Wood at the end: 0
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 01:43 minutes
+     Scouting unit after 00:00 minutes
+[  51 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                    Farm [OK]
+     [00:00] [00/00]  [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12] Add Peasant to Building [OK]
+     [00:04] [05/12]                 Peasant [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:06] [06/12]  Gold Peasant to Forest [OK]
+     [00:42] [06/24]                 Footman [Building availible]
+     [00:49] [08/24]                    Farm [OK]
+     [00:54] [08/24]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+     [00:57] [10/24] Add Peasant to Building [OK]
+     [01:02] [10/24]                 Footman [Building availible]
+     [01:03] [12/24]                    Farm [OK]
+     [01:08] [12/24]                 Footman [Building availible]
+     [01:09] [14/24]                 Peasant [OK]
+     [01:14] [15/30]                 Footman [Building availible]
+     [01:20] [17/30]                 Footman [Building availible]
+     [01:22] [19/30]                 Footman [Building availible]
+     [01:24] [21/30]                 Peasant [Building availible]
+     [01:25] [22/30]    Wood Peasant to Mine [OK]
+     [00:00] [00/00]  [OK]
+     [00:00] [00/00]                     NOP [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:39]
+                    Footman : 10 [Last one: 01:42]
+                       Farm :  4 [Last one: 01:38]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:42]
+
+     Harvested Gold : 3320
+
+     Harvested Wood : 63
+     Gold at the end: 1767
+     Wood at the end: 39
+[----#5 solution end--------]
+
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 01:44 minutes
+     Scouting unit after 00:00 minutes
+[ 157 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:31] [06/12]                 Footman [Building availible]
+     [00:32] [08/12]                    Farm [OK]
+     [00:37] [08/12]                 Footman [Building availible]
+     [00:38] [10/12] Add Peasant to Building [OK]
+     [00:39] [10/12]                 Peasant [OK]
+     [00:40] [11/12]                    Farm [OK]
+     [00:52] [11/12]                 Footman [Supply satisfied]
+     [00:57] [13/18]                 Footman [Building availible]
+     [00:58] [15/18]                    Farm [OK]
+     [01:03] [15/18]                 Footman [Building availible]
+     [01:04] [17/18]                 Peasant [OK]
+     [01:15] [18/18]                 Footman [Supply satisfied]
+     [01:17] [20/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:23] [22/24]                 Footman [Building availible]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:19]
+                    Footman : 10 [Last one: 01:43]
+                       Farm :  3 [Last one: 01:33]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:31]
+
+     Harvested Gold : 7960
+
+     Harvested Wood : 0
+     Gold at the end: 6550
+     Wood at the end: 60
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:44 minutes
+     Scouting unit after 00:00 minutes
+[ 131 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:31] [06/12]                 Footman [Building availible]
+     [00:32] [08/12]                    Farm [OK]
+     [00:37] [08/12]                 Footman [Building availible]
+     [00:38] [10/12] Add Peasant to Building [OK]
+     [00:39] [10/12]                 Peasant [OK]
+     [00:40] [11/12]                    Farm [OK]
+     [00:52] [11/12]                 Footman [Supply satisfied]
+     [00:57] [13/18]                 Footman [Building availible]
+     [00:58] [15/18]                    Farm [OK]
+     [01:03] [15/18]                 Footman [Building availible]
+     [01:04] [17/18]                 Peasant [OK]
+     [01:15] [18/18]                 Footman [Supply satisfied]
+     [01:17] [20/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:23] [22/24]                 Footman [Building availible]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:19]
+                    Footman : 10 [Last one: 01:43]
+                       Farm :  3 [Last one: 01:33]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:31]
+
+     Harvested Gold : 7960
+
+     Harvested Wood : 0
+     Gold at the end: 6550
+     Wood at the end: 60
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:44 minutes
+     Scouting unit after 00:00 minutes
+[ 203 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:31] [06/12]                 Footman [Building availible]
+     [00:32] [08/12]                    Farm [OK]
+     [00:37] [08/12]                 Footman [Building availible]
+     [00:38] [10/12] Add Peasant to Building [OK]
+     [00:39] [10/12]                 Peasant [OK]
+     [00:40] [11/12]                    Farm [OK]
+     [00:52] [11/12]                 Footman [Supply satisfied]
+     [00:57] [13/18]                 Footman [Building availible]
+     [00:58] [15/18]                    Farm [OK]
+     [01:03] [15/18]                 Footman [Building availible]
+     [01:04] [17/18]                 Peasant [OK]
+     [01:15] [18/18]                 Footman [Supply satisfied]
+     [01:17] [20/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:23] [22/24]                 Footman [Building availible]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:19]
+                    Footman : 10 [Last one: 01:43]
+                       Farm :  3 [Last one: 01:33]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:31]
+
+     Harvested Gold : 7960
+
+     Harvested Wood : 0
+     Gold at the end: 6550
+     Wood at the end: 60
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:44 minutes
+     Scouting unit after 00:00 minutes
+[ 118 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:31] [06/12]                 Footman [Building availible]
+     [00:32] [08/12]                    Farm [OK]
+     [00:37] [08/12]                 Footman [Building availible]
+     [00:38] [10/12] Add Peasant to Building [OK]
+     [00:39] [10/12]                 Peasant [OK]
+     [00:40] [11/12]                    Farm [OK]
+     [00:52] [11/12]                 Footman [Supply satisfied]
+     [00:57] [13/18]                 Footman [Building availible]
+     [00:58] [15/18]                    Farm [OK]
+     [01:03] [15/18]                 Footman [Building availible]
+     [01:04] [17/18]                 Peasant [OK]
+     [01:15] [18/18]                 Footman [Supply satisfied]
+     [01:17] [20/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:23] [22/24]                 Footman [Building availible]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:19]
+                    Footman : 10 [Last one: 01:43]
+                       Farm :  3 [Last one: 01:33]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:31]
+
+     Harvested Gold : 7960
+
+     Harvested Wood : 0
+     Gold at the end: 6550
+     Wood at the end: 60
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 02:03 minutes
+     Scouting unit after 00:00 minutes
+[  51 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                    Farm [OK]
+     [00:02] [06/12]                Barracks [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:42] [06/18]                 Footman [Building availible]
+     [00:43] [08/18]  Gold Peasant to Forest [OK]
+     [00:44] [08/18]                    Farm [OK]
+     [01:02] [08/24]                 Footman [Building availible]
+     [01:03] [10/24]                    Farm [OK]
+     [01:08] [10/24]                 Footman [Building availible]
+     [01:09] [12/24]                 Peasant [OK]
+     [01:22] [13/30]                 Footman [Building availible]
+     [01:28] [15/30]                 Footman [Building availible]
+     [01:29] [17/30]                 Footman [OK]
+     [01:40] [19/36]  Gold Peasant to Forest [OK]
+     [01:42] [19/36]                 Footman [Building availible]
+     [01:43] [21/36]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [01:53] [22/36]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:58]
+                    Footman : 10 [Last one: 02:02]
+                       Farm :  4 [Last one: 01:38]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  1 [Last one: 00:42]
+
+     Harvested Gold : 6540
+
+     Harvested Wood : 80
+     Gold at the end: 4907
+     Wood at the end: 16
+[----#5 solution end--------]
+
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 01:30 minutes
+     Scouting unit after 00:00 minutes
+[ 179 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]  Gold Peasant to Forest [OK]
+     [00:05] [06/12]    Wood Peasant to Mine [OK]
+     [00:06] [06/12] Add Peasant to Building [OK]
+     [00:07] [06/12]                    Farm [OK]
+     [00:17] [06/12]                 Footman [Building availible]
+     [00:18] [08/12]                    Farm [OK]
+     [00:23] [08/12]                 Footman [Building availible]
+     [00:24] [10/13]                 Peasant [OK]
+     [00:25] [11/12]                    Farm [OK]
+     [00:42] [11/12]                 Footman [Supply satisfied]
+     [00:43] [13/18]                 Footman [OK]
+     [00:44] [15/18]                    Farm [OK]
+     [00:49] [15/18]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+     [00:00] [00/00]  [OK]
+     [00:53] [17/18] Add Peasant to Building [OK]
+     [01:02] [17/30]                 Footman [Building availible]
+     [01:03] [19/30]                 Peasant [OK]
+     [01:04] [20/30]                 Footman [OK]
+     [01:09] [22/36]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:18]
+                    Footman : 10 [Last one: 01:29]
+                       Farm :  4 [Last one: 01:06]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:17]
+
+     Harvested Gold : 5740
+
+     Harvested Wood : 0
+     Gold at the end: 4177
+     Wood at the end: 13
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:30 minutes
+     Scouting unit after 00:00 minutes
+[ 174 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]  Gold Peasant to Forest [OK]
+     [00:05] [06/12]    Wood Peasant to Mine [OK]
+     [00:06] [06/12] Add Peasant to Building [OK]
+     [00:07] [06/12]                    Farm [OK]
+     [00:17] [06/12]                 Footman [Building availible]
+     [00:18] [08/12]                    Farm [OK]
+     [00:23] [08/12]                 Footman [Building availible]
+     [00:24] [10/13]                 Peasant [OK]
+     [00:25] [11/12]                    Farm [OK]
+     [00:42] [11/12]                 Footman [Supply satisfied]
+     [00:43] [13/18]                 Footman [OK]
+     [00:44] [15/18]                    Farm [OK]
+     [00:49] [15/18]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+     [00:00] [00/00]  [OK]
+     [00:53] [17/18] Add Peasant to Building [OK]
+     [01:02] [17/30]                 Footman [Building availible]
+     [01:03] [19/30]                 Peasant [OK]
+     [01:04] [20/30]                 Footman [OK]
+     [01:09] [22/36]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:18]
+                    Footman : 10 [Last one: 01:29]
+                       Farm :  4 [Last one: 01:06]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:17]
+
+     Harvested Gold : 5740
+
+     Harvested Wood : 0
+     Gold at the end: 4177
+     Wood at the end: 13
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:30 minutes
+     Scouting unit after 00:00 minutes
+[ 183 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]  Gold Peasant to Forest [OK]
+     [00:05] [06/12]    Wood Peasant to Mine [OK]
+     [00:06] [06/12] Add Peasant to Building [OK]
+     [00:07] [06/12]                    Farm [OK]
+     [00:17] [06/12]                 Footman [Building availible]
+     [00:18] [08/12]                    Farm [OK]
+     [00:23] [08/12]                 Footman [Building availible]
+     [00:24] [10/13]                 Peasant [OK]
+     [00:25] [11/12]                    Farm [OK]
+     [00:42] [11/12]                 Footman [Supply satisfied]
+     [00:43] [13/18]                 Footman [OK]
+     [00:44] [15/18]                    Farm [OK]
+     [00:49] [15/18]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+     [00:00] [00/00]  [OK]
+     [00:53] [17/18] Add Peasant to Building [OK]
+     [01:02] [17/30]                 Footman [Building availible]
+     [01:03] [19/30]                 Peasant [OK]
+     [01:04] [20/30]                 Footman [OK]
+     [01:09] [22/36]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:18]
+                    Footman : 10 [Last one: 01:29]
+                       Farm :  4 [Last one: 01:06]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:17]
+
+     Harvested Gold : 5740
+
+     Harvested Wood : 0
+     Gold at the end: 4177
+     Wood at the end: 13
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:30 minutes
+     Scouting unit after 00:00 minutes
+[ 159 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]  Gold Peasant to Forest [OK]
+     [00:05] [06/12]    Wood Peasant to Mine [OK]
+     [00:06] [06/12] Add Peasant to Building [OK]
+     [00:07] [06/12]                    Farm [OK]
+     [00:17] [06/12]                 Footman [Building availible]
+     [00:18] [08/12]                    Farm [OK]
+     [00:23] [08/12]                 Footman [Building availible]
+     [00:24] [10/13]                 Peasant [OK]
+     [00:25] [11/12]                    Farm [OK]
+     [00:42] [11/12]                 Footman [Supply satisfied]
+     [00:43] [13/18]                 Footman [OK]
+     [00:44] [15/18]                    Farm [OK]
+     [00:49] [15/18]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+     [00:00] [00/00]  [OK]
+     [00:53] [17/18] Add Peasant to Building [OK]
+     [01:02] [17/30]                 Footman [Building availible]
+     [01:03] [19/30]                 Peasant [OK]
+     [01:04] [20/30]                 Footman [OK]
+     [01:09] [22/36]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:18]
+                    Footman : 10 [Last one: 01:29]
+                       Farm :  4 [Last one: 01:06]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:17]
+
+     Harvested Gold : 5740
+
+     Harvested Wood : 0
+     Gold at the end: 4177
+     Wood at the end: 13
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 01:45 minutes
+     Scouting unit after 00:00 minutes
+[ 123 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12]  Gold Peasant to Forest [OK]
+     [00:02] [05/12] Add Peasant to Building [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:18] [06/12]                 Peasant [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:19] [07/12]               Town Hall [OK]
+     [00:20] [07/12]                    Farm [OK]
+     [00:21] [07/12]                Barracks [OK]
+     [00:31] [07/12]                 Footman [Building availible]
+     [00:51] [09/12]                 Footman [Building availible]
+     [00:52] [11/12]                    Farm [OK]
+     [00:57] [11/18]                 Footman [Building availible]
+     [01:04] [13/18]                 Footman [Building availible]
+     [01:05] [15/18]  Gold Peasant to Forest [OK]
+     [01:06] [15/18]                 Peasant [OK]
+     [01:11] [16/18]                 Footman [Building availible]
+     [01:12] [18/18] Add Peasant to Building [OK]
+     [01:22] [18/18]                 Footman [Supply satisfied]
+     [01:23] [20/24]                 Footman [OK]
+     [01:24] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:21]
+                    Footman : 10 [Last one: 01:44]
+                       Farm :  2 [Last one: 01:22]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  4 [Last one: 00:31]
+
+     Harvested Gold : 3680
+
+     Harvested Wood : 113
+     Gold at the end: 1929
+     Wood at the end: 9
+[----#5 solution end--------]
+
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 02:05 minutes
+     Scouting unit after 00:00 minutes
+[ 100 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                    Farm [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:42] [06/18]                 Footman [Building availible]
+     [00:43] [08/18]    Wood Peasant to Mine [OK]
+     [00:44] [08/18]                 Peasant [OK]
+     [00:45] [09/18]                    Farm [OK]
+     [00:46] [09/18]                    Farm [OK]
+     [01:02] [09/18]                 Footman [Building availible]
+     [01:03] [11/18]                Barracks [OK]
+     [01:08] [11/18]                 Footman [Building availible]
+     [01:22] [13/30]                 Footman [Building availible]
+     [01:28] [15/30]                 Footman [Building availible]
+     [01:29] [17/30]                    Farm [OK]
+     [01:34] [17/30]                 Footman [Building availible]
+     [01:42] [19/30]                 Footman [Building availible]
+     [01:43] [21/30]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:58]
+                    Footman : 10 [Last one: 02:04]
+                       Farm :  4 [Last one: 02:04]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:42]
+
+     Harvested Gold : 6860
+
+     Harvested Wood : 34
+     Gold at the end: 5306
+     Wood at the end: 0
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 02:05 minutes
+     Scouting unit after 00:00 minutes
+[ 152 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                    Farm [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:42] [06/18]                 Footman [Building availible]
+     [00:43] [08/18]    Wood Peasant to Mine [OK]
+     [00:44] [08/18]                 Peasant [OK]
+     [00:45] [09/18]                    Farm [OK]
+     [00:46] [09/18]                    Farm [OK]
+     [01:02] [09/18]                 Footman [Building availible]
+     [01:03] [11/18]                Barracks [OK]
+     [01:08] [11/18]                 Footman [Building availible]
+     [01:22] [13/30]                 Footman [Building availible]
+     [01:28] [15/30]                 Footman [Building availible]
+     [01:29] [17/30]                    Farm [OK]
+     [01:34] [17/30]                 Footman [Building availible]
+     [01:42] [19/30]                 Footman [Building availible]
+     [01:43] [21/30]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:58]
+                    Footman : 10 [Last one: 02:04]
+                       Farm :  4 [Last one: 02:04]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:42]
+
+     Harvested Gold : 6860
+
+     Harvested Wood : 34
+     Gold at the end: 5306
+     Wood at the end: 0
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 02:05 minutes
+     Scouting unit after 00:00 minutes
+[ 105 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                    Farm [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:42] [06/18]                 Footman [Building availible]
+     [00:43] [08/18]    Wood Peasant to Mine [OK]
+     [00:44] [08/18]                 Peasant [OK]
+     [00:45] [09/18]                    Farm [OK]
+     [00:46] [09/18]                    Farm [OK]
+     [01:02] [09/18]                 Footman [Building availible]
+     [01:03] [11/18]                Barracks [OK]
+     [01:08] [11/18]                 Footman [Building availible]
+     [01:22] [13/30]                 Footman [Building availible]
+     [01:28] [15/30]                 Footman [Building availible]
+     [01:29] [17/30]                    Farm [OK]
+     [01:34] [17/30]                 Footman [Building availible]
+     [01:42] [19/30]                 Footman [Building availible]
+     [01:43] [21/30]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:58]
+                    Footman : 10 [Last one: 02:04]
+                       Farm :  4 [Last one: 02:04]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:42]
+
+     Harvested Gold : 6860
+
+     Harvested Wood : 34
+     Gold at the end: 5306
+     Wood at the end: 0
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 02:05 minutes
+     Scouting unit after 00:00 minutes
+[ 192 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                    Farm [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:42] [06/18]                 Footman [Building availible]
+     [00:43] [08/18]    Wood Peasant to Mine [OK]
+     [00:44] [08/18]                 Peasant [OK]
+     [00:45] [09/18]                    Farm [OK]
+     [00:46] [09/18]                    Farm [OK]
+     [01:02] [09/18]                 Footman [Building availible]
+     [01:03] [11/18]                Barracks [OK]
+     [01:08] [11/18]                 Footman [Building availible]
+     [01:22] [13/30]                 Footman [Building availible]
+     [01:28] [15/30]                 Footman [Building availible]
+     [01:29] [17/30]                    Farm [OK]
+     [01:34] [17/30]                 Footman [Building availible]
+     [01:42] [19/30]                 Footman [Building availible]
+     [01:43] [21/30]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:58]
+                    Footman : 10 [Last one: 02:04]
+                       Farm :  4 [Last one: 02:04]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:42]
+
+     Harvested Gold : 6860
+
+     Harvested Wood : 34
+     Gold at the end: 5306
+     Wood at the end: 0
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 02:05 minutes
+     Scouting unit after 00:00 minutes
+[  56 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                    Farm [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:42] [06/18]                 Footman [Building availible]
+     [00:43] [08/18]    Wood Peasant to Mine [OK]
+     [00:44] [08/18]                 Peasant [OK]
+     [00:45] [09/18]                    Farm [OK]
+     [00:46] [09/18]                    Farm [OK]
+     [01:02] [09/18]                 Footman [Building availible]
+     [01:03] [11/18]                Barracks [OK]
+     [01:08] [11/18]                 Footman [Building availible]
+     [01:22] [13/30]                 Footman [Building availible]
+     [01:28] [15/30]                 Footman [Building availible]
+     [01:29] [17/30]                    Farm [OK]
+     [01:34] [17/30]                 Footman [Building availible]
+     [01:42] [19/30]                 Footman [Building availible]
+     [01:43] [21/30]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:58]
+                    Footman : 10 [Last one: 02:04]
+                       Farm :  4 [Last one: 02:04]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:42]
+
+     Harvested Gold : 6860
+
+     Harvested Wood : 34
+     Gold at the end: 5306
+     Wood at the end: 0
+[----#5 solution end--------]
+
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 01:41 minutes
+     Scouting unit after 00:00 minutes
+[ 160 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:02] [06/12]                 Peasant [OK]
+     [00:03] [06/12]                Barracks [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:06] [06/12]                Barracks [OK]
+     [00:16] [06/12]                 Peasant [Building availible]
+     [00:17] [07/12]                    Farm [OK]
+     [00:31] [07/12]                 Peasant [Building availible]
+     [00:33] [08/12]                 Footman [Building availible]
+     [00:53] [10/24]                 Footman [Building availible]
+     [00:54] [12/24]                 Peasant [OK]
+     [00:55] [13/24]                    Farm [OK]
+     [00:56] [13/24]    Wood Peasant to Mine [OK]
+     [01:00] [13/24]                 Footman [Building availible]
+     [01:06] [15/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:07] [17/24]                 Peasant [OK]
+     [01:13] [17/24]                 Footman [Building availible]
+     [01:19] [19/24]                 Footman [Building availible]
+     [01:20] [21/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  9 [Last one: 01:09]
+                    Footman : 10 [Last one: 01:40]
+                       Farm :  3 [Last one: 01:30]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:33]
+
+     Harvested Gold : 6020
+
+     Harvested Wood : 44
+     Gold at the end: 4025
+     Wood at the end: 24
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:41 minutes
+     Scouting unit after 00:00 minutes
+[ 125 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:02] [06/12]                 Peasant [OK]
+     [00:03] [06/12]                Barracks [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:06] [06/12]                Barracks [OK]
+     [00:16] [06/12]                 Peasant [Building availible]
+     [00:17] [07/12]                    Farm [OK]
+     [00:31] [07/12]                 Peasant [Building availible]
+     [00:33] [08/12]                 Footman [Building availible]
+     [00:53] [10/24]                 Footman [Building availible]
+     [00:54] [12/24]                 Peasant [OK]
+     [00:55] [13/24]                    Farm [OK]
+     [00:56] [13/24]    Wood Peasant to Mine [OK]
+     [01:00] [13/24]                 Footman [Building availible]
+     [01:06] [15/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:07] [17/24]                 Peasant [OK]
+     [01:13] [17/24]                 Footman [Building availible]
+     [01:19] [19/24]                 Footman [Building availible]
+     [01:20] [21/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  9 [Last one: 01:09]
+                    Footman : 10 [Last one: 01:40]
+                       Farm :  3 [Last one: 01:30]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:33]
+
+     Harvested Gold : 6020
+
+     Harvested Wood : 44
+     Gold at the end: 4025
+     Wood at the end: 24
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:41 minutes
+     Scouting unit after 00:00 minutes
+[ 112 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:02] [06/12]                 Peasant [OK]
+     [00:03] [06/12]                Barracks [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:06] [06/12]                Barracks [OK]
+     [00:16] [06/12]                 Peasant [Building availible]
+     [00:17] [07/12]                    Farm [OK]
+     [00:31] [07/12]                 Peasant [Building availible]
+     [00:33] [08/12]                 Footman [Building availible]
+     [00:53] [10/24]                 Footman [Building availible]
+     [00:54] [12/24]                 Peasant [OK]
+     [00:55] [13/24]                    Farm [OK]
+     [00:56] [13/24]    Wood Peasant to Mine [OK]
+     [01:00] [13/24]                 Footman [Building availible]
+     [01:06] [15/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:07] [17/24]                 Peasant [OK]
+     [01:13] [17/24]                 Footman [Building availible]
+     [01:19] [19/24]                 Footman [Building availible]
+     [01:20] [21/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  9 [Last one: 01:09]
+                    Footman : 10 [Last one: 01:40]
+                       Farm :  3 [Last one: 01:30]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:33]
+
+     Harvested Gold : 6020
+
+     Harvested Wood : 44
+     Gold at the end: 4025
+     Wood at the end: 24
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:41 minutes
+     Scouting unit after 00:00 minutes
+[ 179 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:02] [06/12]                 Peasant [OK]
+     [00:03] [06/12]                Barracks [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:06] [06/12]                Barracks [OK]
+     [00:16] [06/12]                 Peasant [Building availible]
+     [00:17] [07/12]                    Farm [OK]
+     [00:31] [07/12]                 Peasant [Building availible]
+     [00:33] [08/12]                 Footman [Building availible]
+     [00:53] [10/24]                 Footman [Building availible]
+     [00:54] [12/24]                 Peasant [OK]
+     [00:55] [13/24]                    Farm [OK]
+     [00:56] [13/24]    Wood Peasant to Mine [OK]
+     [01:00] [13/24]                 Footman [Building availible]
+     [01:06] [15/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:07] [17/24]                 Peasant [OK]
+     [01:13] [17/24]                 Footman [Building availible]
+     [01:19] [19/24]                 Footman [Building availible]
+     [01:20] [21/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  9 [Last one: 01:09]
+                    Footman : 10 [Last one: 01:40]
+                       Farm :  3 [Last one: 01:30]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:33]
+
+     Harvested Gold : 6020
+
+     Harvested Wood : 44
+     Gold at the end: 4025
+     Wood at the end: 24
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 01:41 minutes
+     Scouting unit after 00:00 minutes
+[ 134 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                 Peasant [OK]
+     [00:00] [00/00]  [OK]
+     [00:02] [06/12]                 Peasant [OK]
+     [00:03] [06/12]                Barracks [OK]
+     [00:04] [06/12] Add Peasant to Building [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:06] [06/12]                Barracks [OK]
+     [00:16] [06/12]                 Peasant [Building availible]
+     [00:17] [07/12]                    Farm [OK]
+     [00:31] [07/12]                 Peasant [Building availible]
+     [00:33] [08/12]                 Footman [Building availible]
+     [00:53] [10/24]                 Footman [Building availible]
+     [00:54] [12/24]                 Peasant [OK]
+     [00:55] [13/24]                    Farm [OK]
+     [00:56] [13/24]    Wood Peasant to Mine [OK]
+     [01:00] [13/24]                 Footman [Building availible]
+     [01:06] [15/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:07] [17/24]                 Peasant [OK]
+     [01:13] [17/24]                 Footman [Building availible]
+     [01:19] [19/24]                 Footman [Building availible]
+     [01:20] [21/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  9 [Last one: 01:09]
+                    Footman : 10 [Last one: 01:40]
+                       Farm :  3 [Last one: 01:30]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:33]
+
+     Harvested Gold : 6020
+
+     Harvested Wood : 44
+     Gold at the end: 4025
+     Wood at the end: 24
+[----#5 solution end--------]
+
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 01:29 minutes
+     Scouting unit after 00:00 minutes
+[  77 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                    Farm [OK]
+     [00:21] [06/12]                 Footman [Building availible]
+     [00:22] [08/12]                    Farm [OK]
+     [00:27] [08/12]                 Footman [Building availible]
+     [00:28] [10/12]                 Peasant [OK]
+     [00:41] [11/18]                 Footman [Building availible]
+     [00:42] [13/18]                    Farm [OK]
+     [00:47] [13/18]                 Footman [Building availible]
+     [00:48] [15/18]                 Footman [OK]
+     [00:49] [17/18]                 Peasant [OK]
+     [01:01] [18/24]                 Footman [Building availible]
+     [01:07] [20/24]                 Footman [Building availible]
+     [01:08] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:04]
+                    Footman : 10 [Last one: 01:28]
+                       Farm :  3 [Last one: 01:17]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:21]
+
+     Harvested Gold : 7020
+
+     Harvested Wood : 0
+     Gold at the end: 5555
+     Wood at the end: 39
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:29 minutes
+     Scouting unit after 00:00 minutes
+[ 258 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                    Farm [OK]
+     [00:21] [06/12]                 Footman [Building availible]
+     [00:22] [08/12]                    Farm [OK]
+     [00:27] [08/12]                 Footman [Building availible]
+     [00:28] [10/12]                 Peasant [OK]
+     [00:41] [11/18]                 Footman [Building availible]
+     [00:42] [13/18]                    Farm [OK]
+     [00:47] [13/18]                 Footman [Building availible]
+     [00:48] [15/18]                 Footman [OK]
+     [00:49] [17/18]                 Peasant [OK]
+     [01:01] [18/24]                 Footman [Building availible]
+     [01:07] [20/24]                 Footman [Building availible]
+     [01:08] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:04]
+                    Footman : 10 [Last one: 01:28]
+                       Farm :  3 [Last one: 01:17]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:21]
+
+     Harvested Gold : 7020
+
+     Harvested Wood : 0
+     Gold at the end: 5555
+     Wood at the end: 39
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:29 minutes
+     Scouting unit after 00:00 minutes
+[  78 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                    Farm [OK]
+     [00:21] [06/12]                 Footman [Building availible]
+     [00:22] [08/12]                    Farm [OK]
+     [00:27] [08/12]                 Footman [Building availible]
+     [00:28] [10/12]                 Peasant [OK]
+     [00:41] [11/18]                 Footman [Building availible]
+     [00:42] [13/18]                    Farm [OK]
+     [00:47] [13/18]                 Footman [Building availible]
+     [00:48] [15/18]                 Footman [OK]
+     [00:49] [17/18]                 Peasant [OK]
+     [01:01] [18/24]                 Footman [Building availible]
+     [01:07] [20/24]                 Footman [Building availible]
+     [01:08] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:04]
+                    Footman : 10 [Last one: 01:28]
+                       Farm :  3 [Last one: 01:17]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:21]
+
+     Harvested Gold : 7020
+
+     Harvested Wood : 0
+     Gold at the end: 5555
+     Wood at the end: 39
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:29 minutes
+     Scouting unit after 00:00 minutes
+[ 109 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                    Farm [OK]
+     [00:21] [06/12]                 Footman [Building availible]
+     [00:22] [08/12]                    Farm [OK]
+     [00:27] [08/12]                 Footman [Building availible]
+     [00:28] [10/12]                 Peasant [OK]
+     [00:41] [11/18]                 Footman [Building availible]
+     [00:42] [13/18]                    Farm [OK]
+     [00:47] [13/18]                 Footman [Building availible]
+     [00:48] [15/18]                 Footman [OK]
+     [00:49] [17/18]                 Peasant [OK]
+     [01:01] [18/24]                 Footman [Building availible]
+     [01:07] [20/24]                 Footman [Building availible]
+     [01:08] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:04]
+                    Footman : 10 [Last one: 01:28]
+                       Farm :  3 [Last one: 01:17]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:21]
+
+     Harvested Gold : 7020
+
+     Harvested Wood : 0
+     Gold at the end: 5555
+     Wood at the end: 39
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 01:29 minutes
+     Scouting unit after 00:00 minutes
+[  51 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                 Peasant [OK]
+     [00:01] [06/12]                Barracks [OK]
+     [00:02] [06/12] Add Peasant to Building [OK]
+     [00:03] [06/12] Add Peasant to Building [OK]
+     [00:04] [06/12]                    Farm [OK]
+     [00:21] [06/12]                 Footman [Building availible]
+     [00:22] [08/12]                    Farm [OK]
+     [00:27] [08/12]                 Footman [Building availible]
+     [00:28] [10/12]                 Peasant [OK]
+     [00:41] [11/18]                 Footman [Building availible]
+     [00:42] [13/18]                    Farm [OK]
+     [00:47] [13/18]                 Footman [Building availible]
+     [00:48] [15/18]                 Footman [OK]
+     [00:49] [17/18]                 Peasant [OK]
+     [01:01] [18/24]                 Footman [Building availible]
+     [01:07] [20/24]                 Footman [Building availible]
+     [01:08] [22/24]                 Footman [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:04]
+                    Footman : 10 [Last one: 01:28]
+                       Farm :  3 [Last one: 01:17]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:21]
+
+     Harvested Gold : 7020
+
+     Harvested Wood : 0
+     Gold at the end: 5555
+     Wood at the end: 39
+[----#5 solution end--------]
+
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 01:46 minutes
+     Scouting unit after 00:00 minutes
+[ 334 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12]                    Farm [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:30] [06/12]                 Footman [Building availible]
+     [00:50] [08/24]                 Footman [Building availible]
+     [00:51] [10/24]                 Peasant [OK]
+     [00:52] [11/24]                    Farm [OK]
+     [00:53] [11/24]                    Farm [OK]
+     [00:54] [11/24]  Gold Peasant to Forest [OK]
+     [00:58] [11/24]                 Footman [Building availible]
+     [01:04] [13/24]                 Footman [Building availible]
+     [01:10] [15/24]                 Footman [Building availible]
+     [01:18] [17/24]                 Footman [Building availible]
+     [01:20] [19/24]    Wood Peasant to Mine [OK]
+     [01:24] [19/24]                 Footman [Building availible]
+     [01:25] [21/24]                 Footman [OK]
+     [01:26] [23/24]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:41]
+                    Footman : 10 [Last one: 01:45]
+                       Farm :  4 [Last one: 01:28]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:30]
+
+     Harvested Gold : 4660
+
+     Harvested Wood : 20
+     Gold at the end: 3010
+     Wood at the end: 0
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:46 minutes
+     Scouting unit after 00:00 minutes
+[  80 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12]                    Farm [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:30] [06/12]                 Footman [Building availible]
+     [00:50] [08/24]                 Footman [Building availible]
+     [00:51] [10/24]                 Peasant [OK]
+     [00:52] [11/24]                    Farm [OK]
+     [00:53] [11/24]                    Farm [OK]
+     [00:54] [11/24]  Gold Peasant to Forest [OK]
+     [00:58] [11/24]                 Footman [Building availible]
+     [01:04] [13/24]                 Footman [Building availible]
+     [01:10] [15/24]                 Footman [Building availible]
+     [01:18] [17/24]                 Footman [Building availible]
+     [01:20] [19/24]    Wood Peasant to Mine [OK]
+     [01:24] [19/24]                 Footman [Building availible]
+     [01:25] [21/24]                 Footman [OK]
+     [01:26] [23/24]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:41]
+                    Footman : 10 [Last one: 01:45]
+                       Farm :  4 [Last one: 01:28]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:30]
+
+     Harvested Gold : 4660
+
+     Harvested Wood : 20
+     Gold at the end: 3010
+     Wood at the end: 0
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:46 minutes
+     Scouting unit after 00:00 minutes
+[ 131 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12]                    Farm [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:30] [06/12]                 Footman [Building availible]
+     [00:50] [08/24]                 Footman [Building availible]
+     [00:51] [10/24]                 Peasant [OK]
+     [00:52] [11/24]                    Farm [OK]
+     [00:53] [11/24]                    Farm [OK]
+     [00:54] [11/24]  Gold Peasant to Forest [OK]
+     [00:58] [11/24]                 Footman [Building availible]
+     [01:04] [13/24]                 Footman [Building availible]
+     [01:10] [15/24]                 Footman [Building availible]
+     [01:18] [17/24]                 Footman [Building availible]
+     [01:20] [19/24]    Wood Peasant to Mine [OK]
+     [01:24] [19/24]                 Footman [Building availible]
+     [01:25] [21/24]                 Footman [OK]
+     [01:26] [23/24]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:41]
+                    Footman : 10 [Last one: 01:45]
+                       Farm :  4 [Last one: 01:28]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:30]
+
+     Harvested Gold : 4660
+
+     Harvested Wood : 20
+     Gold at the end: 3010
+     Wood at the end: 0
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:46 minutes
+     Scouting unit after 00:00 minutes
+[ 199 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12]                    Farm [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12]                    Farm [OK]
+     [00:30] [06/12]                 Footman [Building availible]
+     [00:50] [08/24]                 Footman [Building availible]
+     [00:51] [10/24]                 Peasant [OK]
+     [00:52] [11/24]                    Farm [OK]
+     [00:53] [11/24]                    Farm [OK]
+     [00:54] [11/24]  Gold Peasant to Forest [OK]
+     [00:58] [11/24]                 Footman [Building availible]
+     [01:04] [13/24]                 Footman [Building availible]
+     [01:10] [15/24]                 Footman [Building availible]
+     [01:18] [17/24]                 Footman [Building availible]
+     [01:20] [19/24]    Wood Peasant to Mine [OK]
+     [01:24] [19/24]                 Footman [Building availible]
+     [01:25] [21/24]                 Footman [OK]
+     [01:26] [23/24]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:41]
+                    Footman : 10 [Last one: 01:45]
+                       Farm :  4 [Last one: 01:28]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:30]
+
+     Harvested Gold : 4660
+
+     Harvested Wood : 20
+     Gold at the end: 3010
+     Wood at the end: 0
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 01:50 minutes
+     Scouting unit after 00:00 minutes
+[  94 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]  Gold Peasant to Forest [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]    Wood Peasant to Mine [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:06] [06/12]                Barracks [OK]
+     [00:33] [06/12]                 Footman [Building availible]
+     [00:34] [08/12]                    Farm [OK]
+     [00:35] [08/12]                 Peasant [OK]
+     [00:36] [09/12]                    Farm [OK]
+     [00:53] [09/12]                 Footman [Building availible]
+     [01:09] [11/12]                 Footman [Supply satisfied]
+     [00:00] [00/00]                     NOP [OK]
+     [01:13] [13/24]                 Footman [Building availible]
+     [01:14] [15/24]                    Farm [OK]
+     [01:19] [15/24]                 Footman [Building availible]
+     [01:25] [17/24]                 Footman [Building availible]
+     [01:26] [19/24]                 Peasant [OK]
+     [01:29] [20/24]                 Footman [Building availible]
+     [01:30] [22/24]    Wood Peasant to Mine [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:41]
+                    Footman : 10 [Last one: 01:49]
+                       Farm :  3 [Last one: 01:49]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  2 [Last one: 00:33]
+
+     Harvested Gold : 3160
+
+     Harvested Wood : 74
+     Gold at the end: 1565
+     Wood at the end: 14
+[----#5 solution end--------]
+
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 01:38 minutes
+     Scouting unit after 00:00 minutes
+[ 133 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12] Add Peasant to Building [OK]
+     [00:03] [05/12]                    Farm [OK]
+     [00:04] [05/12]  Gold Peasant to Forest [OK]
+     [00:05] [05/12]                 Peasant [OK]
+     [00:20] [06/12]                 Footman [Building availible]
+     [00:21] [08/12]                    Farm [OK]
+     [00:22] [08/12]                 Peasant [OK]
+     [00:37] [09/12]                 Peasant [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:40] [10/18]                 Footman [Building availible]
+     [00:41] [12/18]                    Farm [OK]
+     [00:46] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                 Peasant [Building availible]
+     [01:00] [15/24]                 Footman [Building availible]
+     [01:06] [17/24]                 Footman [Building availible]
+     [01:12] [19/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:13] [21/24]                 Peasant [OK]
+     [01:14] [21/24]                 Peasant [OK]
+     [01:22] [24/30]    Wood Peasant to Mine [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant : 10 [Last one: 01:29]
+                    Footman : 10 [Last one: 01:37]
+                       Farm :  3 [Last one: 01:16]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  1 [Last one: 00:20]
+
+     Harvested Gold : 5480
+
+     Harvested Wood : 62
+     Gold at the end: 3760
+     Wood at the end: 42
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:38 minutes
+     Scouting unit after 00:00 minutes
+[ 141 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12] Add Peasant to Building [OK]
+     [00:03] [05/12]                    Farm [OK]
+     [00:04] [05/12]  Gold Peasant to Forest [OK]
+     [00:05] [05/12]                 Peasant [OK]
+     [00:20] [06/12]                 Footman [Building availible]
+     [00:21] [08/12]                    Farm [OK]
+     [00:22] [08/12]                 Peasant [OK]
+     [00:37] [09/12]                 Peasant [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:40] [10/18]                 Footman [Building availible]
+     [00:41] [12/18]                    Farm [OK]
+     [00:46] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                 Peasant [Building availible]
+     [01:00] [15/24]                 Footman [Building availible]
+     [01:06] [17/24]                 Footman [Building availible]
+     [01:12] [19/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:13] [21/24]                 Peasant [OK]
+     [01:14] [21/24]                 Peasant [OK]
+     [01:22] [24/30]    Wood Peasant to Mine [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant : 10 [Last one: 01:29]
+                    Footman : 10 [Last one: 01:37]
+                       Farm :  3 [Last one: 01:16]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  1 [Last one: 00:20]
+
+     Harvested Gold : 5480
+
+     Harvested Wood : 62
+     Gold at the end: 3760
+     Wood at the end: 42
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:38 minutes
+     Scouting unit after 00:00 minutes
+[ 292 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12] Add Peasant to Building [OK]
+     [00:03] [05/12]                    Farm [OK]
+     [00:04] [05/12]  Gold Peasant to Forest [OK]
+     [00:05] [05/12]                 Peasant [OK]
+     [00:20] [06/12]                 Footman [Building availible]
+     [00:21] [08/12]                    Farm [OK]
+     [00:22] [08/12]                 Peasant [OK]
+     [00:37] [09/12]                 Peasant [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:40] [10/18]                 Footman [Building availible]
+     [00:41] [12/18]                    Farm [OK]
+     [00:46] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                 Peasant [Building availible]
+     [01:00] [15/24]                 Footman [Building availible]
+     [01:06] [17/24]                 Footman [Building availible]
+     [01:12] [19/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:13] [21/24]                 Peasant [OK]
+     [01:14] [21/24]                 Peasant [OK]
+     [01:22] [24/30]    Wood Peasant to Mine [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant : 10 [Last one: 01:29]
+                    Footman : 10 [Last one: 01:37]
+                       Farm :  3 [Last one: 01:16]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  1 [Last one: 00:20]
+
+     Harvested Gold : 5480
+
+     Harvested Wood : 62
+     Gold at the end: 3760
+     Wood at the end: 42
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:38 minutes
+     Scouting unit after 00:00 minutes
+[ 216 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12] Add Peasant to Building [OK]
+     [00:03] [05/12]                    Farm [OK]
+     [00:04] [05/12]  Gold Peasant to Forest [OK]
+     [00:05] [05/12]                 Peasant [OK]
+     [00:20] [06/12]                 Footman [Building availible]
+     [00:21] [08/12]                    Farm [OK]
+     [00:22] [08/12]                 Peasant [OK]
+     [00:37] [09/12]                 Peasant [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:40] [10/18]                 Footman [Building availible]
+     [00:41] [12/18]                    Farm [OK]
+     [00:46] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                 Peasant [Building availible]
+     [01:00] [15/24]                 Footman [Building availible]
+     [01:06] [17/24]                 Footman [Building availible]
+     [01:12] [19/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:13] [21/24]                 Peasant [OK]
+     [01:14] [21/24]                 Peasant [OK]
+     [01:22] [24/30]    Wood Peasant to Mine [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant : 10 [Last one: 01:29]
+                    Footman : 10 [Last one: 01:37]
+                       Farm :  3 [Last one: 01:16]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  1 [Last one: 00:20]
+
+     Harvested Gold : 5480
+
+     Harvested Wood : 62
+     Gold at the end: 3760
+     Wood at the end: 42
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 01:38 minutes
+     Scouting unit after 00:00 minutes
+[  89 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                Barracks [OK]
+     [00:01] [05/12] Add Peasant to Building [OK]
+     [00:02] [05/12] Add Peasant to Building [OK]
+     [00:03] [05/12]                    Farm [OK]
+     [00:04] [05/12]  Gold Peasant to Forest [OK]
+     [00:05] [05/12]                 Peasant [OK]
+     [00:20] [06/12]                 Footman [Building availible]
+     [00:21] [08/12]                    Farm [OK]
+     [00:22] [08/12]                 Peasant [OK]
+     [00:37] [09/12]                 Peasant [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:40] [10/18]                 Footman [Building availible]
+     [00:41] [12/18]                    Farm [OK]
+     [00:46] [12/18]                 Footman [Building availible]
+     [00:52] [14/18]                 Peasant [Building availible]
+     [01:00] [15/24]                 Footman [Building availible]
+     [01:06] [17/24]                 Footman [Building availible]
+     [01:12] [19/24]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [01:13] [21/24]                 Peasant [OK]
+     [01:14] [21/24]                 Peasant [OK]
+     [01:22] [24/30]    Wood Peasant to Mine [OK]
+     [00:00] [00/00]  [OK]
+
+     ---Force at the end---
+                    Peasant : 10 [Last one: 01:29]
+                    Footman : 10 [Last one: 01:37]
+                       Farm :  3 [Last one: 01:16]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  1 [Last one: 00:20]
+
+     Harvested Gold : 5480
+
+     Harvested Wood : 62
+     Gold at the end: 3760
+     Wood at the end: 42
+[----#5 solution end--------]
+
+---------------------------------------------------
+---StarCraftCalculator by ClawSoftware.de [v1.02]--
+---------------------------------------------------
+
+[----#1 solution----]
+
+     Time used: 01:49 minutes
+     Scouting unit after 00:00 minutes
+[ 184 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                    Farm [OK]
+     [00:01] [05/12]  Gold Peasant to Forest [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:34] [06/12]                 Footman [Building availible]
+     [00:35] [08/12]                    Farm [OK]
+     [00:36] [08/18]                 Peasant [OK]
+     [00:37] [09/18]                Barracks [OK]
+     [00:54] [09/18]                 Footman [Building availible]
+     [01:02] [11/18]                 Footman [Building availible]
+     [01:03] [13/18]                    Farm [OK]
+     [01:08] [13/18]                 Footman [Building availible]
+     [01:14] [15/24]                 Footman [Building availible]
+     [01:15] [17/24] Add Peasant to Building [OK]
+     [01:16] [17/24] Add Peasant to Building [OK]
+     [01:22] [17/24]                 Footman [Building availible]
+     [01:28] [19/30]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:00] [00/00]                     NOP [OK]
+     [01:33] [21/30]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:48]
+                    Footman : 10 [Last one: 01:48]
+                       Farm :  3 [Last one: 01:22]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  3 [Last one: 00:34]
+
+     Harvested Gold : 2000
+
+     Harvested Wood : 85
+     Gold at the end: 396
+     Wood at the end: 4
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:49 minutes
+     Scouting unit after 00:00 minutes
+[ 301 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                    Farm [OK]
+     [00:01] [05/12]  Gold Peasant to Forest [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:34] [06/12]                 Footman [Building availible]
+     [00:35] [08/12]                    Farm [OK]
+     [00:36] [08/18]                 Peasant [OK]
+     [00:37] [09/18]                Barracks [OK]
+     [00:54] [09/18]                 Footman [Building availible]
+     [01:02] [11/18]                 Footman [Building availible]
+     [01:03] [13/18]                    Farm [OK]
+     [01:08] [13/18]                 Footman [Building availible]
+     [01:14] [15/24]                 Footman [Building availible]
+     [01:15] [17/24] Add Peasant to Building [OK]
+     [01:16] [17/24] Add Peasant to Building [OK]
+     [01:22] [17/24]                 Footman [Building availible]
+     [01:28] [19/30]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:00] [00/00]                     NOP [OK]
+     [01:33] [21/30]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:48]
+                    Footman : 10 [Last one: 01:48]
+                       Farm :  3 [Last one: 01:22]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  3 [Last one: 00:34]
+
+     Harvested Gold : 2000
+
+     Harvested Wood : 85
+     Gold at the end: 396
+     Wood at the end: 4
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:49 minutes
+     Scouting unit after 00:00 minutes
+[ 166 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                    Farm [OK]
+     [00:01] [05/12]  Gold Peasant to Forest [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:34] [06/12]                 Footman [Building availible]
+     [00:35] [08/12]                    Farm [OK]
+     [00:36] [08/18]                 Peasant [OK]
+     [00:37] [09/18]                Barracks [OK]
+     [00:54] [09/18]                 Footman [Building availible]
+     [01:02] [11/18]                 Footman [Building availible]
+     [01:03] [13/18]                    Farm [OK]
+     [01:08] [13/18]                 Footman [Building availible]
+     [01:14] [15/24]                 Footman [Building availible]
+     [01:15] [17/24] Add Peasant to Building [OK]
+     [01:16] [17/24] Add Peasant to Building [OK]
+     [01:22] [17/24]                 Footman [Building availible]
+     [01:28] [19/30]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:00] [00/00]                     NOP [OK]
+     [01:33] [21/30]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:48]
+                    Footman : 10 [Last one: 01:48]
+                       Farm :  3 [Last one: 01:22]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  3 [Last one: 00:34]
+
+     Harvested Gold : 2000
+
+     Harvested Wood : 85
+     Gold at the end: 396
+     Wood at the end: 4
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:49 minutes
+     Scouting unit after 00:00 minutes
+[ 206 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]                    Farm [OK]
+     [00:01] [05/12]  Gold Peasant to Forest [OK]
+     [00:02] [05/12]                Barracks [OK]
+     [00:03] [05/12]                 Peasant [OK]
+     [00:04] [06/12]                Barracks [OK]
+     [00:05] [06/12] Add Peasant to Building [OK]
+     [00:34] [06/12]                 Footman [Building availible]
+     [00:35] [08/12]                    Farm [OK]
+     [00:36] [08/18]                 Peasant [OK]
+     [00:37] [09/18]                Barracks [OK]
+     [00:54] [09/18]                 Footman [Building availible]
+     [01:02] [11/18]                 Footman [Building availible]
+     [01:03] [13/18]                    Farm [OK]
+     [01:08] [13/18]                 Footman [Building availible]
+     [01:14] [15/24]                 Footman [Building availible]
+     [01:15] [17/24] Add Peasant to Building [OK]
+     [01:16] [17/24] Add Peasant to Building [OK]
+     [01:22] [17/24]                 Footman [Building availible]
+     [01:28] [19/30]                 Footman [Building availible]
+     [00:00] [00/00]  [OK]
+     [00:00] [00/00]                     NOP [OK]
+     [01:33] [21/30]                 Peasant [OK]
+
+     ---Force at the end---
+                    Peasant :  8 [Last one: 01:48]
+                    Footman : 10 [Last one: 01:48]
+                       Farm :  3 [Last one: 01:22]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  3 [Last one: 00:34]
+
+     Harvested Gold : 2000
+
+     Harvested Wood : 85
+     Gold at the end: 396
+     Wood at the end: 4
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 02:00 minutes
+     Scouting unit after 00:00 minutes
+[  51 generations] [ 50 mutations] [150 mutation factor]
+     [00:00] [05/12]  Gold Peasant to Forest [OK]
+     [00:01] [05/12]                Barracks [OK]
+     [00:02] [05/12]                 Peasant [OK]
+     [00:03] [06/12]                Barracks [OK]
+     [00:04] [06/12]  Gold Peasant to Forest [OK]
+     [00:17] [06/12]                 Peasant [Building availible]
+     [00:18] [07/12] Add Peasant to Building [OK]
+     [00:19] [07/12]                Barracks [OK]
+     [00:20] [07/12]                    Farm [OK]
+     [00:32] [07/12]  Gold Peasant to Forest [Worker availible]
+     [00:33] [07/12]    Wood Peasant to Mine [OK]
+     [00:00] [00/02]  [OK]
+     [00:34] [07/12]                 Peasant [OK]
+     [00:35] [07/12]                    Farm [OK]
+     [00:40] [07/12]                 Footman [Building availible]
+     [00:41] [09/12]                 Peasant [OK]
+     [01:00] [10/18]                 Footman [Building availible]
+     [01:01] [12/18]                    Farm [OK]
+     [01:02] [12/18]                 Peasant [OK]
+     [01:03] [13/18]                 Peasant [OK]
+     [01:04] [14/18]                    Farm [OK]
+     [01:05] [14/18]                 Footman [OK]
+     [01:17] [16/24]                 Peasant [Building availible]
+     [01:19] [17/24]                 Footman [Building availible]
+     [01:20] [19/24]                 Footman [OK]
+     [01:21] [21/24]                 Peasant [OK]
+     [01:25] [22/24]                 Footman [Building availible]
+     [01:26] [24/24]                    Farm [OK]
+     [01:36] [24/24]                 Peasant [Supply satisfied]
+     [01:37] [25/30]                 Footman [OK]
+     [01:39] [27/30]                 Footman [Building availible]
+     [00:00] [00/00]                     NOP [OK]
+     [01:44] [29/36] Add Peasant to Building [OK]
+
+     ---Force at the end---
+                    Peasant : 14 [Last one: 01:51]
+                    Footman : 10 [Last one: 01:59]
+                       Farm :  5 [Last one: 01:52]
+                  Town Hall :  1 [Last one: 00:00]
+                   Barracks :  3 [Last one: 00:40]
+
+     Harvested Gold : 6780
+
+     Harvested Wood : 108
+     Gold at the end: 4440
+     Wood at the end: 8
+[----#5 solution end--------]
+

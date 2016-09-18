@@ -2,61 +2,109 @@
 ---StarCraftCalculator by ClawSoftware.de [v1.02]--
 ---------------------------------------------------
 
-[----Best solution---]
+[----#1 solution----]
 
-     Time used: 06:51 minutes
+     Time used: 01:26 minutes
      Scouting unit after 02:40 minutes
-     [00:00] [06/10]              Acolyte [OK]
-     [00:01] [07/10]                Crypt [OK]
-     [01:03] [07/10]             Ziggurat [enough Wood]
-     [01:21] [07/10]                Ghoul [Building availible]
-     [01:26] [09/10]            Graveyard [enough Wood]
-     [01:39] [09/10]          Cannibalize [Building availible]
-     [01:40] [09/10]              Acolyte [OK]
-     [02:13] [10/10]                Ghoul [Supply satisfied]
-     [02:31] [12/20]                Ghoul [Building availible]
-     [02:32] [14/20]             Ziggurat [OK]
-     [02:40] [14/20]         Unholy Armor [enough Wood]
-     [02:49] [14/20]                Ghoul [Building availible]
-     [03:07] [16/20]                Ghoul [Building availible]
-     [03:20] [18/20]    Halls of the Dead [enough Wood]
-     [03:25] [18/20]                Ghoul [Building availible]
-     [03:43] [20/30]                Ghoul [Building availible]
-     [03:44] [22/30]             Ziggurat [OK]
-     [03:45] [22/30]            Graveyard [OK]
-     [03:58] [22/30]                Crypt [enough Wood]
-     [04:01] [22/30]                Ghoul [Building availible]
-     [04:03] [24/30]      Unholy Strength [enough Wood]
-     [04:19] [24/30]                Ghoul [Building availible]
-     [04:24] [26/30]         Spirit Tower [enough Wood]
-     [04:37] [26/30]                Ghoul [Building availible]
-     [04:43] [28/30]         Spirit Tower [enough Wood]
-     [05:20] [28/40]      Unholy Strength [Building availible]
-     [05:21] [28/40]         Spirit Tower [OK]
-     [05:34] [28/40]         Unholy Armor [enough Gold]
-     [05:44] [28/40]         Ghoul Frenzy [enough Gold]
-     [05:56] [28/40]                Ghoul [enough Gold]
-     [06:14] [30/40]                Ghoul [Building availible]
-     [06:29] [32/40]                Ghoul [Building availible]
-     [06:32] [34/40]                Ghoul [enough Gold]
+     [00:00] [06/10]                   Crypt [OK]
+     [00:01] [06/10]                 Acolyte [OK]
 
      ---Force at the end---
-                   Acolyte :  6 [Last one: 01:55]
-                     Ghoul : 15 [Last one: 06:50]
-         Haunted Gold Mine :  1 [Last one: 00:00]
-         Halls of the Dead :  1 [Last one: 05:20]
-                     Crypt :  2 [Last one: 01:21]
-                 Graveyard :  2 [Last one: 02:26]
-              Spirit Tower :  3 [Last one: 06:41]
-               Cannibalize :  1 [Last one: 02:09]
-              Ghoul Frenzy :  1 [Last one: 06:29]
-           Unholy Strength :  2 [Last one: 06:36]
-              Unholy Armor :  2 [Last one: 06:50]
+                    Acolyte :  5 [Last one: 00:16]
+                      Ghoul :  1 [Last one: 00:00]
+          Haunted Gold Mine :  1 [Last one: 00:00]
+                 Necropolis :  1 [Last one: 00:00]
+                      Crypt :  1 [Last one: 01:25]
 
-     Harvested Gold : 4078
+     Harvested Gold : 826
 
-     Harvested Wood : 3274
-     Gold at the end: 183
-     Wood at the end: 1344
-[---------end--------]
+     Harvested Wood : 114
+     Gold at the end: 1046
+     Wood at the end: 169
+[----#1 solution end--------]
+
+[----#2 solution----]
+
+     Time used: 01:26 minutes
+     Scouting unit after 02:40 minutes
+     [00:00] [06/10]                   Crypt [OK]
+     [00:01] [06/10]                 Acolyte [OK]
+
+     ---Force at the end---
+                    Acolyte :  5 [Last one: 00:16]
+                      Ghoul :  1 [Last one: 00:00]
+          Haunted Gold Mine :  1 [Last one: 00:00]
+                 Necropolis :  1 [Last one: 00:00]
+                      Crypt :  1 [Last one: 01:25]
+
+     Harvested Gold : 826
+
+     Harvested Wood : 114
+     Gold at the end: 891
+     Wood at the end: 24
+[----#2 solution end--------]
+
+[----#3 solution----]
+
+     Time used: 01:26 minutes
+     Scouting unit after 02:40 minutes
+     [00:00] [06/10]                   Crypt [OK]
+     [00:01] [06/10]                 Acolyte [OK]
+
+     ---Force at the end---
+                    Acolyte :  5 [Last one: 00:16]
+                      Ghoul :  1 [Last one: 00:00]
+          Haunted Gold Mine :  1 [Last one: 00:00]
+                 Necropolis :  1 [Last one: 00:00]
+                      Crypt :  1 [Last one: 01:25]
+
+     Harvested Gold : 826
+
+     Harvested Wood : 114
+     Gold at the end: 1046
+     Wood at the end: 169
+[----#3 solution end--------]
+
+[----#4 solution----]
+
+     Time used: 01:26 minutes
+     Scouting unit after 02:40 minutes
+     [00:00] [06/10]                   Crypt [OK]
+     [00:01] [06/10]                 Acolyte [OK]
+
+     ---Force at the end---
+                    Acolyte :  5 [Last one: 00:16]
+                      Ghoul :  1 [Last one: 00:00]
+          Haunted Gold Mine :  1 [Last one: 00:00]
+                 Necropolis :  1 [Last one: 00:00]
+                      Crypt :  1 [Last one: 01:25]
+
+     Harvested Gold : 826
+
+     Harvested Wood : 114
+     Gold at the end: 726
+     Wood at the end: 89
+[----#4 solution end--------]
+
+[----#5 solution----]
+
+     Time used: 01:26 minutes
+     Scouting unit after 02:40 minutes
+     [00:00] [06/10]                   Crypt [OK]
+     [00:01] [06/10]                 Acolyte [OK]
+     [00:16] [07/10]                 Acolyte [Building availible]
+
+     ---Force at the end---
+                    Acolyte :  6 [Last one: 00:31]
+                      Ghoul :  1 [Last one: 00:00]
+          Haunted Gold Mine :  1 [Last one: 00:00]
+                 Necropolis :  1 [Last one: 00:00]
+                      Crypt :  1 [Last one: 01:25]
+
+     Harvested Gold : 826
+
+     Harvested Wood : 114
+     Gold at the end: 651
+     Wood at the end: 89
+[----#5 solution end--------]
 

@@ -3,26 +3,25 @@
 
 // MOVED all #defines for units/buildings/upgrades to main.h (because the stats thingy)
 
-#define BUILDING_TYPES_ELVES 50
+
+//TODO: Moonwells, Detonate
 
 	void Player_Elves::Set_Goals()
 	{
 		unsigned char i,j,k;
 		long Need_Wood;
-		building_types=BUILDING_TYPES_ELVES;
-
 
 //-----General (put it in races.cpp later)----------
 		for(j=0;j<6;j++)
-		for(i=0;i<BUILDING_TYPES_ELVES;i++)
+		for(i=0;i<MAX_GOALS;i++)
 			if(goal[i].what>0)
 			{
-				Ziel[i]=1;
+				buildable[i]=1;
 
 				for(k=0;k<3;k++)
 					if((stats[ELVES][i].prerequisite[k]>0)&&(goal[stats[ELVES][i].prerequisite[k]].what==0))
 						goal[stats[ELVES][i].prerequisite[k]].what=1;
-				if((stats[ELVES][i].facility>0)&&(goal[stats[ELVES][i].facility].what==0))
+				if((stats[ELVES][i].facility>0)&&(goal[stats[ELVES][i].facility].what==0)&&(i!=TIER2)&&(i!=TIER3))
 					goal[stats[ELVES][i].facility].what=1;
 //-------------------------------------------------				
 				
@@ -37,14 +36,14 @@
 					case IMPALING_BOLT:
 					case NATURES_BLESSING:	
 					case TREE_OF_ETERNITY:
-						Ziel[TREE_OF_AGES]=1;break;
+						buildable[TREE_OF_AGES]=1;break;
 					case ENCHANTED_BEARS:if(goal[DRUID_OF_CLAW_TRAINING].what<2) goal[DRUID_OF_CLAW_TRAINING].what=2;break;
 					case ENCHANTED_CROWS:if(goal[DRUID_OF_THALON_TRAINING].what<2) goal[DRUID_OF_THALON_TRAINING].what=2;break;
 					case STRENGTH_OF_THE_MOON:
 					case MOON_ARMOR:
 					case STRENGTH_OF_THE_WILD:
 					case REINFORCED_HIDE:
-							if(goal[i].what==2) Ziel[TREE_OF_AGES]=1; else if((goal[i].what==3)&&(goal[TREE_OF_ETERNITY].what==0)) goal[TREE_OF_ETERNITY].what=1;break;
+							if(goal[i].what==2) buildable[TREE_OF_AGES]=1; else if((goal[i].what==3)&&(goal[TREE_OF_ETERNITY].what==0)) goal[TREE_OF_ETERNITY].what=1;break;
 								     
 
 					case DRUID_OF_CLAW_TRAINING:
@@ -52,26 +51,38 @@
 					default:break;
 				}
 			}
-		if((goal[TREE_OF_ETERNITY].what==0)&&(Ziel[TREE_OF_AGES]>0)) goal[TREE_OF_AGES].what=1; // ERROR: goal[stronghold]>1
+		if((goal[TREE_OF_ETERNITY].what==0)&&(buildable[TREE_OF_AGES]>0)&&(goal[TREE_OF_AGES].what==0)) goal[TREE_OF_AGES].what=1; // ERROR: goal[stronghold]>1
 		
-		Ziel[WISP]=1;
-		Ziel[TREE_OF_LIFE]=1;
-		Ziel[MOONWELL]=1;
+		buildable[WISP]=1;
+		buildable[TREE_OF_LIFE]=1;
+		buildable[MOONWELL]=1;
+if(ADDITIONAL_ORDERS==1)
+{	
+		buildable[CANCEL_BUILDING]=1;
+		buildable[NOP]=1;
+		buildable[JMP]=1;
+		buildable[IF]=1;
+		goal[NOP].what=0;
+		goal[CANCEL_BUILDING].what=0;
+		goal[IF].what=0;
+		goal[JMP].what=0;
+		
+}
 
 		Need_Wood=0;
-		for(i=0;i<BUILDING_TYPES_ELVES;i++)
+		for(i=0;i<MAX_GOALS;i++)
 			Need_Wood+=(goal[i].what*stats[ELVES][i].res[WOOD]);
-		//TODO: Fehler: Morphupgrades (mit nur 'Ziel=...' werden ignoriert) Also die Schritte townhall->keep->castle nur castle
+		//TODO: Fehler: Morphupgrades (mit nur 'buildable=...' werden ignoriert) Also die Schritte townhall->keep->castle nur castle
 
 		if(Need_Wood>0)
 		{
-			Ziel[ONE_WOOD_WISP_TO_MINE]=1;
-			Ziel[ONE_GOLD_WISP_TO_FOREST]=1;
+			buildable[ONE_WOOD_WISP_TO_MINE]=1;
+			buildable[ONE_GOLD_WISP_TO_FOREST]=1;
 		}
 
 		Max_Build_Types=0;
-		for(i=0;i<BUILDING_TYPES_ELVES;i++)
-		if(Ziel[i]==1)
+		for(i=0;i<MAX_GOALS;i++)
+		if(buildable[i]==1)
 		{
 			Build_Av[Max_Build_Types]=i;
 			Max_Build_Types++;
@@ -80,183 +91,6 @@
 
 		goal[ONE_GOLD_WISP_TO_FOREST].what=0; // Just to be sure :)
 		goal[ONE_WOOD_WISP_TO_MINE].what=0;		
-	}
-	
-// Test whether the item can be build (minerals, wood, supply, buildings, ...)
-	void Player_Elves::Build(unsigned char what)
-	{
-		unsigned char m;
-		suc=0;
-
-			if(what==ONE_GOLD_WISP_TO_FOREST)
-			{
-				if(PeonAt[GOLDMINE]>0)
-				{
-					ok=1;
-					PeonAt[GOLDMINE]--;
-					PeonAt[FOREST]++;
-					program[IP].built=1;
-				} else suc=6;
-			}
-			else
-			if(what==ONE_WOOD_WISP_TO_MINE)
-			{
-				if(PeonAt[FOREST]>0)
-				{
-					ok=1;
-					PeonAt[FOREST]--;
-					PeonAt[GOLDMINE]++;
-					program[IP].built=1;
-				} else suc=6;
-			}
-			else
-			{
-				nr=255;
-				for(m=0;m<MAX_BUILDINGS;m++)
-				if(building[m].RB==0)
-				{
-					nr=m;
-					m=MAX_BUILDINGS;			
-				}
-		
-			if( (Supply<stats[ELVES][what].supply) && (stats[ELVES][what].supply>0)) suc=4;
-			else 
-				//TODO: Allgemein schreib0rn!
-			if ( res[GOLD]<stats[ELVES][what].res[GOLD]+(stats[race][what].type==4)*force[what]*stats[race][what].upres[GOLD]) suc=2;
-			else
-			if ( res[WOOD]<stats[ELVES][what].res[WOOD]+(stats[race][what].type==4)*force[what]*stats[race][what].upres[WOOD]) suc=3;
-			else if	(PeonAt[GOLD]+PeonAt[WOOD]<1*(stats[ELVES][what].type==2)) suc=6;
-			else //Check whether this is already researched/upgraded
-				
-			if(
-			 (stats[ELVES][what].type>=3)&&
-			 ((stats[ELVES][what].type!=4)||(force[what]>=3)||(availible[what]!=1))&&
-			 ((stats[ELVES][what].type!=3)||(force[what]!=0)||(availible[what]!=1))
-			) suc=7;
-			else
-		       if( ((stats[ELVES][what].prerequisite[0]==0)||(force[stats[ELVES][what].prerequisite[0]]>0))&&
- 			   ((stats[ELVES][what].prerequisite[1]==0)||(force[stats[ELVES][what].prerequisite[1]]>0))&&
-			   ((stats[ELVES][what].prerequisite[2]==0)||(force[stats[ELVES][what].prerequisite[2]]>0))&&
-			   ((stats[ELVES][what].facility==0)||(availible[stats[ELVES][what].facility]>0)) && (nr<255))
-//TODO: 'suc' rein
-		{
-			switch(what) 
-	// TODO: Maybe generalize the whole part... i.e. prequesite and availible building in the stats :-o
-	// TODO: Maybe optimize the order of checks to improve speed
-			{
-
-				//SUC!!
-				case NATURES_BLESSING:
-					if(availible[TREE_OF_ETERNITY]>0)
-					{
-						building[nr].facility=TREE_OF_ETERNITY;
-						Produce(what);
-						availible[TREE_OF_ETERNITY]--;
-					}
-					else if(availible[TREE_OF_AGES]>0)
-					{
-						building[nr].facility=TREE_OF_AGES;
-						Produce(what);
-						availible[TREE_OF_AGES]--;
-					};break;
-				case BACKPACK_ELVES:
-				case WISP:if(availible[TREE_OF_ETERNITY]>0)
-						{
-						building[nr].facility=TREE_OF_ETERNITY;
-						Produce(what);
-						availible[TREE_OF_ETERNITY]--;
-						}					     
-					     else if(availible[TREE_OF_AGES]>0)
-					     {
-						building[nr].facility=TREE_OF_AGES;
-					      	     Produce(what);
-						availible[TREE_OF_AGES]--;
-					     }
-					     else if(availible[TREE_OF_LIFE]>0)
-					     {
-						building[nr].facility=TREE_OF_LIFE;
-						     Produce(what);
-						     availible[TREE_OF_LIFE]--;
-					     };break;
-	
-				case BALLISTA:
-					     if(force[TREE_OF_AGES]+force[TREE_OF_ETERNITY]>0)
-					     {
-						     Produce(what);
-						     availible[ANCIENT_OF_WAR]--;
-					     };break;
-				case ANCIENT_OF_LORE:
-				case ANCIENT_OF_WIND:
-					     if(force[TREE_OF_AGES]+force[TREE_OF_ETERNITY]>0)
-						     Produce(what);break;
-				case IMPROVED_BOWS:
-				case SENTINEL:
-				case IMPALING_BOLT:
-					     if(force[TREE_OF_AGES]+force[TREE_OF_ETERNITY]>0)
-					     {
-						    Produce(what);
-						    availible[ANCIENT_OF_WIND]--;
-					     };break;
-				case ENCHANTED_BEARS:if(force[DRUID_OF_CLAW_TRAINING]==2)
-							     {
-								     Produce(what);
-								     availible[ANCIENT_OF_LORE]--;
-							     };break;
-				case ENCHANTED_CROWS:
-						     if(force[DRUID_OF_THALON_TRAINING]==2)
-						     {
-							     Produce(what);
-							     availible[ANCIENT_OF_WIND]--;
-						     };break;
-				case STRENGTH_OF_THE_MOON:
-				case MOON_ARMOR:
-				case STRENGTH_OF_THE_WILD:
-				case REINFORCED_HIDE:
-					if( (force[what]==0) || ((force[what]==1)&&(force[TREE_OF_AGES]+force[TREE_OF_ETERNITY]>0)) || ((force[what]==2)&&(force[TREE_OF_ETERNITY]>0)))
-					{
-						Produce(what);
-						availible[HUNTERS_HALL]--;
-					};break;
-
-				case DRUID_OF_CLAW_TRAINING:
-					if( (force[what]==0) || ((force[what]==1)&&(force[TREE_OF_ETERNITY]>0)))
-					{
-						Produce(what);
-						availible[ANCIENT_OF_LORE]--;
-					};break;
-				case DRUID_OF_THALON_TRAINING:
-					if( (force[what]==0) || ((force[what]==1)&&(force[TREE_OF_ETERNITY]>0)))
-					{
-						Produce(what);
-						availible[ANCIENT_OF_WIND]--;
-					};break;
-				case TREE_OF_AGES:if(availible[TREE_OF_LIFE]>0)
-						  {
-							  Produce(what);
-							  availible[TREE_OF_LIFE]--;
-						  };break;
-				case TREE_OF_ETERNITY:if(availible[TREE_OF_AGES]>0)
-						      {
-							      Produce(what);
-							      availible[TREE_OF_AGES]--;
-						      };break;
-			        default:Produce(what);if(stats[ELVES][what].facility>0) availible[stats[ELVES][what].facility]--;break;
-				
-			}
-			if((ok==1)&&(stats[race][what].type==2))				        
-			{
-			building[nr].RB+=5; //5 in game seconds to reach the building site
-			if(PeonAt[GOLD]>0)
-				PeonAt[GOLD]--;
-			else if(PeonAt[WOOD]>0)
-				PeonAt[WOOD]--;
-
-			//TODO: Insert check whether there are enough peons!!
-	         }
-		}
-	}
-			if((suc==0)&&(ok==0))
-				suc=1;
 	}
 
 // Do one run, go through one build order and record the results	
@@ -268,8 +102,8 @@
 		for(i=0;i<RESOURCES;i++)
 			harvested_res[i]=0;
 		
-		Vespene_Av=setup.Vespene_Geysirs;		
-		Vespene_Extractors=0;
+//		Vespene_Av=setup.Vespene_Geysirs;		
+//		Vespene_Extractors=0;
 		tt=0;
 
 		while((timer<setup.Max_Time) && (ready==0) && (IP<MAX_LENGTH))
@@ -318,13 +152,13 @@
 							availible[stats[ELVES][building[j].type].facility]++;
 						switch(building[j].type)
 						{
-							case BACKPACK_ELVES:availible[building[j].facility]++;break;
+							case BACKPACK:availible[building[j].facility]++;break;
 							case WISP:PeonAt[GOLDMINE]++;
 								  availible[building[j].facility]++;break;
 							case MOONWELL:Supply+=8;Max_Supply+=8;break;
-							case TREE_OF_LIFE:Supply+=10;Max_Supply+=10;break;
-							case TREE_OF_AGES:force[TREE_OF_LIFE]--;break; 
-							case TREE_OF_ETERNITY:force[TREE_OF_AGES]--;break;
+							case TREE_OF_LIFE:expansions++;Supply+=10;Max_Supply+=10;break;
+							case TREE_OF_AGES:force[TREE_OF_LIFE]--;availible[TREE_OF_LIFE]--;break; 
+							case TREE_OF_ETERNITY:force[TREE_OF_AGES]--;availible[TREE_OF_AGES]--;break;
 							default:break;
 						}
 						
@@ -333,23 +167,88 @@
 					}
 				}
 			}
-			
-			tt++;
 			ok=0;
-			Build(Build_Av[program[IP].order]);
-			if(suc>0) program[IP].success=suc;
-			if((ok==1)||(tt>267))
+			if(wait_nop>0)
 			{
-				if(tt<=267) program[IP].time=timer;
+				wait_nop--;
+				if(wait_nop==0)
+				{
+			             program[IP].built=1;
+                                     program[IP].need_Supply=tMax_Supply-tSupply;
+                                     program[IP].have_Supply=tMax_Supply;
+			             program[IP].res[GOLD]=(unsigned short)res[GOLD];
+			             program[IP].res[WOOD]=(unsigned short)res[WOOD];
+				     IP++;
+				}
+			}
+			
+			if(Build_Av[program[IP].order]==NOP)
+			{
+				if(wait_nop==0) wait_nop=WAIT_NOP_TIME;
+			}
+			else
+                        if(Build_Av[program[IP].order]==CANCEL_BUILDING)
+		        {
+				if(BuildingRunning>0)
+				{
+				        min=5000;
+				        n=0;
+				        for(i=0;i<MAX_BUILDINGS;i++)
+					        if(building[i].RB>0)
+					        {
+						        if((stats[ELVES][building[i].type].type==BUILDING) && (stats[ELVES][building[i].type].BT-building[i].RB<min))
+       	                                         // type == 2 because this makes only sense with buildings
+							{
+								min=stats[ELVES][building[i].type].BT-building[i].RB;
+								n=i;
+							}
+						}
+					if(min<5000)
+					{
+						ok=1;
+						PeonAt[FOREST]++;
+						res[GOLD]+=stats[ELVES][building[n].type].res[GOLD]*0.5; //?
+						res[WOOD]+=stats[ELVES][building[n].type].res[WOOD]*0.5; //?
+						Supply--; //another wisp
+						force[WISP]++;
+						if(building[n].type==TIER1)
+						{
+							for(j=0;j<MAX_EXPANSIONS;j++)
+								if(Expansion[j].status==2)
+								{
+									j=MAX_EXPANSIONS;
+									Expansion[j].status=0;
+								
+							}
+						}
+						building[n].type=NOP;//!!!
+						building[n].RB=0;
+						program[IP].built=1;
+						program[building[n].IP].built=1;
+						suc=OK;
+					} else suc=BUILDING_AVAILIBLE;
+				} else suc=BUILDING_AVAILIBLE;
+			} else
+			{
+			Build(Build_Av[program[IP].order]);
+			tt++;
+//			printf("%s suc: %i\n",stats[ELVES][Build_Av[program[IP].order]].name,suc);
+			if(suc>0) program[IP].success=suc; //?
+			if((ok==1)||(tt>MAX_BUILD_TIME))
+			{
+				if(tt<=MAX_BUILD_TIME) program[IP].time=timer;
 				else 
 				{
-					program[IP].success=8;
+					program[IP].success=TIMEOUT; //~
 					program[IP].time=20000;
 				}
 				program[IP].need_Supply=tMax_Supply-tSupply;
 				program[IP].have_Supply=tMax_Supply;
+				program[IP].res[GOLD]=(unsigned short)res[GOLD];
+				program[IP].res[WOOD]=(unsigned short)res[WOOD];
 				tt=0;
 				IP++;
+			} 
 			}
 		//Scoutpeon
 			//TODO: Allgemein!
@@ -357,7 +256,7 @@
 		{
 			if(PeonAt[GOLD]>0)
 				PeonAt[GOLD]--;
-			else PeonAt[WOOD]--;			
+			else PeonAt[WOOD]--;
 		}
 		
 		timer++;
@@ -377,6 +276,7 @@ void Player_Elves::InitRaceSpecific()
 	Supply=7;
 	Max_Supply=12;
 	PeonAt[BUILDING]=0;
+	wait_nop=0;
 }
 
 Player_Elves::Player_Elves()
@@ -389,5 +289,46 @@ Player_Elves::~Player_Elves()
 
 void Player_Elves::readjust_goals()
 {
-	//nothing to readjust here as Terra has no morphing units
+	unsigned char i,j;
+	goal[WISP].what++; //because the beginning Tree of Life needs one Wisp
+	for(i=0;i<MAX_GOALS;i++)
+		if(goal[i].what>0)
+		{
+			if((stats[ELVES][i].type==BUILDING)&&(i!=TREE_OF_ETERNITY)&&(i!=TREE_OF_AGES))
+			{
+				if(goal[i].what<=goal[WISP].what)
+					goal[WISP].what-=goal[i].what;
+				else goal[WISP].what=0;
+			}
+			else if(i==TREE_OF_ETERNITY)
+			{
+				if(goal[TREE_OF_ETERNITY].what<=goal[TREE_OF_AGES].what)
+					goal[TREE_OF_AGES].what-=goal[TREE_OF_ETERNITY].what;
+				else goal[TREE_OF_AGES].what=0;
+			}
+			else if(i==TREE_OF_AGES)
+			{
+				if(goal[TREE_OF_AGES].what<=goal[TREE_OF_LIFE].what)
+					goal[TREE_OF_LIFE].what-=goal[i].what;
+				else goal[TREE_OF_LIFE].what=0;
+			}
+		}
+	
+	i=MAX_LENGTH-1;
+	while(i>0)
+	{
+		if(Build_Av[program[i].order]==CANCEL_BUILDING)
+		{
+			j=i;
+			while(j>0)
+			{
+				if(stats[ELVES][Build_Av[program[j].order]].unsummon==1)
+					goal[Build_Av[program[j].order]].what--;
+				j--;
+			}
+		}
+		i--;
+	}
+
+	//Hippogryp rider etc. noch rein!!
 }
